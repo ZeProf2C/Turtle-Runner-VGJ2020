@@ -21,7 +21,12 @@ Turtle.Assets = {}
     Turtle.Assets.Jump.Height = Turtle.Assets.Jump.img:getHeight()
     Turtle.Assets.Jump.scaleX =  Turtle.Width/Turtle.Assets.Jump.Width
     Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
-
+    Turtle.Assets.Intro = {}
+    Turtle.Assets.Intro.img = turtleIntro
+    Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5
+    Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
+    Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
+    Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
 
 Turtle.Width = 75
 Turtle.Height = 75
@@ -33,7 +38,7 @@ Turtle.animSpeed = Turtle.scrollingSpeed/350
 Turtle.scrollingSpeedMax = 1500
 Turtle.scrollingSpeedMin = 100
 
-Turtle.state = "run"
+Turtle.state = "intro"
 Turtle.jumpTimer = 0
 Turtle.jumpTime  = 0.5
 Turtle.jumpScaleSpeed = 0.25
@@ -44,7 +49,9 @@ Turtle.Ombre = {}
     Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
     Turtle.Ombre.Slide = 250
 
-Turtle.Animation = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,3, Turtle.animSpeed)
+Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,3, Turtle.animSpeed)
+Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
+
 
 function Turtle.jump(dt)
     if Turtle.state == "jump" then
@@ -73,6 +80,7 @@ function Turtle.jump(dt)
             Turtle.Ombre.scaleY =Turtle.Assets.Run.scaleY
             
         end
+        
     end
         
 end
@@ -94,12 +102,24 @@ function Turtle.update(dt)
     end
 
     Turtle.jump(dt)
+    
+    Turtle.AnimationRun:update(dt, Turtle.animSpeed)
+    Turtle.AnimationIntro:update(dt, Turtle.animSpeed)
+
+    if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
+        Turtle.AnimationIntro:stop()
+        Turtle.isBegin = true
+        Map.isBegin = true
+
+        Turtle.state = "run"
+    end
 
     if Turtle.isBegin then
-        Turtle.Animation:play()
+        Turtle.AnimationRun:play()
     else
-        Turtle.Animation:stop()
+        Turtle.AnimationRun:stop()
     end
+    
 
 
 end
@@ -108,10 +128,10 @@ end
 function Turtle.draw()
     if Turtle.state == "run" then
         love.graphics.setColor(0,0,0,0.5)
-        Turtle.Animation:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        Turtle.AnimationRun:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
         
         love.graphics.setColor(1,1,1)
-        Turtle.Animation:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Run.scaleX,Turtle.Assets.Run.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        Turtle.AnimationRun:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Run.scaleX,Turtle.Assets.Run.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
 
     elseif Turtle.state == "jump" then
         love.graphics.setColor(0,0,0,0.5)
@@ -119,6 +139,11 @@ function Turtle.draw()
         
         love.graphics.setColor(1,1,1)
         love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.y,0,Turtle.Assets.Jump.scaleX,Turtle.Assets.Jump.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+
+    elseif Turtle.state == "intro" then
+        love.graphics.setColor(1,1,1)
+        Turtle.AnimationIntro:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Intro.scaleX,Turtle.Assets.Intro.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+
 
     end
 
