@@ -26,7 +26,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 local anim_mt = {}
 anim_mt.__index = anim_mt
 
-function newAnimation(image, fw, fh, delay, frames)
+function newAnimation(image, fw, fh, delay, frames, speed)
 	local a = {}
 	a.img = image
 	a.frames = {}
@@ -36,7 +36,7 @@ function newAnimation(image, fw, fh, delay, frames)
 	a.fw = fw
 	a.fh = fh
 	a.playing = true
-	a.speed = 1
+	a.speed = speed
 	a.mode = 1
 	a.direction = 1
 	local imgw = image:getWidth()
@@ -55,7 +55,8 @@ function newAnimation(image, fw, fh, delay, frames)
 	return setmetatable(a, anim_mt)
 end
 
-function anim_mt:update(dt)
+function anim_mt:update(dt, speed)
+	self.speed = speed or self.speed
 	if not self.playing then return end
 	self.timer = self.timer + dt * self.speed
 	if self.timer > self.delays[self.position] then

@@ -10,6 +10,7 @@ Turtle.Vx = 300
 
 Turtle.scrollingAcceleration = 1000
 Turtle.scrollingSpeed = 350
+Turtle.animSpeed = Turtle.scrollingSpeed/350
 Turtle.scrollingSpeedMax = 2000
 Turtle.scrollingSpeedMin = 500
 
@@ -20,7 +21,7 @@ Turtle.scaleY = Turtle.Height/turtle:getHeight()
 Turtle.ecartOmbre = 3
 Turtle.ecartOmbreSpeed = 100
 
-Turtle.Animation = newAnimation(turtle,turtle:getWidth()/3,turtle:getHeight(),0.2,3)
+Turtle.Animation = newAnimation(turtle,turtle:getWidth()/3,turtle:getHeight(),0.2,3, Turtle.animSpeed)
 
 function Turtle.jump()
 end
@@ -34,14 +35,14 @@ function Turtle.update(dt)
 
     if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
         Turtle.scrollingSpeed = Turtle.scrollingSpeed + Turtle.scrollingAcceleration * dt
+        Turtle.animSpeed = Turtle.animSpeed + Turtle.scrollingAcceleration/1000*dt
         
     elseif love.keyboard.isDown("down") and  Turtle.scrollingSpeed >= Turtle.scrollingSpeedMin then
         Turtle.scrollingSpeed = Turtle.scrollingSpeed - Turtle.scrollingAcceleration * dt
+        Turtle.animSpeed = Turtle.animSpeed - Turtle.scrollingAcceleration/1000*dt
     end
 
-
-   
-    Turtle.Animation:update(dt)
+    Turtle.Animation:update(dt, Turtle.animSpeed)
 
 
 end
