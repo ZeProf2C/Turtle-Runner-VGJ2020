@@ -108,7 +108,6 @@ function Turtle.update(dt)
     else
         Turtle.AnimationRun:stop()
     end
-    Turtle.Animation:update(dt, Turtle.animSpeed)
 
 
 end
