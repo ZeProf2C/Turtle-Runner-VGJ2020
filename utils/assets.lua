@@ -6,7 +6,13 @@
  switch        = love.graphics.newImage("assets/images/switch.png")
  cadre         = love.graphics.newImage("assets/images/cadre.png")
  backgroungPlage = love.graphics.newImage("assets/images/background.jpg")
-endScreen = love.graphics.newImage("assets/images/endScreen.png")
+ endScreen = love.graphics.newImage("assets/images/endScreen.png")
+
+ enemyImage = {}
+    enemyImage.crab = love.graphics.newImage("assets/images/enemy/crab.png")
+    enemyImage.bird = love.graphics.newImage("assets/images/enemy/bird.png")
+    enemyImage.coral = love.graphics.newImage("assets/images/enemy/coral.png")
+    enemyImage.hole = love.graphics.newImage("assets/images/enemy/hole.png")
 
  turtle          = love.graphics.newImage("assets/images/turtle.png")
 
