@@ -6,25 +6,12 @@ require("map")
 require("enemy")
 
 
-function Game.startAnimation()
+
+Game.startAnimation = function()
     Map.isBegin = true
     Turtle.isBegin = true
     enemy.isBegin = true
 end
-
-enemyArray = {}
-enemyArray.update = function(dt)
-    for i, v in ipairs(enemyArray) do
-        v.update(dt)
-    end
-end
-enemyArray.draw = function()
-    for i, v in ipairs(enemyArray) do
-        v.draw()
-    end
-end
-
-table.insert(enemyArray, enemy.new(screen.L/2, -200, Turtle.scrollingSpeed, BIRD))
 
 
 Game.load = function()
@@ -38,7 +25,7 @@ Game.update = function(dt)
     if not(pannelEscape.on) then
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
-        enemyArray.update(dt)
+        enemy.array.update(dt)
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end
@@ -47,7 +34,7 @@ end
 Game.draw = function()
 
     Map.draw()
-    enemyArray.draw()
+    enemy.array.draw()
     Turtle.draw()
 
     if pannelEscape.on then

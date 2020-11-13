@@ -6,6 +6,18 @@ HOLE = "trou"
 
 enemy = {}
 enemy.isBegin = false
+enemy.array={}
+
+enemy.array.update = function(dt)
+    for i, v in ipairs(enemy.array) do
+        v.update(dt)
+    end
+end
+enemy.array.draw = function()
+    for i, v in ipairs(enemy.array) do
+        v.draw()
+    end
+end
 
 enemy.new = function(x, y, speed, type)
     local Enemy = {}
