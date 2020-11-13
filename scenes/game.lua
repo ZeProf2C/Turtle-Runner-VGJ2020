@@ -10,10 +10,12 @@ end
 
 scene_basique.update = function(dt)
  Turtle.update(dt)
+ Map.update(dt)
 end
 
 scene_basique.draw = function()
     Turtle.draw()
+    Map.draw()
 
 end
 
