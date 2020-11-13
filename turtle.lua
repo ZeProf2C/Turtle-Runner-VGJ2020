@@ -10,23 +10,23 @@ Turtle.isBegin = false
 
 Turtle.Assets = {}
     Turtle.Assets.Run = {}
-    Turtle.Assets.Run.img = turtleRun
-    Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/4
-    Turtle.Assets.Run.Height = Turtle.Assets.Run.img:getHeight()
-    Turtle.Assets.Run.scaleX =  Turtle.Width/Turtle.Assets.Run.Width
-    Turtle.Assets.Run.scaleY = Turtle.Height/Turtle.Assets.Run.Height
+        Turtle.Assets.Run.img = turtleRun
+        Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/4
+        Turtle.Assets.Run.Height = Turtle.Assets.Run.img:getHeight()
+        Turtle.Assets.Run.scaleX =  Turtle.Width/Turtle.Assets.Run.Width
+        Turtle.Assets.Run.scaleY = Turtle.Height/Turtle.Assets.Run.Height
     Turtle.Assets.Jump = {}
-    Turtle.Assets.Jump.img = turtleJump
-    Turtle.Assets.Jump.Width = Turtle.Assets.Jump.img:getWidth()
-    Turtle.Assets.Jump.Height = Turtle.Assets.Jump.img:getHeight()
-    Turtle.Assets.Jump.scaleX =  Turtle.Width/Turtle.Assets.Jump.Width
-    Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
+        Turtle.Assets.Jump.img = turtleJump
+        Turtle.Assets.Jump.Width = Turtle.Assets.Jump.img:getWidth()
+        Turtle.Assets.Jump.Height = Turtle.Assets.Jump.img:getHeight()
+        Turtle.Assets.Jump.scaleX =  Turtle.Width/Turtle.Assets.Jump.Width
+        Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
     Turtle.Assets.Intro = {}
-    Turtle.Assets.Intro.img = turtleIntro
-    Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5
-    Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
-    Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
-    Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
+        Turtle.Assets.Intro.img = turtleIntro
+        Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5
+        Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
+        Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
+        Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
 
 Turtle.Width = 75
 Turtle.Height = 75
@@ -90,6 +90,7 @@ function Turtle.Hatch()
         Turtle.AnimationIntro:stop()
         Turtle.isBegin = true
         Map.isBegin = true
+        enemy.isBegin = true
 
         Turtle.state = "run"
     end
