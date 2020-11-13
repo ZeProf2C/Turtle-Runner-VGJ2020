@@ -47,6 +47,7 @@ function Game.keypressed(key)
         pannelEscape.on = not(pannelEscape.on)
         love.mouse.setVisible(pannelEscape.on)
     end
+    Turtle.keypressed(key)
     
 end
 function Game.focus(focus)
