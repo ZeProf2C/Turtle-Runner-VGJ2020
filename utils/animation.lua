@@ -36,7 +36,7 @@ function newAnimation(image, fw, fh, delay, frames, speed)
 	a.fw = fw
 	a.fh = fh
 	a.playing = true
-	a.speed = speed
+	a.speed = speed or 1
 	a.mode = 1
 	a.direction = 1
 	local imgw = image:getWidth()

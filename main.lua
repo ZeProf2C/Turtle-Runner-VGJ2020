@@ -6,6 +6,7 @@ function love.load()
   require('utils/vecteur2')
   require("utils/constantes")
   require("utils/animation")
+  require("utils/geometry")
   require("pannelescape")
   
   camera = require("utils/camera")
