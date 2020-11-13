@@ -23,12 +23,18 @@ Turtle.init = function()
         Turtle.Assets.Jump.Height = Turtle.Assets.Jump.img:getHeight()
         Turtle.Assets.Jump.scaleX =  Turtle.Width/Turtle.Assets.Jump.Width
         Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
-        Turtle.Assets.Intro = {}
+      Turtle.Assets.Intro = {}
         Turtle.Assets.Intro.img = turtleIntro
         Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5-12 --  -12 permet de bien croper l'image
         Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
         Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
         Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
+      Turtle.Assets.Death = {}
+        Turtle.Assets.Death.img = turtledead
+        Turtle.Assets.Death.Width = Turtle.Assets.Death.img:getWidth()/3
+        Turtle.Assets.Death.Height = Turtle.Assets.Death.img:getHeight()
+        Turtle.Assets.Death.scaleX =  Turtle.Width/Turtle.Assets.Death.Width
+        Turtle.Assets.Death.scaleY = Turtle.Height/Turtle.Assets.Death.Height
 
 
     Turtle.Vx = 300
@@ -49,9 +55,10 @@ Turtle.init = function()
         Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
         Turtle.Ombre.Slide = 250
 
-    Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
+    Turtle.AnimationRun   = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
     Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
-    Turtle.jet_de_sable = create_emitter(Turtle.x,Turtle.y,15)
+    Turtle.AnimationDeath = newAnimation(Turtle.Assets.Death.img,Turtle.Assets.Death.Width,Turtle.Assets.Death.Height,0.5,4)
+    Turtle.jet_de_sable   = create_emitter(Turtle.x,Turtle.y,15)
 end
 
 
@@ -90,7 +97,7 @@ function Turtle.jump(dt)
 end
 
 function Turtle.Hatch()
-    if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
+if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
       Turtle.AnimationIntro:stop()
       Game.startAnimation()
       Turtle.state = "run"
@@ -98,6 +105,8 @@ function Turtle.Hatch()
       Turtle.jet_de_sable.init()
     end
 end
+  
+
 
 function Turtle.update(dt)
 
@@ -149,11 +158,26 @@ function Turtle.update(dt)
         Turtle.AnimationRun:play()
     else
         Turtle.AnimationRun:stop()
+        Turtle.AnimationDeath:stop()
         Turtle.Hatch()
+        
     end
     
 
     Turtle.jet_de_sable.update(dt)
+    
+    if enemy.lose then
+        if Turtle.AnimationDeath:getCurrentFrame() ==  3 then            
+            Turtle.AnimationDeath:stop()
+            love.mouse.setVisible(true)
+            scene_man.next_scene = scene_man.list["game_over"]
+         end
+         Map.isBegin = false
+         Turtle.AnimationDeath:play()
+         Turtle.state = "dead"
+         
+        end
+    Turtle.AnimationDeath:update(dt,Turtle.animSpeed)
 
 end
 
@@ -180,9 +204,17 @@ function Turtle.draw()
     elseif Turtle.state == "intro" then
         love.graphics.setColor(1,1,1)
         Turtle.AnimationIntro:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Intro.scaleX,Turtle.Assets.Intro.scaleY,Turtle.Assets.Intro.Width*0.5,Turtle.Assets.Intro.Height*0.5)
-    end
+        
+    elseif Turtle.state == "dead" then
+         love.graphics.setColor(0,0,0,0.5)
+        Turtle.AnimationDeath:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Death.Width*0.5,Turtle.Assets.Death.Height*0.5)
+        
+        love.graphics.setColor(1,1,1)
+        Turtle.AnimationDeath:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Death.scaleX,Turtle.Assets.Death.scaleY,Turtle.Assets.Death.Width*0.5,Turtle.Assets.Death.Height*0.5)
+      end
+   end
 
-end
+
 
 function Turtle.keypressed(key)
     if key == "space" and Turtle.state == "run" then
