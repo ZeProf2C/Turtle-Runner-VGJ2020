@@ -31,7 +31,7 @@ Game.update = function(dt)
     if not(pannelEscape.on) then
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
-        enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height)
+        enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.scrollingSpeed)
 
         if enemy.lose then
             love.mouse.setVisible(true)

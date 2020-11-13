@@ -11,9 +11,9 @@ enemy.init = function()
     enemy.lose = false
     enemy.array={}
 
-    enemy.array.update = function(dt, persoX, persoY, persoHeight)
+    enemy.array.update = function(dt, persoX, persoY, persoHeight, speed)
         for i, v in ipairs(enemy.array) do
-            v.update(dt)
+            v.update(dt, speed)
 
             if v.collision(persoX, persoY, persoHeight) == true then
                 enemy.lose = true
@@ -65,6 +65,18 @@ enemy.new = function(x, y, speed, type)
         Enemy.sy = Enemy.height/Enemy.image:getHeight()
         
         function Enemy.update(dt)
+=======
+
+
+        function Enemy.setCenter()
+            Enemy.centerX = Enemy.x+Enemy.width/(Enemy.nbFrame*2)
+            Enemy.centerY = Enemy.y+Enemy.height/2
+
+        end
+
+        function Enemy.update(dt, speed)
+            Enemy.speed = speed or Enemy.speed
+>>>>>>> Stashed changes
             if Enemy.isAlive then
                 if enemy.isBegin then
                     Enemy.x = Enemy.x
