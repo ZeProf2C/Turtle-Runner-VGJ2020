@@ -11,7 +11,6 @@ Map.image = {}
 
 Map.oy = 0
 
-
 function Map.load()
     
 end

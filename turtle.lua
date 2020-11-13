@@ -1,3 +1,4 @@
+require("particlesand")
 Turtle = {}
 
 Turtle.currentFrame = 1
@@ -23,13 +24,11 @@ Turtle.Assets = {}
     Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
     Turtle.Assets.Intro = {}
     Turtle.Assets.Intro.img = turtleIntro
-    Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5
+    Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5-12 --  -12 permet de bien croper l'image
     Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
     Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
     Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
 
-Turtle.Width = 75
-Turtle.Height = 75
 
 Turtle.Vx = 300
 Turtle.scrollingAcceleration = 500
@@ -51,6 +50,8 @@ Turtle.Ombre = {}
 
 Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
 Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
+
+Turtle.jet_de_sable = create_emitter(Turtle.x,Turtle.y,100)
 
 
 function Turtle.jump(dt)
@@ -77,7 +78,7 @@ function Turtle.jump(dt)
            Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
             Turtle.Ombre.y = Turtle.y + 3
             Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
-            Turtle.Ombre.scaleY =Turtle.Assets.Run.scaleY
+            Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
             snd_atterissage:play()
         end
         
@@ -90,8 +91,8 @@ function Turtle.Hatch()
         Turtle.AnimationIntro:stop()
         Turtle.isBegin = true
         Map.isBegin = true
-
         Turtle.state = "run"
+        Turtle.jet_de_sable.init()
     end
 end
 
@@ -134,32 +135,33 @@ function Turtle.update(dt)
         Turtle.Hatch()
     end
     
-
+    Turtle.jet_de_sable.update(dt)
 
 end
-
 
 function Turtle.draw()
 
     if Turtle.state == "run" then
+
+        Turtle.jet_de_sable.draw()
+
         love.graphics.setColor(0,0,0,0.5)
-        Turtle.AnimationRun:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        Turtle.AnimationRun:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Run.Width*0.5,Turtle.Assets.Run.Height*0.5)
         
         love.graphics.setColor(1,1,1)
-        Turtle.AnimationRun:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Run.scaleX,Turtle.Assets.Run.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        Turtle.AnimationRun:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Run.scaleX,Turtle.Assets.Run.scaleY,Turtle.Assets.Run.Width*0.5,Turtle.Assets.Run.Height*0.5)
+
 
     elseif Turtle.state == "jump" then
         love.graphics.setColor(0,0,0,0.5)
-        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Jump.Width*0.5,Turtle.Assets.Jump.Height*0.5)
         
         love.graphics.setColor(1,1,1)
-        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.y,0,Turtle.Assets.Jump.scaleX,Turtle.Assets.Jump.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.y,0,Turtle.Assets.Jump.scaleX,Turtle.Assets.Jump.scaleY,Turtle.Assets.Jump.Width*0.5,Turtle.Assets.Jump.Height*0.5)
 
     elseif Turtle.state == "intro" then
         love.graphics.setColor(1,1,1)
-        Turtle.AnimationIntro:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Intro.scaleX,Turtle.Assets.Intro.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
-
-
+        Turtle.AnimationIntro:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Intro.scaleX,Turtle.Assets.Intro.scaleY,Turtle.Assets.Intro.Width*0.5,Turtle.Assets.Intro.Height*0.5)
     end
 
 end
