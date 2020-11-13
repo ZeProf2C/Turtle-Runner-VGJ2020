@@ -7,7 +7,7 @@ Turtle.Width = (turtle:getWidth()/2)/8
 Turtle.Height = (turtle:getHeight())/8
 
 --vecteur vitesse de la Turtle
-Turtle.Vx = 300
+Turtle.Vx = 500
 
 Turtle.scrollingAcceleration = 1000
 Turtle.scrollingSpeed = 350

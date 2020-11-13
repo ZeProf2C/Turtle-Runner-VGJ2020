@@ -13,7 +13,7 @@ end
 
 
 Game.update = function(dt)
-    Map.update(dt)
+    Map.update(dt,Turtle.scrollingSpeed)
     Turtle.update(dt)
 end
 
