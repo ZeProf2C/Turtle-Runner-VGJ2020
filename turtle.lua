@@ -40,7 +40,7 @@ Turtle.init = function()
 
     Turtle.state = "intro"
     Turtle.jumpTimer = 0
-    Turtle.jumpTime  = 0.5
+    Turtle.jumpTime  = 0.8
     Turtle.jumpScaleSpeed = 0.25
 
     Turtle.Ombre = {}

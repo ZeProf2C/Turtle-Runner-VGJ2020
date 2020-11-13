@@ -36,31 +36,41 @@ enemy.new = function(x, y, speed, type)
         Enemy.speed = speed
         Enemy.type = type
         Enemy.image = nil
-        Enemy.width = 200
-        Enemy.height = 100
+        Enemy.width = 180
+        Enemy.height = 80
         Enemy.sx = nil
         Enemy.sy = nil
         Enemy.isAlive = true
+        Enemy.jumpCollision = nil
+        Enemy.centerX = nil
+        Enemy.centerY = nil
+        Enemy.nbFrame = 1
 
 
         if Enemy.type == CRAB then
             Enemy.image = enemyImage.crab
-            Enemy.animation = newAnimation(Enemy.image, Enemy.image:getWidth()/3, Enemy.image:getHeight(), 0.2, 3)
+            Enemy.jumpCollision = false
+            Enemy.nbFrame = 3
+            
     
         elseif Enemy.type == BIRD then
             Enemy.image = enemyImage.bird
-            Enemy.animation = newAnimation(Enemy.image, Enemy.image:getWidth()/2, Enemy.image:getHeight(), 0.2, 2)
+            Enemy.jumpCollision = true
+            Enemy.nbFrame = 2
     
         elseif Enemy.type == CORAL then
             Enemy.image = enemyImage.coral
-            Enemy.animation = newAnimation(Enemy.image, Enemy.image:getWidth()/1, Enemy.image:getHeight(), 0.2, 1)
+            Enemy.jumpCollision = true
+            Enemy.nbFrame = 1
         
         elseif Enemy.type == HOLE then
             Enemy.image = enemyImage.hole
-            Enemy.animation = newAnimation(Enemy.image, Enemy.image:getWidth()/1, Enemy.image:getHeight(), 0.2, 1)
+            Enemy.jumpCollision = false
+            Enemy.nbFrame = 1
     
         end
 
+        Enemy.animation = newAnimation(Enemy.image, Enemy.image:getWidth()/Enemy.nbFrame, Enemy.image:getHeight(), 0.2, Enemy.nbFrame)
         Enemy.sx = Enemy.width/Enemy.image:getWidth()
         Enemy.sy = Enemy.height/Enemy.image:getHeight()
 
@@ -77,6 +87,7 @@ enemy.new = function(x, y, speed, type)
                 if enemy.isBegin then
                     Enemy.x = Enemy.x
                     Enemy.y = Enemy.y + Enemy.speed*dt
+                    Enemy.setCenter()
                     Enemy.animation:play()
                 else
                     Enemy.animation:stop()
@@ -92,13 +103,18 @@ enemy.new = function(x, y, speed, type)
         function Enemy.draw()
             if Enemy.isAlive and Enemy.y+Enemy.height > 0 then
                 love.graphics.setColor(1, 1, 1)
-                Enemy.animation:draw(Enemy.x, Enemy.y, 0, Enemy.sx)
+                Enemy.animation:draw(Enemy.x, Enemy.y, 0, Enemy.sx,Enemy.sy,Enemy.sx*0.5, Enemy.sy*0.5)
             end
         end
 
         function Enemy.collision(persoX, persoY, persoHeight)
-            if distance(persoX, persoY, Enemy.x, Enemy.y) < Enemy.height/2+persoHeight/2 then --Si la distance est positive
-                return true
+            Enemy.setCenter()
+            if distance(persoX, persoY, Enemy.centerX, Enemy.centerY) < Enemy.height/2+persoHeight/3 then --Si la distance est positive
+                if Enemy.jumpCollision == false and Turtle.state == "jump" then
+                    return false
+                else
+                    return true
+                end
             else
                 return false
             end
