@@ -32,12 +32,6 @@ Game.update = function(dt)
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
         enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height)
-
-        if enemy.lose then
-            love.mouse.setVisible(true)
-            scene_man.next_scene = scene_man.list["game_over"]
-        end
-
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end

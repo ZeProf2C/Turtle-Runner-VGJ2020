@@ -9,17 +9,19 @@
  endScreen = love.graphics.newImage("assets/images/endScreen.png")
 
  enemyImage = {}
-    enemyImage.crab = love.graphics.newImage("assets/images/enemy/crab.png")
-    enemyImage.bird = love.graphics.newImage("assets/images/enemy/bird.png")
+    enemyImage.crab  = love.graphics.newImage("assets/images/enemy/crab.png")
+    enemyImage.bird  = love.graphics.newImage("assets/images/enemy/bird.png")
     enemyImage.coral = love.graphics.newImage("assets/images/enemy/coral.png")
-    enemyImage.hole = love.graphics.newImage("assets/images/enemy/hole.png")
+    enemyImage.hole  = love.graphics.newImage("assets/images/enemy/hole.png")
 
- turtleRun        = love.graphics.newImage("assets/images/turtle_4.png")
- turtleJump       = love.graphics.newImage("assets/images/jumpturtle.png")
- turtleIntro      =love.graphics.newImage("assets/images/hatch.PNG")
+ turtleRun        = love.graphics.newImage("assets/images/turtle/turtle_4.png")
+ turtleJump       = love.graphics.newImage("assets/images/turtle/jumpturtle.png")
+ turtleIntro      = love.graphics.newImage("assets/images/turtle/hatch.PNG")
+ turtledead       = love.graphics.newImage("assets/images/turtle/animDead.PNG")
 
- --turtle          = love.graphics.newImage("assets/images/turtle_4.png")
  endScreen       = love.graphics.newImage("assets/images/endScreen.png")
+ gameOver        = love.graphics.newImage("assets/images/gameOver.png")
+ victory         = love.graphics.newImage("assets/images/victory.png")
  fondNoir        = love.graphics.newImage("assets/images/fondNoir.jpg")
 
 
@@ -28,7 +30,8 @@
  --**************************************************************************************************
  textFont   = love.graphics.newFont(15)
  nameFont   = love.graphics.newFont(25)
- --buttonFont = love.graphics.newFont("assets/eraslght.ttf",25) 
+ --overFont = love.graphics.newFont("assets/eraslght.ttf",50) 
+ overFont = love.graphics.newFont("assets/light_pixel-7.ttf",80) 
  buttonFont = love.graphics.newFont("assets/light_pixel-7.ttf",20) 
  titleFont  = love.graphics.newFont("assets/light_pixel-7.ttf",43) 
 
