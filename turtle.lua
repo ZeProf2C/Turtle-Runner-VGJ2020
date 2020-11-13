@@ -51,7 +51,7 @@ Turtle.Ombre = {}
 Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
 Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
 
-Turtle.jet_de_sable = create_emitter(Turtle.x,Turtle.y,100)
+Turtle.jet_de_sable = create_emitter(Turtle.x,Turtle.y,15)
 
 
 function Turtle.jump(dt)
@@ -108,8 +108,18 @@ function Turtle.update(dt)
    
     if love.keyboard.isDown("right") and Turtle.state == "run" then
         Turtle.x = Turtle.x + Turtle.Vx*dt
+
+        Turtle.jet_de_sable.x=Turtle.x
+        for _, particle in pairs(Turtle.jet_de_sable.list)  do
+            particle.x = particle.x + Turtle.Vx*dt            
+        end
     elseif love.keyboard.isDown("left") and Turtle.state == "run" then
         Turtle.x = Turtle.x - Turtle.Vx*dt
+
+        Turtle.jet_de_sable.x=Turtle.x
+        for _, particle in pairs(Turtle.jet_de_sable.list)  do
+            particle.x = particle.x - Turtle.Vx*dt            
+        end
     end
 
     if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
@@ -135,6 +145,7 @@ function Turtle.update(dt)
         Turtle.Hatch()
     end
     
+
     Turtle.jet_de_sable.update(dt)
 
 end

@@ -3,11 +3,11 @@ local function create_particule(px,py,pangle)
     particle.x = px
     particle.y = py
     particle.angle = pangle
-    particle.speed = math.random(100,300)
+    particle.speed = math.random(100,200)
     particle.vx = math.cos(particle.angle) * particle.speed
     particle.vy =  math.sin(particle.angle) * particle.speed
     particle.alpha = 1
-    particle.valpha = math.random(20,60)/10    
+    particle.valpha = math.random(50,60)/10    
     particle.color = sable
 
     local action = {
@@ -56,10 +56,10 @@ local function create_particule(px,py,pangle)
           particule.alpha = math.random()
           local angle = math.random() * math.pi*2
           local action = {
-            [1] = function () particule.x = emitter.x + 15 particule.y = emitter.y - 15 end,
-            [2] = function ()  particule.x = emitter.x + 15 particule.y = emitter.y + 15 end,
-            [3] = function ()  particule.x = emitter.x - 15 particule.y = emitter.y + 15 end,
-            [4] = function ()  particule.x = emitter.x - 15 particule.y = emitter.y - 15 end,
+            [1] = function () particule.x = emitter.x + 15 + math.random(-10,10) particule.y = emitter.y - 15 end,
+            [2] = function ()  particule.x = emitter.x + 15 + math.random(-10,10)particule.y = emitter.y + 15 end,
+            [3] = function ()  particule.x = emitter.x - 15 + math.random(-10,10) particule.y = emitter.y + 15 end,
+            [4] = function ()  particule.x = emitter.x - 15 + math.random(-10,10) particule.y = emitter.y - 15 end,
         }
           action[math.random(4)]()
         end
