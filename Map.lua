@@ -1,6 +1,7 @@
 Map = {}
 
 Map.isEnd = false
+Map.isBegin = false
 
 Map.image = {}
     Map.image.src = backgroungPlage
@@ -21,9 +22,9 @@ function Map.update(dt, scrollSpeed)
     scrollSpeed = scrollSpeed or 350
     scrollSpeed = scrollSpeed * dt
 
-    if Map.oy.second <= 0 then
+    if Map.oy.second <= 50 then
         if not(Map.isEnd) then
-            Map.oy.first = 0
+            Map.oy.first =50
             Map.oy.second = Map.image.height
         else
             Map.oy.first = Map.image.height
@@ -32,8 +33,10 @@ function Map.update(dt, scrollSpeed)
         end
     end 
 
-    Map.oy.first = Map.oy.first-scrollSpeed
-    Map.oy.second = Map.oy.second-scrollSpeed
+    if Map.isBegin then
+        Map.oy.first = Map.oy.first-scrollSpeed
+        Map.oy.second = Map.oy.second-scrollSpeed
+    end
     
 end
 

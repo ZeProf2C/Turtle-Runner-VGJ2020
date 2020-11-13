@@ -6,6 +6,8 @@ Turtle.y = screen.H*0.8
 Turtle.Width = 75
 Turtle.Height = 75
 
+Turtle.isBegin = false
+
 Turtle.Assets = {}
     Turtle.Assets.Run = {}
     Turtle.Assets.Run.img = turtleRun
@@ -93,7 +95,11 @@ function Turtle.update(dt)
 
     Turtle.jump(dt)
 
-    Turtle.Animation:update(dt, Turtle.animSpeed)
+    if Turtle.isBegin then
+        Turtle.Animation:play()
+    else
+        Turtle.Animation:stop()
+    end
 
 
 end
