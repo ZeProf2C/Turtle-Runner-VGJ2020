@@ -1,11 +1,26 @@
 scene_rule = {}
 
+local lesRegles = [[A toi petite tortue qui vient de naître, sauras-tu rejoindre la plage ?
 
-local pannel = mGui.CreatePannel(0,50 ,600,800,transparent, transparent)
-  pannel.addTexte("titre",0,0,"RèGLeS",titleFont,"center",pannel.L,ambre)
+Tu devras éviter plusieurs obstacles :
+   * les trous
+   * les crabes
+   * les coraux
+   * les oiseaux
+   
+   
+   Pour te deplacer utiliser les flèches directionnelles <- et ->
+   
+   J'oubliais, tu possède un super pouvoir : sauter ! grâce à la touche "ESPACE" ]]
+
+local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
+  pannel.addTexte("titre",0,50,"RèGLeS",titleFont,"center",pannel.L,bleu_kelo4)
+  pannel.addTexte("text",50,200,lesRegles,textFont,"left",pannel.L-50,noir)
   
-  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,noir,noir)
   
+  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,bleu_kelo4,noir)
+  
+  pannel.addSkin(endScreen)
   pannel.elt["back"].addSkin(bouton)
   
 scene_rule.load = function()
