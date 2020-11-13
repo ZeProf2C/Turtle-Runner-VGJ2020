@@ -1,44 +1,48 @@
-scene_basique = {}
+Game = {}
 
-require("Map")
 require("turtle")
-scene_basique.load = function()
+require("map")
+
+Game.load = function()
+    Map.load()
   
 end
 
 
-scene_basique.update = function(dt)
- Turtle.update(dt)
+Game.update = function(dt)
+    Map.update(dt)
+    Turtle.update(dt)
 end
 
-scene_basique.draw = function()
+Game.draw = function()
+    Map.draw()
     Turtle.draw()
 
 end
 
-scene_basique.mousepressed = function(px,py,pbutton)
+Game.mousepressed = function(px,py,pbutton)
   
 end
 
-scene_basique.mousereleased = function(px,py,pbutton)
+Game.mousereleased = function(px,py,pbutton)
   
 end
 
-scene_basique.mousemoved = function(px,py,pdx,pdy)
+Game.mousemoved = function(px,py,pdx,pdy)
 
 end
 
-function scene_basique.keypressed(key)
+function Game.keypressed(key)
  
     
 end
-function scene_basique.focus(focus)
+function Game.focus(focus)
   
 end
-function scene_basique.textinput(txt)
+function Game.textinput(txt)
 
 end
-function scene_basique.quit()
+function Game.quit()
   
 end
-return scene_basique
+return Game
