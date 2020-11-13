@@ -1,17 +1,18 @@
 scene_basique = {}
 
 require("Map")
-
+require("turtle")
 scene_basique.load = function()
   
 end
 
 
 scene_basique.update = function(dt)
-
+ Turtle.update(dt)
 end
 
 scene_basique.draw = function()
+    Turtle.draw()
 
 end
 
