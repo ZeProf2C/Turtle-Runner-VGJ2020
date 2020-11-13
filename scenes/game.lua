@@ -4,12 +4,11 @@ require("map")
 
 scene_basique.load = function()
     Map.load()
-  
+    
 end
 
 
 scene_basique.update = function(dt)
- 
  Map.update(dt)
 end
 
