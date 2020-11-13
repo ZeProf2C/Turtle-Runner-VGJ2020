@@ -6,6 +6,10 @@
  switch          = love.graphics.newImage("assets/images/switch.png")
  cadre           = love.graphics.newImage("assets/images/cadre.png")
  backgroungPlage = love.graphics.newImage("assets/images/background.jpg")
+
+ turtleRun        = love.graphics.newImage("assets/images/turtle.png")
+ turtleJump       = love.graphics.newImage("assets/images/jumpturtle.png")
+
 endScreen = love.graphics.newImage("assets/images/endScreen.png")
 
  turtle          = love.graphics.newImage("assets/images/turtle.png")
