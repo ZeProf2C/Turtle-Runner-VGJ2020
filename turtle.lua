@@ -47,12 +47,14 @@ Turtle.init = function()
         Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
         Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
         Turtle.Ombre.Slide = 250
+
+    Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
+    Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
+        
 end
 
 
-Turtle.init()
-Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
-Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
+
 
 
 function Turtle.jump(dt)

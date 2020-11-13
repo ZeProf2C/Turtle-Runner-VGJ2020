@@ -6,9 +6,9 @@ require("map")
 require("enemy")
 
 Game.init = function()
-    Map.isBegin = false
-    Turtle.isBegin = false
-    enemy.isBegin = false
+    Map.init()
+    Turtle.init()
+    enemy.init()
     table.insert(enemy.array, enemy.new(300, -200, Turtle.scrollingSpeed, CRAB))
 end
 
@@ -24,7 +24,6 @@ Game.load = function()
     Map.load()
  
 end
-
 
 
 Game.update = function(dt)
