@@ -1,9 +1,12 @@
 Map = {}
 
+Map.isEnd = false
+
 Map.image = {}
     Map.image.src = backgroungPlage
     Map.image.width = Map.image.src:getWidth()
     Map.image.height = Map.image.src:getHeight()
+    Map.image.endScreen = endScreen
 
 Map.oy = {}
     Map.oy.first = 0
@@ -28,6 +31,10 @@ end
 
 function Map.draw()
     love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(Map.image.src, 0, 0, 0, 1, 1, 0, Map.oy.first)
-    love.graphics.draw(Map.image.src, 0, 0, 0, 1, 1, 0, Map.oy.second)
+    if not(Map.isEnd) then
+        love.graphics.draw(Map.image.src, 0, 0, 0, 1, 1, 0, Map.oy.first)
+        love.graphics.draw(Map.image.src, 0, 0, 0, 1, 1, 0, Map.oy.second)
+    else
+        love.graphics.draw(Map.image.endScreen)
+    end
 end
