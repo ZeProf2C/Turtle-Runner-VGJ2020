@@ -85,6 +85,16 @@ function Turtle.jump(dt)
         
 end
 
+function Turtle.Hatch()
+    if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
+        Turtle.AnimationIntro:stop()
+        Turtle.isBegin = true
+        Map.isBegin = true
+
+        Turtle.state = "run"
+    end
+end
+
 function Turtle.update(dt)
 
    if Turtle.state == "run" then
@@ -115,18 +125,13 @@ function Turtle.update(dt)
     Turtle.AnimationRun:update(dt, Turtle.animSpeed)
     Turtle.AnimationIntro:update(dt, Turtle.animSpeed)
 
-    if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
-        Turtle.AnimationIntro:stop()
-        Turtle.isBegin = true
-        Map.isBegin = true
 
-        Turtle.state = "run"
-    end
 
     if Turtle.isBegin then
         Turtle.AnimationRun:play()
     else
         Turtle.AnimationRun:stop()
+        Turtle.Hatch()
     end
     
 
