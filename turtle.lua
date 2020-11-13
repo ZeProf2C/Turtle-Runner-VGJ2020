@@ -1,6 +1,6 @@
 Turtle = {}
 
-
+Turtle.currentFrame = 1
 Turtle.x = screen.L*0.5
 Turtle.y = screen.H*0.8
 Turtle.Width = 75
@@ -9,7 +9,8 @@ Turtle.Height = 75
 Turtle.Assets = {}
     Turtle.Assets.Run = {}
     Turtle.Assets.Run.img = turtleRun
-    Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/3
+    --Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/3
+    Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/4
     Turtle.Assets.Run.Height = Turtle.Assets.Run.img:getHeight()
     Turtle.Assets.Run.scaleX =  Turtle.Width/Turtle.Assets.Run.Width
     Turtle.Assets.Run.scaleY = Turtle.Height/Turtle.Assets.Run.Height
@@ -42,7 +43,8 @@ Turtle.Ombre = {}
     Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
     Turtle.Ombre.Slide = 250
 
-Turtle.Animation = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,3, Turtle.animSpeed)
+--Turtle.Animation = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,3, Turtle.animSpeed)
+Turtle.Animation = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
 
 function Turtle.jump(dt)
     if Turtle.state == "jump" then
@@ -69,13 +71,22 @@ function Turtle.jump(dt)
             Turtle.Ombre.y = Turtle.y + 3
             Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
             Turtle.Ombre.scaleY =Turtle.Assets.Run.scaleY
-            
+            snd_atterissage:play()
         end
     end
         
 end
 
 function Turtle.update(dt)
+
+   if Turtle.state == "run" then
+      if  Turtle.Animation:getCurrentFrame()~= Turtle.currentFrame and Turtle.Animation:getCurrentFrame()%2==1 then
+         snd_walk:play()
+         Turtle.currentFrame = Turtle.Animation:getCurrentFrame()
+      end
+      
+   end
+   
     if love.keyboard.isDown("right") and Turtle.state == "run" then
         Turtle.x = Turtle.x + Turtle.Vx*dt
     elseif love.keyboard.isDown("left") and Turtle.state == "run" then
@@ -100,6 +111,7 @@ end
 
 
 function Turtle.draw()
+
     if Turtle.state == "run" then
         love.graphics.setColor(0,0,0,0.5)
         Turtle.Animation:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
@@ -121,6 +133,7 @@ end
 function Turtle.keypressed(key)
     if key == "space" and Turtle.state == "run" then
         Turtle.state = "jump"
+        snd_jump:play()
     end
 end
 
