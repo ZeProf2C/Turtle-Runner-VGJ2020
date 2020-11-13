@@ -1,15 +1,21 @@
 scene_basique = {}
 
+require("map")
+
 scene_basique.load = function()
+    Map.load()
   
 end
 
 
 scene_basique.update = function(dt)
-
+ 
+ Map.update(dt)
 end
 
 scene_basique.draw = function()
+    
+    Map.draw()
 
 end
 
