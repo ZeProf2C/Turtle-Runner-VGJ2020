@@ -1,6 +1,6 @@
 scene_basique = {}
 
-require("Map")
+require("map")
 
 scene_basique.load = function()
     Map.load()

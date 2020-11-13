@@ -8,7 +8,7 @@ Turtle.y = 3*screen.H/4
 Turtle.Vx = 300
 
 Turtle.scrollingAcceleration = 1000
-Turtle.scrollingSpeed = 700
+Turtle.scrollingSpeed = 350
 Turtle.scrollingSpeedMax = 2000
 Turtle.scrollingSpeedMin = 500
 
