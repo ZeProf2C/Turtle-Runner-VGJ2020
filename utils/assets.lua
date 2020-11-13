@@ -5,6 +5,7 @@
  bouton    = love.graphics.newImage("assets/images/bouton_gris.png")
  switch        = love.graphics.newImage("assets/images/switch.png")
  cadre         = love.graphics.newImage("assets/images/cadre.png")
+ backgroungPlage = love.graphics.newImage("assets/images/background.jpg")
 
 
  fondNoir      = love.graphics.newImage("assets/images/fondNoir.jpg")

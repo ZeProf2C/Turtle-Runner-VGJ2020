@@ -1,7 +1,7 @@
 Map = {}
 
 function Map.load()
-    Map.backgroudImage = love.graphics.newImage("assets/images/background.png")
+    Map.backgroudImage = backgroundPlage
 end
 
 function Map.update(dt)
