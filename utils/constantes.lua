@@ -28,5 +28,6 @@ global_sound_vol = master_vol * sound_vol
  
  rouge       = {1,0,0}
  ambre       = {240/255,195/255,0}
+ sable       = {0.7,0.6,0.4}
 
  

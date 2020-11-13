@@ -6,6 +6,7 @@ Map.image = {}
     Map.image.height = Map.image.src:getHeight()
     Map.image.endScreen = endScreen
 
+
 Map.init = function()
     Map.isEnd = false
     Map.isBegin = false
