@@ -1,5 +1,7 @@
 scene_basique = {}
 
+require("Map")
+
 scene_basique.load = function()
   
 end
