@@ -5,6 +5,7 @@ HOLE = "trou"
 
 
 enemy = {}
+enemy.isBegin = false
 
 enemy.new = function(x, y, speed, type)
     local Enemy = {}
@@ -43,8 +44,13 @@ enemy.new = function(x, y, speed, type)
         
         function Enemy.update(dt)
             if Enemy.isAlive then
-                Enemy.x = Enemy.x
-                Enemy.y = Enemy.y + Enemy.speed*dt
+                if enemy.isBegin then
+                    Enemy.x = Enemy.x
+                    Enemy.y = Enemy.y + Enemy.speed*dt
+                    Enemy.animation:play()
+                else
+                    Enemy.animation:stop()
+                end
                 Enemy.animation:update(dt)
             end
 

@@ -7,6 +7,7 @@ require("enemy")
 
 Map.isBegin = false
 Turtle.isBegin = false
+enemy.isBegin = false
 
 enemyArray = {}
 enemyArray.update = function(dt)
@@ -43,8 +44,8 @@ end
 Game.draw = function()
 
     Map.draw()
-    Turtle.draw()
     enemyArray.draw()
+    Turtle.draw()
 
     if pannelEscape.on then
         pannelEscape.draw()
