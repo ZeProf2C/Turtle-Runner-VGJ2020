@@ -11,7 +11,6 @@ Turtle.isBegin = false
 Turtle.Assets = {}
     Turtle.Assets.Run = {}
     Turtle.Assets.Run.img = turtleRun
-    --Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/3
     Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/4
     Turtle.Assets.Run.Height = Turtle.Assets.Run.img:getHeight()
     Turtle.Assets.Run.scaleX =  Turtle.Width/Turtle.Assets.Run.Width
@@ -50,7 +49,7 @@ Turtle.Ombre = {}
     Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
     Turtle.Ombre.Slide = 250
 
-Turtle.Animation = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
+Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
 Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
 
 
@@ -89,9 +88,9 @@ end
 function Turtle.update(dt)
 
    if Turtle.state == "run" then
-      if  Turtle.Animation:getCurrentFrame()~= Turtle.currentFrame and Turtle.Animation:getCurrentFrame()%2==1 then
+      if  Turtle.AnimationRun:getCurrentFrame()~= Turtle.currentFrame and Turtle.AnimationRun:getCurrentFrame()%2==1 then
          snd_walk:play()
-         Turtle.currentFrame = Turtle.Animation:getCurrentFrame()
+         Turtle.currentFrame = Turtle.AnimationRun:getCurrentFrame()
       end
       
    end
