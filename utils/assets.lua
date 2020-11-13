@@ -40,7 +40,7 @@
   snd_clic_menu_1 = newSfx("assets/sounds/clic_menu_1.mp3",false,global_sound_vol)  -- isLopped = false
   snd_clic_menu_2 = newSfx("assets/sounds/clic_menu_2.mp3",false,global_sound_vol)
   snd_atterissage = newSfx("assets/sounds/atterissage.ogg",false,global_sound_vol)
-  snd_jump        = newSfx("assets/sounds/jump.wav",false,global_sound_vol)
+  snd_jump        = newSfx("assets/sounds/jump2.wav",false,global_sound_vol)
   snd_walk        = newSfx("assets/sounds/walk_gravier.mp3",false,global_sound_vol)
  --*************************************************************************************************
  --                                     MUSIQUES
