@@ -6,7 +6,7 @@ scene_manager.list = {}
   scene_manager.list["menu"]    = require("scenes/scene_menu")
   scene_manager.list["credits"] = require("scenes/scene_credits")
   scene_manager.list["game"]   = require("scenes/game")
-
+  scene_manager.list["rules"]   = require("scenes/scene_rule")
 
   
 scene_manager.current_scene = nil 
