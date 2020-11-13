@@ -5,19 +5,29 @@ HOLE = "trou"
 
 
 enemy = {}
-enemy.isBegin = false
-enemy.array={}
 
-enemy.array.update = function(dt)
-    for i, v in ipairs(enemy.array) do
-        v.update(dt)
+enemy.init = function()
+    enemy.isBegin = false
+    enemy.lose = false
+    enemy.array={}
+
+    enemy.array.update = function(dt, persoX, persoY, persoHeight)
+        for i, v in ipairs(enemy.array) do
+            v.update(dt)
+
+            if v.collision(persoX, persoY, persoHeight) == true then
+                enemy.lose = true
+            end
+        end
+    end
+
+    enemy.array.draw = function()
+        for i, v in ipairs(enemy.array) do
+            v.draw()
+        end
     end
 end
-enemy.array.draw = function()
-    for i, v in ipairs(enemy.array) do
-        v.draw()
-    end
-end
+
 
 enemy.new = function(x, y, speed, type)
     local Enemy = {}

@@ -5,6 +5,12 @@ require("turtle")
 require("map")
 require("enemy")
 
+Game.init = function()
+    Map.init()
+    Turtle.init()
+    enemy.init()
+    table.insert(enemy.array, enemy.new(300, -200, Turtle.scrollingSpeed, CRAB))
+end
 
 
 Game.startAnimation = function()
@@ -21,12 +27,17 @@ Game.load = function()
 end
 
 
-
 Game.update = function(dt)
     if not(pannelEscape.on) then
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
-        enemy.array.update(dt)
+        enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height)
+
+        if enemy.lose then
+            love.mouse.setVisible(true)
+            scene_man.next_scene = scene_man.list["game_over"]
+        end
+
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end
