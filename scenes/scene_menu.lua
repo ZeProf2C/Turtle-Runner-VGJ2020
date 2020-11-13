@@ -17,7 +17,10 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
    pannel.elt["credits"].addSkin(bouton)
    pannel.elt["exit"].addSkin(bouton)
    pannel.addSkin(endScreen)
-      
+   
+   music_man.play("menu",0)
+   
+   
 scene_menu.load = function()
   
 end
@@ -40,6 +43,7 @@ scene_menu.mousereleased = function(px,py,pbutton)
      scene_man.next_scene = scene_man.list["game"]
      love.mouse.setVisible(false)
      snd_clic_menu_2:play()
+     music_man.play("ambiance_game",0)
   end
   if pannel.elt["credits"].isIn(px,py) and pbutton==1 then
      scene_man.next_scene = scene_man.list["credits"]

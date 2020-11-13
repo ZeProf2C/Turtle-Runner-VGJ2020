@@ -14,10 +14,11 @@
     enemyImage.coral = love.graphics.newImage("assets/images/enemy/coral.png")
     enemyImage.hole = love.graphics.newImage("assets/images/enemy/hole.png")
 
- turtleRun        = love.graphics.newImage("assets/images/turtle.png")
+ turtleRun        = love.graphics.newImage("assets/images/turtle_4.png")
  turtleJump       = love.graphics.newImage("assets/images/jumpturtle.png")
+ turtleIntro      =love.graphics.newImage("assets/images/hatch.PNG")
 
- turtle          = love.graphics.newImage("assets/images/turtle.png")
+ --turtle          = love.graphics.newImage("assets/images/turtle_4.png")
  endScreen       = love.graphics.newImage("assets/images/endScreen.png")
  fondNoir        = love.graphics.newImage("assets/images/fondNoir.jpg")
 
@@ -38,17 +39,21 @@
   --MENU
   snd_clic_menu_1 = newSfx("assets/sounds/clic_menu_1.mp3",false,global_sound_vol)  -- isLopped = false
   snd_clic_menu_2 = newSfx("assets/sounds/clic_menu_2.mp3",false,global_sound_vol)
-  
+  snd_atterissage = newSfx("assets/sounds/atterissage.ogg",false,global_sound_vol)
+  snd_jump        = newSfx("assets/sounds/jump.wav",false,global_sound_vol)
+  snd_walk        = newSfx("assets/sounds/walk.mp3",false,global_sound_vol)
  --*************************************************************************************************
  --                                     MUSIQUES
  --**************************************************************************************************
 
- music_menu      = love.audio.newSource("assets/musics/menu.mp3","stream") 
- music_ambiance1 = love.audio.newSource("assets/musics/ambiance_1.mp3","stream")
+ --music_menu      = love.audio.newSource("assets/musics/menu.mp3","stream") 
+ music_menu     = love.audio.newSource("assets/musics/menu_naissance_looping.mp3","stream") 
+ music_ambiance = love.audio.newSource("assets/musics/ambiance_flippante.mp3","stream")
+ music_win      = love.audio.newSource("assets/musics/music_win.ogg","stream")
 -- on charge les musiques dans le music_manager
  music_man.add("menu",music_menu)
- music_man.add("ambiance_1",music_ambiance1)
-
+ music_man.add("ambiance_game",music_ambiance)
+ music_man.add("win",music_win)
   
 
   

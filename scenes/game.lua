@@ -3,6 +3,10 @@ Game = {}
 
 require("turtle")
 require("map")
+require("enemy")
+
+Map.isBegin = false
+Turtle.isBegin = false
 
 enemyArray = {}
 enemyArray.update = function(dt)
