@@ -1,15 +1,17 @@
 Map = {}
 
-Map.isEnd = false
-Map.isBegin = false
-
 Map.image = {}
     Map.image.src = backgroungPlage
     Map.image.width = Map.image.src:getWidth()
     Map.image.height = Map.image.src:getHeight()
     Map.image.endScreen = endScreen
 
-Map.oy = 0
+
+Map.init = function()
+    Map.isEnd = false
+    Map.isBegin = false
+    Map.oy = 0
+end
 
 function Map.load()
     

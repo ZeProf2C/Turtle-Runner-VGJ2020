@@ -1,55 +1,58 @@
 require("particlesand")
 Turtle = {}
 
-Turtle.currentFrame = 1
-Turtle.x = screen.L*0.5
-Turtle.y = screen.H*0.8
-Turtle.Width = 75
-Turtle.Height = 75
+Turtle.init = function()
+    Turtle.currentFrame = 1
+    Turtle.x = screen.L*0.5
+    Turtle.y = screen.H*0.8
+    Turtle.Width = 75
+    Turtle.Height = 75
 
-Turtle.isBegin = false
+    Turtle.isBegin = false
 
-Turtle.Assets = {}
-    Turtle.Assets.Run = {}
-    Turtle.Assets.Run.img = turtleRun
-    Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/4
-    Turtle.Assets.Run.Height = Turtle.Assets.Run.img:getHeight()
-    Turtle.Assets.Run.scaleX =  Turtle.Width/Turtle.Assets.Run.Width
-    Turtle.Assets.Run.scaleY = Turtle.Height/Turtle.Assets.Run.Height
-    Turtle.Assets.Jump = {}
-    Turtle.Assets.Jump.img = turtleJump
-    Turtle.Assets.Jump.Width = Turtle.Assets.Jump.img:getWidth()
-    Turtle.Assets.Jump.Height = Turtle.Assets.Jump.img:getHeight()
-    Turtle.Assets.Jump.scaleX =  Turtle.Width/Turtle.Assets.Jump.Width
-    Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
-    Turtle.Assets.Intro = {}
-    Turtle.Assets.Intro.img = turtleIntro
-    Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5-12 --  -12 permet de bien croper l'image
-    Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
-    Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
-    Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
+    Turtle.Assets = {}
+        Turtle.Assets.Run = {}
+        Turtle.Assets.Run.img = turtleRun
+        Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/4
+        Turtle.Assets.Run.Height = Turtle.Assets.Run.img:getHeight()
+        Turtle.Assets.Run.scaleX =  Turtle.Width/Turtle.Assets.Run.Width
+        Turtle.Assets.Run.scaleY = Turtle.Height/Turtle.Assets.Run.Height
+        Turtle.Assets.Jump = {}
+        Turtle.Assets.Jump.img = turtleJump
+        Turtle.Assets.Jump.Width = Turtle.Assets.Jump.img:getWidth()
+        Turtle.Assets.Jump.Height = Turtle.Assets.Jump.img:getHeight()
+        Turtle.Assets.Jump.scaleX =  Turtle.Width/Turtle.Assets.Jump.Width
+        Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
+        Turtle.Assets.Intro = {}
+        Turtle.Assets.Intro.img = turtleIntro
+        Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5-12 --  -12 permet de bien croper l'image
+        Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
+        Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
+        Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
 
 
-Turtle.Vx = 300
-Turtle.scrollingAcceleration = 500
-Turtle.scrollingSpeed = 350
-Turtle.animSpeed = Turtle.scrollingSpeed/350
-Turtle.scrollingSpeedMax = 1500
-Turtle.scrollingSpeedMin = 100
+    Turtle.Vx = 300
+    Turtle.scrollingAcceleration = 500
+    Turtle.scrollingSpeed = 350
+    Turtle.animSpeed = Turtle.scrollingSpeed/350
+    Turtle.scrollingSpeedMax = 1500
+    Turtle.scrollingSpeedMin = 100
 
-Turtle.state = "intro"
-Turtle.jumpTimer = 0
-Turtle.jumpTime  = 0.5
-Turtle.jumpScaleSpeed = 0.25
+    Turtle.state = "intro"
+    Turtle.jumpTimer = 0
+    Turtle.jumpTime  = 0.5
+    Turtle.jumpScaleSpeed = 0.25
 
-Turtle.Ombre = {}
-    Turtle.Ombre.y = Turtle.y + 3
-    Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
-    Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
-    Turtle.Ombre.Slide = 250
+    Turtle.Ombre = {}
+        Turtle.Ombre.y = Turtle.y + 3
+        Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
+        Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
+        Turtle.Ombre.Slide = 250
 
-Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
-Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
+    Turtle.AnimationRun = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
+    Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
+        
+end
 
 Turtle.jet_de_sable = create_emitter(Turtle.x,Turtle.y,15)
 
@@ -89,8 +92,10 @@ end
 function Turtle.Hatch()
     if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
         Turtle.AnimationIntro:stop()
-        Turtle.isBegin = true
-        Map.isBegin = true
+
+
+        Game.startAnimation()
+
         Turtle.state = "run"
         Turtle.jet_de_sable.init()
     end
@@ -106,20 +111,21 @@ function Turtle.update(dt)
       
    end
    
-    if love.keyboard.isDown("right") and Turtle.state == "run" then
-        Turtle.x = Turtle.x + Turtle.Vx*dt
 
+    if love.keyboard.isDown("right")  then
+        Turtle.x = math.min(Turtle.x + Turtle.Vx*dt , 650 - Turtle.Width*1.5)
+      
         Turtle.jet_de_sable.x=Turtle.x
         for _, particle in pairs(Turtle.jet_de_sable.list)  do
-            particle.x = particle.x + Turtle.Vx*dt            
+            particle.x = particle.x + Turtle.Vx*dt
         end
-    elseif love.keyboard.isDown("left") and Turtle.state == "run" then
-        Turtle.x = Turtle.x - Turtle.Vx*dt
-
-        Turtle.jet_de_sable.x=Turtle.x
+    elseif love.keyboard.isDown("left")  then
+        Turtle.x = math.max(Turtle.x - Turtle.Vx*dt , Turtle.Width*1.5)
+      Turtle.jet_de_sable.x=Turtle.x
         for _, particle in pairs(Turtle.jet_de_sable.list)  do
             particle.x = particle.x - Turtle.Vx*dt            
         end
+
     end
 
     if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
