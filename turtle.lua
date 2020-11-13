@@ -1,16 +1,30 @@
 Turtle = {}
 
---position de la Turtle
-Turtle.x = screen.L/2
-Turtle.y = 3*screen.H/4
 
---vecteur vitesse de la Turtle
+Turtle.x = screen.L*0.5
+Turtle.y = screen.H*0.8
+Turtle.Width = (turtle:getWidth()/3)*0.12
+Turtle.Height = (turtle:getHeight())*0.12
+
 Turtle.Vx = 300
 
 Turtle.scrollingAcceleration = 1000
 Turtle.scrollingSpeed = 350
+Turtle.animSpeed = Turtle.scrollingSpeed/350
 Turtle.scrollingSpeedMax = 2000
 Turtle.scrollingSpeedMin = 500
+
+Turtle.state = "run"
+Turtle.jumpTimer = 0.25
+Turtle.scaleX = Turtle.Width/(turtle:getWidth()/3)
+Turtle.scaleY = Turtle.Height/turtle:getHeight()
+Turtle.ecartOmbre = 3
+Turtle.ecartOmbreSpeed = 100
+
+Turtle.Animation = newAnimation(turtle,turtle:getWidth()/3,turtle:getHeight(),0.2,3, Turtle.animSpeed)
+
+function Turtle.jump()
+end
 
 function Turtle.update(dt)
     if love.keyboard.isDown("right") then
@@ -21,19 +35,31 @@ function Turtle.update(dt)
 
     if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
         Turtle.scrollingSpeed = Turtle.scrollingSpeed + Turtle.scrollingAcceleration * dt
+        Turtle.animSpeed = Turtle.animSpeed + Turtle.scrollingAcceleration/1000*dt
         
     elseif love.keyboard.isDown("down") and  Turtle.scrollingSpeed >= Turtle.scrollingSpeedMin then
         Turtle.scrollingSpeed = Turtle.scrollingSpeed - Turtle.scrollingAcceleration * dt
+        Turtle.animSpeed = Turtle.animSpeed - Turtle.scrollingAcceleration/1000*dt
     end
-   
+
+    Turtle.Animation:update(dt, Turtle.animSpeed)
 
 
 end
 
 
 function Turtle.draw()
-    love.graphics.setColor(0,1,0)
-    love.graphics.rectangle('fill',Turtle.x,Turtle.y,50,100)
+    if Turtle.state == "run" then
+        love.graphics.setColor(0,0,0,0.5)
+        Turtle.Animation:draw(Turtle.x-Turtle.Width*0.5,Turtle.y-Turtle.Height*0.5+Turtle.ecartOmbre,0,Turtle.Width/(turtle:getWidth()/3),Turtle.Height/turtle:getHeight())
+
+        love.graphics.setColor(1,1,1)
+        Turtle.Animation:draw(Turtle.x-Turtle.Width*0.5,Turtle.y-Turtle.Height*0.5,0,Turtle.Width/(turtle:getWidth()/3),Turtle.scaleX,Turtle.scaleY)
+    elseif Turtle.state == "idle" then
+    else 
+
+    end
+    
 end
 
 

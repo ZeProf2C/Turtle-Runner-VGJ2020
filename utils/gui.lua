@@ -352,12 +352,12 @@ gui.CreateButton = function(px,py,pL,pH,pText,pFont,pBGColor,pTxtColor, pBorderC
   button.BorderColor = pBorderCol
   button.FirstTimeIn = true
   button.speed = 1
-  button.quad= nil
-  button.img = nil
-  button.flat = true
+  button.quad  = nil
+  button.img   = nil
+  button.flat  = true
   
   button.addSkin = function(pImg)
-    button.img = pImg
+    button.img  = pImg
     button.quad = love.graphics.newQuad(0,0,button.L,button.H,button.L,button.H*3)
     button.flat = false
   end

@@ -2,12 +2,13 @@
  --                                     IMAGES
  --**************************************************************************************************
 --GUI
- bouton    = love.graphics.newImage("assets/images/bouton_gris.png")
+ bouton        = love.graphics.newImage("assets/images/button.png")
  switch        = love.graphics.newImage("assets/images/switch.png")
  cadre         = love.graphics.newImage("assets/images/cadre.png")
  backgroungPlage = love.graphics.newImage("assets/images/background.jpg")
 endScreen = love.graphics.newImage("assets/images/endScreen.png")
 
+ turtle          = love.graphics.newImage("assets/images/turtle.png")
 
  fondNoir      = love.graphics.newImage("assets/images/fondNoir.jpg")
 
@@ -15,7 +16,8 @@ endScreen = love.graphics.newImage("assets/images/endScreen.png")
  --*************************************************************************************************
  --                                     FONTS
  --**************************************************************************************************
- textFont   = love.graphics.newFont(20)
+ textFont   = love.graphics.newFont(15)
+ nameFont   = love.graphics.newFont(20)
  buttonFont = love.graphics.newFont("assets/eraslght.ttf",20) 
  titleFont  = love.graphics.newFont("assets/light_pixel-7.ttf",43) 
 

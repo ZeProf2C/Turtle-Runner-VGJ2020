@@ -12,6 +12,7 @@ Map.oy = {}
     Map.oy.first = 0
     Map.oy.second = Map.image.height
 
+
 function Map.load()
     
 end
