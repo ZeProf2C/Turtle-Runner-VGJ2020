@@ -5,6 +5,7 @@ function love.load()
   mouse = {x=0 , y = 0}
   require('utils/vecteur2')
   require("utils/constantes")
+  require("utils/animation")
   camera = require("utils/camera")
   mGui   = require("utils/gui")
  --******************************************************************************************************
