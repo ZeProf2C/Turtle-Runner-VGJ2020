@@ -19,7 +19,10 @@ local pannel = mGui.CreatePannel(0,50 ,600,800,transparent, transparent)
   pannel.addTexte("autre" ,pannel.L*0.05               ,pannel.H*0.52 ,"Remerciments",nameFont,"left",pannel.L,ambre)
   pannel.addTexte("remerciments_taf" ,pannel.L*0.05    ,pannel.H*0.52 + 30 ," * Merci aux parents de Pierre-Angelo pour l'hébergement \n * Merci à Clémence de nous bénir de son existence \n * Merci à tous ceux qui nous ont nourrit ( Lasagne taboulet ) \n * Merci à M. LE GUILLOUZER pour avoir accepté notre participation à la VGJ",textFont,"left",pannel.L,blanc)
   
-  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,ambre,ambre)
+  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,noir,noir)
+  
+  pannel.elt["back"].addSkin(bouton)
+  
 scene_credits.load = function()
   
 end
@@ -38,9 +41,9 @@ scene_credits.mousepressed = function(px,py,pbutton)
 end
 
 scene_credits.mousereleased = function(px,py,pbutton)
-     if pannel.elt["back"].isIn(px,py) and pbutton==1 then
+   if pannel.elt["back"].isIn(px,py) and pbutton==1 then
     scene_man.next_scene = scene_man.list["menu"]
-     snd_clic_menu_2:play()
+    snd_clic_menu_2:play()
   end
 end
 
