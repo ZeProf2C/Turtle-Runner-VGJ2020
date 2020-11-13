@@ -9,7 +9,7 @@ Game.init = function()
     Map.init()
     Turtle.init()
     enemy.init()
-    table.insert(enemy.array, enemy.new(300, -200, Turtle.scrollingSpeed, CRAB))
+    --table.insert(enemy.array, enemy.new(300, -200, Turtle.scrollingSpeed, CRAB))
 end
 
 
