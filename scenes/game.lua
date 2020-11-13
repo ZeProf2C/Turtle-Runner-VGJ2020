@@ -1,12 +1,15 @@
 Game = {}
 
+
 require("turtle")
 require("map")
 
 Game.load = function()
+
     Map.load()
   
 end
+
 
 
 Game.update = function(dt)
@@ -17,6 +20,7 @@ end
 Game.draw = function()
     Map.draw()
     Turtle.draw()
+ 
 
 end
 
