@@ -5,8 +5,8 @@ require("turtle")
 require("map")
 require("enemy")
 
-Map.isBegin = true
-Turtle.isBegin = true
+Map.isBegin = false
+Turtle.isBegin = false
 
 Game.load = function()
     Map.load()
