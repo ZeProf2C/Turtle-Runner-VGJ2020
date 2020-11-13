@@ -2,7 +2,7 @@ io.stdout:setvbuf('no')
 
 function love.load()
   screen = {L = love.graphics.getWidth(), H = love.graphics.getHeight()}
-  mouse = {x=0 , y = 0}
+  mouse  = {x=0 , y = 0}
   require('utils/vecteur2')
   require("utils/constantes")
   camera = require("utils/camera")
@@ -42,6 +42,10 @@ function love.update(dt)
     if camera.shake then
       camera.onShake(dt)
     end
+    if love.mouse.isDown(1) then
+       myCursor.setCursor("close")
+    end
+    
     
 end
 

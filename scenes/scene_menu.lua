@@ -1,13 +1,13 @@
 scene_menu = {}
 
-local pannel = mGui.CreatePannel(100,100 ,450,600,blanc, transparent,10)
+local pannel = mGui.CreatePannel(100,100 ,450,600,gris, blanc,10)
 
    pannel.addTexte("titre",0,pannel.H*0.1,"T u r T l e",titleFont,"center",pannel.L,ambre)
    pannel.addTexte("titre2",0,pannel.H*0.25,"R u n N e R",titleFont,"center",pannel.L,ambre)  
   
-   pannel.addButton("play",pannel.L/3,pannel.H*0.4 ,pannel.L/3,pannel.H/10,"PlaY",buttonFont,blanc,noir,noir)
-   pannel.addButton("credits",pannel.L/3,pannel.H*0.6 ,pannel.L/3,pannel.H/10,"CréDitS"   ,buttonFont,blanc,noir,noir)
-   pannel.addButton("exit"   ,pannel.L/3,pannel.H*0.8 ,pannel.L/3,pannel.H/10,"QuiTteR"   ,buttonFont,blanc,noir,noir)
+   pannel.addButton("play",pannel.L/3,pannel.H*0.4 ,pannel.L/3,pannel.H/10,"PlaY",buttonFont,noir,ambre,ambre)
+   pannel.addButton("credits",pannel.L/3,pannel.H*0.6 ,pannel.L/3,pannel.H/10,"CréDitS"   ,buttonFont,noir,ambre,ambre)
+   pannel.addButton("exit"   ,pannel.L/3,pannel.H*0.8 ,pannel.L/3,pannel.H/10,"QuiTteR"   ,buttonFont,noir,ambre,ambre)
 
 scene_menu.load = function()
   

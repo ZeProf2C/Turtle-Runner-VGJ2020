@@ -19,7 +19,7 @@ local pannel = mGui.CreatePannel(0,50 ,600,800,transparent, transparent)
   pannel.addTexte("autre" ,pannel.L*0.05               ,pannel.H*0.52 ,"Remerciments",nameFont,"left",pannel.L,ambre)
   pannel.addTexte("remerciments_taf" ,pannel.L*0.05    ,pannel.H*0.52 + 30 ," * Merci aux parents de Pierre-Angelo pour l'hébergement \n * Merci à Clémence de nous bénir de son existence \n * Merci à tous ceux qui nous ont nourrit ( Lasagne taboulet ) \n * Merci à M. LE GUILLOUZER pour avoir accepté notre participation à la VGJ",textFont,"left",pannel.L,blanc)
   
-  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,ambre,noir,noir)
+  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,ambre,ambre)
 scene_credits.load = function()
   
 end
