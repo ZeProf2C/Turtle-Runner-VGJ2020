@@ -5,6 +5,13 @@ require("turtle")
 require("map")
 require("enemy")
 
+Game.init = function()
+    Map.isBegin = false
+    Turtle.isBegin = false
+    enemy.isBegin = false
+    table.insert(enemy.array, enemy.new(300, -200, Turtle.scrollingSpeed, CRAB))
+end
+
 
 Game.startAnimation = function()
     Map.isBegin = true
