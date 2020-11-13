@@ -9,7 +9,7 @@ Game.init = function()
     Map.init()
     Turtle.init()
     enemy.init()
-    table.insert(enemy.array, enemy.new(300, -200, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(300, -200, Turtle.scrollingSpeed, BIRD))
 end
 
 
@@ -31,7 +31,8 @@ Game.update = function(dt)
     if not(pannelEscape.on) then
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
-        enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height)
+        
+enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.scrollingSpeed)
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end

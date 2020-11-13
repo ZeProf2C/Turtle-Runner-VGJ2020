@@ -46,7 +46,7 @@ Turtle.init = function()
 
     Turtle.state = "intro"
     Turtle.jumpTimer = 0
-    Turtle.jumpTime  = 0.5
+    Turtle.jumpTime  = 0.8
     Turtle.jumpScaleSpeed = 0.25
 
     Turtle.Ombre = {}
@@ -121,16 +121,20 @@ function Turtle.update(dt)
 
     if love.keyboard.isDown("right")  then
         Turtle.x = math.min(Turtle.x + Turtle.Vx*dt , 650 - Turtle.Width*1.5)
-      
-        Turtle.jet_de_sable.x=Turtle.x
+      if Turtle.x + Turtle.Vx*dt < 650 - Turtle.Width*1.5  then
+          Turtle.jet_de_sable.x=Turtle.x
         for _, particle in pairs(Turtle.jet_de_sable.list)  do
             particle.x = particle.x + Turtle.Vx*dt
         end
+      end
+        
     elseif love.keyboard.isDown("left")  then
         Turtle.x = math.max(Turtle.x - Turtle.Vx*dt , Turtle.Width*1.5)
-      Turtle.jet_de_sable.x=Turtle.x
-        for _, particle in pairs(Turtle.jet_de_sable.list)  do
-            particle.x = particle.x - Turtle.Vx*dt            
+        if Turtle.x - Turtle.Vx*dt >  Turtle.Width*1.5  then
+            Turtle.jet_de_sable.x=Turtle.x
+          for _, particle in pairs(Turtle.jet_de_sable.list)  do
+              particle.x = particle.x - Turtle.Vx*dt
+          end
         end
 
     end
