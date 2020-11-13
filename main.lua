@@ -23,7 +23,7 @@ function love.load()
  -- ON CHARGE LE SCENES_MANAGER
   scene_man = require("scenes/scene_manager")
   -- LA VARIABLE CURRENT SCENE  CONTIENT LA SCENE ACTIVE
-  scene_man.current_scene = scene_man.list["test"]  
+  scene_man.current_scene = scene_man.list["game"]  
 end
 
 
