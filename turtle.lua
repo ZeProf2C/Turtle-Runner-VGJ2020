@@ -91,13 +91,11 @@ end
 
 function Turtle.Hatch()
     if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
-        Turtle.AnimationIntro:stop()
-
-
-        Game.startAnimation()
-
-        Turtle.state = "run"
-        Turtle.jet_de_sable.init()
+      Turtle.AnimationIntro:stop()
+      Game.startAnimation()
+      Turtle.state = "run"
+      music_man.play("ambiance_game",0)
+      Turtle.jet_de_sable.init()
     end
 end
 
@@ -141,7 +139,6 @@ function Turtle.update(dt)
     
     Turtle.AnimationRun:update(dt, Turtle.animSpeed)
     Turtle.AnimationIntro:update(dt, Turtle.animSpeed)
-
 
 
     if Turtle.isBegin then

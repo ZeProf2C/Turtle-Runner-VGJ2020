@@ -44,7 +44,9 @@ scene_menu.mousereleased = function(px,py,pbutton)
      Game.init()
      love.mouse.setVisible(false)
      snd_clic_menu_2:play()
-     music_man.play("ambiance_game",0)
+     --music_man.play("ambiance_game",0)
+     music_man.stop()
+     snd_drag:play()
   end
   if pannel.elt["credits"].isIn(px,py) and pbutton==1 then
      scene_man.next_scene = scene_man.list["credits"]

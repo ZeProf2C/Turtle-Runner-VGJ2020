@@ -42,6 +42,7 @@
   snd_atterissage = newSfx("assets/sounds/atterissage.ogg",false,global_sound_vol)
   snd_jump        = newSfx("assets/sounds/jump2.wav",false,global_sound_vol)
   snd_walk        = newSfx("assets/sounds/walk_gravier.mp3",false,global_sound_vol)
+  snd_drag        = newSfx("assets/sounds/drag2.mp3",false,global_sound_vol)
  --*************************************************************************************************
  --                                     MUSIQUES
  --**************************************************************************************************

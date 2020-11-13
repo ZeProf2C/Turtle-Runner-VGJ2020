@@ -17,6 +17,7 @@ Game.startAnimation = function()
     Map.isBegin = true
     Turtle.isBegin = true
     enemy.isBegin = true
+
 end
 
 
@@ -64,6 +65,7 @@ Game.mousereleased = function(px,py,pbutton)
       if pannelEscape.elt["game"].isIn(px,py) and pbutton==1 then
          snd_clic_menu_2:play()
          pannelEscape.on = false
+         
       end
       if pannelEscape.elt["restart"].isIn(px,py) and pbutton==1 then
          snd_clic_menu_2:play()
@@ -75,7 +77,7 @@ Game.mousereleased = function(px,py,pbutton)
          snd_clic_menu_2:play()
          love.mouse.setVisible(true)
          pannelEscape.on = false
-         --music_man.play("menu",0)
+         music_man.play("menu",0)
          --global_music_vol= global_music_vol * 2
       end
       if pannelEscape.elt["exit"].isIn(px,py) and pbutton==1 then
