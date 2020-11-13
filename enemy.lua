@@ -63,6 +63,7 @@ enemy.new = function(x, y, speed, type)
 
         Enemy.sx = Enemy.width/Enemy.image:getWidth()
         Enemy.sy = Enemy.height/Enemy.image:getHeight()
+<<<<<<< Updated upstream
         
         function Enemy.update(dt)
 =======
