@@ -1,41 +1,42 @@
-scene_basique = {}
+scene_game_over = {}
 
-scene_basique.load = function()
+scene_game_over.load = function()
   
 end
 
 
-scene_basique.update = function(dt)
+scene_game_over.update = function(dt)
 
 end
 
-scene_basique.draw = function()
-
+scene_game_over.draw = function()
+love.graphics.setColor(blanc)
+love.graphics.printf("GAMEOVER",325,400,650,"center")
 end
 
-scene_basique.mousepressed = function(px,py,pbutton)
+scene_game_over.mousepressed = function(px,py,pbutton)
   
 end
 
-scene_basique.mousereleased = function(px,py,pbutton)
+scene_game_over.mousereleased = function(px,py,pbutton)
   
 end
 
-scene_basique.mousemoved = function(px,py,pdx,pdy)
+scene_game_over.mousemoved = function(px,py,pdx,pdy)
 
 end
 
-function scene_basique.keypressed(key)
+function scene_game_over.keypressed(key)
  
     
 end
-function scene_basique.focus(focus)
+function scene_game_over.focus(focus)
   
 end
-function scene_basique.textinput(txt)
+function scene_game_over.textinput(txt)
 
 end
-function scene_basique.quit()
+function scene_game_over.quit()
   
 end
-return scene_basique
+return scene_game_over

@@ -137,27 +137,26 @@ function Turtle.update(dt)
 end
 
 
+
 function Turtle.draw()
 
     if Turtle.state == "run" then
         love.graphics.setColor(0,0,0,0.5)
-        Turtle.AnimationRun:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        Turtle.AnimationRun:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Run.Width*0.5,Turtle.Assets.Run.Height*0.5)
         
         love.graphics.setColor(1,1,1)
-        Turtle.AnimationRun:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Run.scaleX,Turtle.Assets.Run.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        Turtle.AnimationRun:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Run.scaleX,Turtle.Assets.Run.scaleY,Turtle.Assets.Run.Width*0.5,Turtle.Assets.Run.Height*0.5)
 
     elseif Turtle.state == "jump" then
         love.graphics.setColor(0,0,0,0.5)
-        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Jump.Width*0.5,Turtle.Assets.Jump.Height*0.5)
         
         love.graphics.setColor(1,1,1)
-        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.y,0,Turtle.Assets.Jump.scaleX,Turtle.Assets.Jump.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
+        love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.y,0,Turtle.Assets.Jump.scaleX,Turtle.Assets.Jump.scaleY,Turtle.Assets.Jump.Width*0.5,Turtle.Assets.Jump.Height*0.5)
 
     elseif Turtle.state == "intro" then
         love.graphics.setColor(1,1,1)
-        Turtle.AnimationIntro:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Intro.scaleX,Turtle.Assets.Intro.scaleY,Turtle.Width*0.5,Turtle.Height*0.5)
-
-
+        Turtle.AnimationIntro:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Intro.scaleX,Turtle.Assets.Intro.scaleY,Turtle.Assets.Intro.Width*0.5,Turtle.Assets.Intro.Height*0.5)
     end
 
 end
