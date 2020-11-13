@@ -103,10 +103,10 @@ function Turtle.update(dt)
       
    end
    
-    if love.keyboard.isDown("right") and Turtle.state == "run" then
-        Turtle.x = Turtle.x + Turtle.Vx*dt
-    elseif love.keyboard.isDown("left") and Turtle.state == "run" then
-        Turtle.x = Turtle.x - Turtle.Vx*dt
+    if love.keyboard.isDown("right")  then
+        Turtle.x = math.min(Turtle.x + Turtle.Vx*dt , 650 - Turtle.Width*1.5)
+    elseif love.keyboard.isDown("left")  then
+        Turtle.x = math.max(Turtle.x - Turtle.Vx*dt , Turtle.Width*1.5)
     end
 
     if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
