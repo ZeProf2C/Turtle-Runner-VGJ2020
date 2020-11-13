@@ -88,10 +88,7 @@ end
 function Turtle.Hatch()
     if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
         Turtle.AnimationIntro:stop()
-        Turtle.isBegin = true
-        Map.isBegin = true
-        enemy.isBegin = true
-
+        Game.startAnimation()
         Turtle.state = "run"
     end
 end

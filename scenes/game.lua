@@ -5,9 +5,12 @@ require("turtle")
 require("map")
 require("enemy")
 
-Map.isBegin = false
-Turtle.isBegin = false
-enemy.isBegin = false
+
+function Game.startAnimation()
+    Map.isBegin = true
+    Turtle.isBegin = true
+    enemy.isBegin = true
+end
 
 enemyArray = {}
 enemyArray.update = function(dt)
