@@ -2,7 +2,7 @@
  --                                     IMAGES
  --**************************************************************************************************
 --GUI
- bouton    = love.graphics.newImage("assets/images/bouton_gris.png")
+ bouton        = love.graphics.newImage("assets/images/bouton_gris.png")
  switch        = love.graphics.newImage("assets/images/switch.png")
  cadre         = love.graphics.newImage("assets/images/cadre.png")
 
@@ -13,7 +13,8 @@
  --*************************************************************************************************
  --                                     FONTS
  --**************************************************************************************************
- textFont   = love.graphics.newFont(20)
+ textFont   = love.graphics.newFont(15)
+ nameFont   = love.graphics.newFont(20)
  buttonFont = love.graphics.newFont("assets/eraslght.ttf",20) 
  titleFont  = love.graphics.newFont("assets/light_pixel-7.ttf",43) 
 

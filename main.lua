@@ -17,13 +17,13 @@ function love.load()
  --ON CHARGE LE CURSEUR DU JEU ET SES IMAGES
   require("utils/cursor")
   myCursor = createClassicCursor()
-  myCursor.addCursor("open","assets/images/curseur/cursor_bleu.png" )
-  myCursor.addCursor("close","assets/images/curseur/cursor_rouge.png" )
+  myCursor.addCursor("open","assets/images/curseur/cursor_up.png" )
+  myCursor.addCursor("close","assets/images/curseur/cursor_down.png" )
  --*******************************************************************************************************
  -- ON CHARGE LE SCENES_MANAGER
   scene_man = require("scenes/scene_manager")
   -- LA VARIABLE CURRENT SCENE  CONTIENT LA SCENE ACTIVE
-  scene_man.current_scene = scene_man.list["test"]  
+  scene_man.current_scene = scene_man.list["menu"]  
 end
 
 
