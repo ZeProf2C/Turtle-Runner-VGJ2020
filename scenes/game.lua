@@ -6,6 +6,7 @@ require("map")
 
 Game.load = function()
     Map.load()
+ 
 end
 
 
