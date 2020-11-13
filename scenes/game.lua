@@ -3,6 +3,10 @@ Game = {}
 
 require("turtle")
 require("map")
+require("enemy")
+
+Map.isBegin = true
+Turtle.isBegin = true
 
 Game.load = function()
     Map.load()
