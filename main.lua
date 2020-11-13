@@ -5,6 +5,7 @@ function love.load()
   mouse  = {x=0 , y = 0}
   require('utils/vecteur2')
   require("utils/constantes")
+  require("utils/animation")
   camera = require("utils/camera")
   mGui   = require("utils/gui")
  --******************************************************************************************************
@@ -23,7 +24,9 @@ function love.load()
  -- ON CHARGE LE SCENES_MANAGER
   scene_man = require("scenes/scene_manager")
   -- LA VARIABLE CURRENT SCENE  CONTIENT LA SCENE ACTIVE
+
   scene_man.current_scene = scene_man.list["menu"]  
+
 end
 
 
