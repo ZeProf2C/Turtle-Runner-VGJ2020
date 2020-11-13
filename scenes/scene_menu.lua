@@ -29,6 +29,7 @@ end
 scene_menu.mousereleased = function(px,py,pbutton)
    if pannel.elt["play"].isIn(px,py) and pbutton==1 then
      scene_man.next_scene = scene_man.list["game"]
+     love.mouse.setVisible(false)
      snd_clic_menu_2:play()
   end
   if pannel.elt["credits"].isIn(px,py) and pbutton==1 then
