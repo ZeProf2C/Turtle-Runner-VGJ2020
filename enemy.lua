@@ -63,10 +63,6 @@ enemy.new = function(x, y, speed, type)
 
         Enemy.sx = Enemy.width/Enemy.image:getWidth()
         Enemy.sy = Enemy.height/Enemy.image:getHeight()
-<<<<<<< Updated upstream
-        
-        function Enemy.update(dt)
-=======
 
 
         function Enemy.setCenter()
@@ -77,7 +73,6 @@ enemy.new = function(x, y, speed, type)
 
         function Enemy.update(dt, speed)
             Enemy.speed = speed or Enemy.speed
->>>>>>> Stashed changes
             if Enemy.isAlive then
                 if enemy.isBegin then
                     Enemy.x = Enemy.x
