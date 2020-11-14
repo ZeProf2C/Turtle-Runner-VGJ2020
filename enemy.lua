@@ -147,19 +147,6 @@ enemy.new = function(x, y, speed, type)
                 return true
             end
             return false
-            
-
-            
-            
-            --[[ if distance(persoX, persoY, Enemy.x, Enemy.y) < Enemy.height/2+persoHeight/3 then --Si la distance est positive
-                if Enemy.jumpCollision == false and Turtle.state == "jump" then
-                    return false
-                else
-                    return true
-                end
-            else
-                return false
-            end ]]
         end
     return Enemy
 end
