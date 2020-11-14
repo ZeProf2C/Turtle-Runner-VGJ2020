@@ -2,19 +2,20 @@ scene_rule = {}
 
 local lesRegles = [[A toi petite tortue qui vient de naître, sauras-tu rejoindre la mer ?
 
-Tu devras éviter plusieurs obstacles :
+Tu devras éviter ce que la Nature a mis sur ton chemin :
 
-   * les trous
    * les crabes
    * les coraux
    * les oiseaux
    
    
-   Pour te deplacer utilise les flèches directionnelles <- et ->
+Pour te deplacer utilise les flèches directionnelles <- et ->
    
-   Tu peux accélérer avec la touche "UP"
    
-   J'oubliais, tu possèdes un super pouvoir : sauter ! grâce à la touche "ESPACE" ]]
+J'oubliais, tu possèdes un super pouvoir : sauter ! grâce à la touche "ESPACE"
+
+   * Tu peux sauter par dessus les crabes ( c'est quand même pas mal déjà ) 
+   * Mais il est impossible de sauter par dessus les coraux et les oiseaux... ( faut pas déconner quand même ! )]]
 
 local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
   pannel.addTexte("titre",0,50,"RèGLeS",titleFont,"center",pannel.L,bleu_kelo4)

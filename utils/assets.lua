@@ -15,8 +15,8 @@
 
  turtleRun        = love.graphics.newImage("assets/images/turtle/turtle_4.png")
  turtleJump       = love.graphics.newImage("assets/images/turtle/jumpturtle.png")
- turtleIntro      = love.graphics.newImage("assets/images/turtle/hatch.PNG")
- turtledead       = love.graphics.newImage("assets/images/turtle/anim_dead.PNG")
+ turtleIntro      = love.graphics.newImage("assets/images/turtle/hatch.png")
+ turtledead       = love.graphics.newImage("assets/images/turtle/anim_dead.png")
 
  gameOver        = love.graphics.newImage("assets/images/game_over.png")
  victory         = love.graphics.newImage("assets/images/victory.png")
