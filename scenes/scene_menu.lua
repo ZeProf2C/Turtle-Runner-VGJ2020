@@ -33,11 +33,22 @@ end
 
 
 scene_menu.update = function(dt)
-pannel.update(dt,mouse.x,mouse.y)
+   if scene_menu.hardMode then
+      shader:send("rayon",250)
+      shader:send("mouse",{mouse.x,mouse.y})
+      shader:send("light",1)
+   end
+   pannel.update(dt,mouse.x,mouse.y)
 end
 
 scene_menu.draw = function()
-pannel.draw()
+  if scene_menu.hardMode then
+      love.graphics.setShader(shader)
+      pannel.draw()
+      love.graphics.setShader()
+   else
+      pannel.draw()
+   end
 end
 
 scene_menu.mousepressed = function(px,py,pbutton)
