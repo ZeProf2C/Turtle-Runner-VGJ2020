@@ -38,15 +38,15 @@ Turtle.init = function()
         Turtle.Assets.Intro.nbFrame = 5
         Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/Turtle.Assets.Intro.nbFrame-12 --  -12 permet de bien croper l'image
         Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
-        Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
-        Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
+        Turtle.Assets.Intro.scaleX =  (Turtle.Width +5)/Turtle.Assets.Intro.Width
+        Turtle.Assets.Intro.scaleY = (Turtle.Height+5)/Turtle.Assets.Intro.Height
       Turtle.Assets.Death = {}
         Turtle.Assets.Death.img = turtledead
         Turtle.Assets.Death.nbFrame = 4
         Turtle.Assets.Death.Width = Turtle.Assets.Death.img:getWidth()/Turtle.Assets.Death.nbFrame
         Turtle.Assets.Death.Height = Turtle.Assets.Death.img:getHeight()
-        Turtle.Assets.Death.scaleX =  Turtle.Width/Turtle.Assets.Death.Width
-        Turtle.Assets.Death.scaleY = Turtle.Height/Turtle.Assets.Death.Height
+        Turtle.Assets.Death.scaleX =  (Turtle.Width+10)/Turtle.Assets.Death.Width
+        Turtle.Assets.Death.scaleY = (Turtle.Height+10)/Turtle.Assets.Death.Height
 
 
     Turtle.Vx = 300
@@ -128,12 +128,12 @@ function Turtle.EndLevelAnim (dt)
     if Turtle.y > screen.H*0.3  then
         Turtle.y = Turtle.y - 100 * dt
         Turtle.Ombre.y = Turtle.y + 3
-        Turtle.AnimationRun:update(dt, 0.5)
+        Turtle.AnimationRun:update(dt, 0.3)
         if Turtle.y > screen.H*0.5  then
             Turtle.jet_de_sable.y=Turtle.y
         else
             Turtle.state = "swim"
-            Turtle.alpha = Turtle.alpha - Turtle.valpha*dt
+            Turtle.alpha = Turtle.alpha - Turtle.valpha*dt 
             Turtle.color = {Turtle.alpha,Turtle.alpha,1,Turtle.alpha}
             Turtle.Ombre.color = {0,0,0,Turtle.alpha*0.5}
         end
@@ -221,7 +221,7 @@ function Turtle.update(dt, isAccelerate)
         end
     Turtle.AnimationDeath:update(dt,Turtle.animSpeed)
 
-    if Map.oy <= -Map.image.height*2 then
+    if Map.oy <= -Map.image.height*1.5 then
         Turtle.EndLevelAnim(dt)
     end
 end
