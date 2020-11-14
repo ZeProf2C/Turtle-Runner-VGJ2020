@@ -41,6 +41,8 @@ enemy.new = function(x, y, speed, type)
         Enemy.image = nil
         Enemy.width = 180
         Enemy.height = 80
+        Enemy.collisionWidth = Enemy.width
+        Enemy.collisionHeight = Enemy.height
         Enemy.sx = nil
         Enemy.sy = nil
         Enemy.isAlive = true
@@ -57,6 +59,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 5
             Enemy.width = 180
             Enemy.height = 83
+            Enemy.collisionWidth = Enemy.width
+            Enemy.collisionHeight = Enemy.height
             
     
         elseif Enemy.type == BIRD then
@@ -65,6 +69,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 2
             Enemy.width = 150
             Enemy.height = 84
+            Enemy.collisionWidth = Enemy.width
+            Enemy.collisionHeight = Enemy.height
             
     
         elseif Enemy.type == CORAL then
@@ -73,7 +79,9 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 1
             Enemy.speedx = 0
             Enemy.width = 130
-            Enemy.height = Enemy.width
+            Enemy.height = Enemy.width/1.20
+            Enemy.collisionWidth = Enemy.width - 10
+            Enemy.collisionHeight = Enemy.height - 10
         
         elseif Enemy.type == HOLE then
             Enemy.image = enemyImage.hole
@@ -87,6 +95,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = false
             Enemy.width = 510
             Enemy.height = 510/1.81
+            Enemy.collisionWidth = Enemy.width
+            Enemy.collisionHeight = Enemy.height
             Enemy.nbFrame = 1
             Enemy.speedx = 0
     
@@ -130,7 +140,7 @@ enemy.new = function(x, y, speed, type)
                 love.graphics.setColor(1, 1, 1)
                 Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
                 love.graphics.setColor(1, 0, 0)
-                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.width, Enemy.height)
+                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.collisionWidth, Enemy.collisionHeight)
             end
             
         end
@@ -145,10 +155,10 @@ enemy.new = function(x, y, speed, type)
                 }
 
                 Enemy.rectEnemy = {
-                    {x = Enemy.x - Enemy.width/2, y = Enemy.y - Enemy.height/2},
-                    {x = Enemy.x + Enemy.width/2, y = Enemy.y - Enemy.height/2},
-                    {x = Enemy.x - Enemy.width/2, y = Enemy.y + Enemy.height/2},
-                    {x = Enemy.x + Enemy.width/2, y = Enemy.y + Enemy.height/2},
+                    {x = Enemy.x - Enemy.collisionWidth/2, y = Enemy.y - Enemy.collisionHeight/2},
+                    {x = Enemy.x + Enemy.collisionWidth/2, y = Enemy.y - Enemy.collisionHeight/2},
+                    {x = Enemy.x - Enemy.collisionWidth/2, y = Enemy.y + Enemy.collisionHeight/2},
+                    {x = Enemy.x + Enemy.collisionWidth/2, y = Enemy.y + Enemy.collisionHeight/2},
                 }
 
 
