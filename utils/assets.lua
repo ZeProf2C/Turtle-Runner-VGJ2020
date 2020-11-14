@@ -30,8 +30,9 @@
  textFont   = love.graphics.newFont(15)
  nameFont   = love.graphics.newFont(25)
  errorFont  = love.graphics.newFont("assets/eraslght.ttf",50) 
- overFont = love.graphics.newFont("assets/light_pixel-7.ttf",80) 
+ overFont   = love.graphics.newFont("assets/light_pixel-7.ttf",80) 
  buttonFont = love.graphics.newFont("assets/light_pixel-7.ttf",20) 
+ statFont   = love.graphics.newFont("assets/light_pixel-7.ttf",35) 
  titleFont  = love.graphics.newFont("assets/light_pixel-7.ttf",43) 
 
  

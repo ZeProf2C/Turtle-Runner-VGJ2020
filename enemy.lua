@@ -167,14 +167,14 @@ enemy.new = function(x, y, speed, type)
             if Enemy.isAlive then
                 if enemy.isBegin then
                     Enemy.x = Enemy.x + Enemy.speedx *dt
-                    if Enemy.x < 100 and Enemy.speedx ~= 0 then 
-                        Enemy.x = 100
+                    if Enemy.x < 130 and Enemy.speedx ~= 0 then 
+                        Enemy.x = 130
                         Enemy.speedx = - Enemy.speedx 
                         Enemy.sx = -Enemy.sx 
                     end
 
-                    if Enemy.x >550 - Enemy.width/2 and Enemy.speedx ~= 0 then
-                        Enemy.x = 550 - Enemy.width/2
+                    if Enemy.x >580 - Enemy.width/2 and Enemy.speedx ~= 0 then
+                        Enemy.x = 580 - Enemy.width/2
                         Enemy.speedx = - Enemy.speedx 
                         Enemy.sx = -Enemy.sx 
                     end
