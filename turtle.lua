@@ -119,11 +119,8 @@ function Turtle.update(dt)
          snd_walk:play()
          Turtle.currentFrame = Turtle.AnimationRun:getCurrentFrame()
       end
-      
-   end
-   
 
-    if love.keyboard.isDown("right")  then
+      if love.keyboard.isDown("right")  then
         Turtle.x = math.min(Turtle.x + Turtle.Vx*dt , 650 - Turtle.Width*1.5)
       if Turtle.x + Turtle.Vx*dt < 650 - Turtle.Width*1.5  then
           Turtle.jet_de_sable.x=Turtle.x
@@ -142,6 +139,11 @@ function Turtle.update(dt)
         end
 
     end
+      
+   end
+   
+
+    
 
     if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
         Turtle.scrollingSpeed = Turtle.scrollingSpeed + Turtle.scrollingAcceleration * dt
