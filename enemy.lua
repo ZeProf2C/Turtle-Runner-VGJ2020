@@ -82,9 +82,11 @@ enemy.new = function(x, y, speed, type)
             Enemy.speedx = 0
         
         elseif Enemy.type == JUMP then
-            Enemy.image = nil
+            Enemy.image = enemyImage.jump
             Enemy.canCollide = false
             Enemy.jumpCollision = false
+            Enemy.width = 510
+            Enemy.height = 510/1.81
             Enemy.nbFrame = 1
             Enemy.speedx = 0
     
@@ -134,32 +136,40 @@ enemy.new = function(x, y, speed, type)
         end
 
         function Enemy.collision(persoX, persoY, persoHeight, persoWidth)
-            rectPerso = {
-                {x = persoX - persoWidth/2, y = persoY - persoHeight/2},
-                {x = persoX + persoWidth/2, y = persoY - persoHeight/2},
-                {x = persoX - persoWidth/2, y = persoY + persoHeight/2},
-                {x = persoX + persoWidth/2, y = persoY + persoHeight/2},
-            }
+            if Enemy.canCollide then
+                rectPerso = {
+                    {x = persoX - persoWidth/2, y = persoY - persoHeight/2},
+                    {x = persoX + persoWidth/2, y = persoY - persoHeight/2},
+                    {x = persoX - persoWidth/2, y = persoY + persoHeight/2},
+                    {x = persoX + persoWidth/2, y = persoY + persoHeight/2},
+                }
 
-            Enemy.rectEnemy = {
-                {x = Enemy.x - Enemy.width/2, y = Enemy.y - Enemy.height/2},
-                {x = Enemy.x + Enemy.width/2, y = Enemy.y - Enemy.height/2},
-                {x = Enemy.x - Enemy.width/2, y = Enemy.y + Enemy.height/2},
-                {x = Enemy.x + Enemy.width/2, y = Enemy.y + Enemy.height/2},
-            }
+                Enemy.rectEnemy = {
+                    {x = Enemy.x - Enemy.width/2, y = Enemy.y - Enemy.height/2},
+                    {x = Enemy.x + Enemy.width/2, y = Enemy.y - Enemy.height/2},
+                    {x = Enemy.x - Enemy.width/2, y = Enemy.y + Enemy.height/2},
+                    {x = Enemy.x + Enemy.width/2, y = Enemy.y + Enemy.height/2},
+                }
 
-            if 
-            collide(rectPerso, Enemy.rectEnemy[1]) or 
-            collide(rectPerso, Enemy.rectEnemy[2]) or 
-            collide(rectPerso, Enemy.rectEnemy[3]) or 
-            collide(rectPerso, Enemy.rectEnemy[4]) or 
-            collide(rectEnemy, Enemy.rectPerso[1]) or
-            collide(rectEnemy, Enemy.rectPerso[2]) or
-            collide(rectEnemy, Enemy.rectPerso[3]) or 
-            collide(rectEnemy, Enemy.rectPerso[4]) then
-                return true
+                if 
+                collide(rectPerso, Enemy.rectEnemy[1]) or 
+                collide(rectPerso, Enemy.rectEnemy[2]) or 
+                collide(rectPerso, Enemy.rectEnemy[3]) or 
+                collide(rectPerso, Enemy.rectEnemy[4]) or 
+                collide(Enemy.rectEnemy, rectPerso[1]) or
+                collide(Enemy.rectEnemy, rectPerso[2]) or
+                collide(Enemy.rectEnemy, rectPerso[3]) or 
+                collide(Enemy.rectEnemy, rectPerso[4]) then
+                    if not Enemy.jumpCollision and Turtle.state=='jump' then
+                        return false
+                    else
+                        return true
+                    end
+                end
+                return false
+            else
+                return false
             end
-            return false
         end
     return Enemy
 end
