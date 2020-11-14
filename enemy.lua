@@ -25,8 +25,6 @@ enemy.init = function()
         for i, v in ipairs(enemy.array) do
             v.draw()
         end
-        love.graphics.setColor(0,0,0)
-        love.graphics.print(enemy.array[1].sx..","..enemy.array[1].width)
     end
 end
 
@@ -89,13 +87,6 @@ enemy.new = function(x, y, speed, type)
         Enemy.animation:seek( love.math.random(1,Enemy.nbFrame))
       
 
-        function Enemy.setCenter()
-            --Enemy.centerX = Enemy.x+Enemy.width/(Enemy.nbFrame*2)
-            Enemy.centerX = Enemy.x+Enemy.width/2
-            Enemy.centerY = Enemy.y+Enemy.height/2
-
-        end
-
         function Enemy.update(dt, speed)
             Enemy.speed = speed or Enemy.speed
             if Enemy.isAlive then
@@ -106,7 +97,6 @@ enemy.new = function(x, y, speed, type)
                        Enemy.sx = -Enemy.sx 
                      end
                     Enemy.y = Enemy.y + Enemy.speed*dt
-                    --Enemy.setCenter()
                     Enemy.animation:play()
                 else
                     Enemy.animation:stop()
@@ -130,7 +120,6 @@ enemy.new = function(x, y, speed, type)
         end
 
         function Enemy.collision(persoX, persoY, persoHeight)
-            Enemy.setCenter()
             if distance(persoX, persoY, Enemy.x, Enemy.y) < Enemy.height/2+persoHeight/3 then --Si la distance est positive
                 if Enemy.jumpCollision == false and Turtle.state == "jump" then
                     return false
