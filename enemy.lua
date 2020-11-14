@@ -130,7 +130,7 @@ enemy.new = function(x, y, speed, type)
                 love.graphics.setColor(1, 1, 1)
                 Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
                 love.graphics.setColor(1, 0, 0)
-                --love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.width, Enemy.height)
+                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.width, Enemy.height)
             end
             
         end
@@ -150,6 +150,7 @@ enemy.new = function(x, y, speed, type)
                     {x = Enemy.x - Enemy.width/2, y = Enemy.y + Enemy.height/2},
                     {x = Enemy.x + Enemy.width/2, y = Enemy.y + Enemy.height/2},
                 }
+
 
                 if 
                 collide(rectPerso, Enemy.rectEnemy[1]) or 
