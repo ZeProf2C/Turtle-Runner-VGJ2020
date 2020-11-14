@@ -21,7 +21,7 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
   pannel.addTexte("text",50,200,lesRegles,textFont,"left",pannel.L-50,noir)
   
   
-  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,bleu_kelo4,noir)
+  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,blanc,noir)
   
   pannel.addSkin(endScreen)
   pannel.elt["back"].addSkin(bouton)

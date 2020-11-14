@@ -2,7 +2,7 @@
  --                                     IMAGES
  --**************************************************************************************************
 --GUI
- bouton          = love.graphics.newImage("assets/images/button.png")
+ bouton          = love.graphics.newImage("assets/images/button_blue.png")
  switch          = love.graphics.newImage("assets/images/switch.png")
  cadre           = love.graphics.newImage("assets/images/cadre.png")
  backgroungPlage = love.graphics.newImage("assets/images/background.jpg")

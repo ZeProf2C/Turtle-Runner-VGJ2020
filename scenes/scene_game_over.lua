@@ -3,8 +3,8 @@ scene_game_over = {}
 local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
 
   pannel.addTexte("titre",0,50,"GAME OVER",overFont,"center",pannel.L,orange)
-  pannel.addButton("newGame" ,pannel.L/3  ,pannel.H*0.30,pannel.L/3,pannel.H/10,"NouVeLLe ParTie",buttonFont,noir,bleu_kelo1,noir)
-  pannel.addButton("menu" ,pannel.L/3  ,pannel.H*0.45,pannel.L/3,pannel.H/10,"Menu",buttonFont,noir,bleu_kelo1,noir)
+  pannel.addButton("newGame" ,pannel.L/3  ,pannel.H*0.30,pannel.L/3,pannel.H/10,"NouVeLLe ParTie",buttonFont,noir,blanc,noir)
+  pannel.addButton("menu" ,pannel.L/3  ,pannel.H*0.45,pannel.L/3,pannel.H/10,"Menu",buttonFont,noir,blanc,noir)
   
   pannel.addSkin(gameOver)
   pannel.elt["newGame"].addSkin(bouton)
