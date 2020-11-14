@@ -42,4 +42,18 @@ end
 scene_victory.mousemoved = function(px,py,pdx,pdy)
 end
 
+function scene_victory.keypressed(key)
+ 
+    
+end
+function scene_victory.focus(focus)
+  
+end
+function scene_victory.textinput(txt)
+
+end
+function scene_victory.quit()
+  
+end
+
 return scene_victory

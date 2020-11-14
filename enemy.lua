@@ -33,8 +33,8 @@ enemy.init = function()
     end
 
     enemy.array.draw = function()
-        love.graphics.setColor(1, 0, 0)
-        love.graphics.print(#enemy.array, 10, 10)
+        --love.graphics.setColor(1, 0, 0)
+        --love.graphics.print(#enemy.array, 10, 10)
         for i, v in ipairs(enemy.array) do
             v.draw()
         end
@@ -129,10 +129,17 @@ enemy.new = function(x, y, speed, type)
             if Enemy.isAlive then
                 if enemy.isBegin then
                     Enemy.x = Enemy.x + Enemy.speedx *dt
-                    if (Enemy.x <100 or Enemy.x >700 - Enemy.width) and Enemy.speedx ~= 0 then
-                       Enemy.speedx = - Enemy.speedx 
-                       Enemy.sx = -Enemy.sx 
-                     end
+                    if Enemy.x < 100 and Enemy.speedx ~= 0 then 
+                        Enemy.x = 100
+                        Enemy.speedx = - Enemy.speedx 
+                        Enemy.sx = -Enemy.sx 
+                    end
+
+                    if Enemy.x >550 - Enemy.width/2 and Enemy.speedx ~= 0 then
+                        Enemy.x = 550 - Enemy.width/2
+                        Enemy.speedx = - Enemy.speedx 
+                        Enemy.sx = -Enemy.sx 
+                    end
                     Enemy.y = Enemy.y + Enemy.speed*dt
                     Enemy.animation:play()
                 else

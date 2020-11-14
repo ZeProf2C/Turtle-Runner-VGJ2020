@@ -223,7 +223,7 @@ function Turtle.update(dt, isAccelerate)
 end
 
 function Turtle.draw()
-    love.graphics.print(Turtle.state)
+    --love.graphics.print(Turtle.state)
     
     if Turtle.state == "run" then
         Turtle.jet_de_sable.draw()
