@@ -21,6 +21,15 @@ enemy.init = function()
                 music_man.stop()
             end
         end
+        enemy.array.removeDead()
+    end
+
+    enemy.array.removeDead = function()
+        for i = #enemy.array, 1, -1 do
+            if not enemy.array[i].isAlive then
+                table.remove(enemy.array, i)
+            end
+        end
     end
 
     enemy.array.draw = function()
