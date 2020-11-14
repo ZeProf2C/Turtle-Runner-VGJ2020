@@ -41,8 +41,8 @@ enemy.new = function(x, y, speed, type)
         Enemy.image = nil
         Enemy.width = 180
         Enemy.height = 80
-        Enemy.collisionWidth = Enemy.width
-        Enemy.collisionHeight = Enemy.height
+        Enemy.hitboxWidth = Enemy.width
+        Enemy.hitboxHeight = Enemy.height
         Enemy.sx = nil
         Enemy.sy = nil
         Enemy.isAlive = true
@@ -59,18 +59,18 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 5
             Enemy.width = 180
             Enemy.height = 83
-            Enemy.collisionWidth = Enemy.width
-            Enemy.collisionHeight = Enemy.height
+            Enemy.hitboxWidth = Enemy.width-20
+            Enemy.hitboxHeight = Enemy.height-20
             
     
         elseif Enemy.type == BIRD then
             Enemy.image = enemyImage.bird
             Enemy.jumpCollision = true
             Enemy.nbFrame = 2
-            Enemy.width = 150
-            Enemy.height = 84
-            Enemy.collisionWidth = Enemy.width
-            Enemy.collisionHeight = Enemy.height
+            Enemy.width = 100
+            Enemy.height = Enemy.width/1.5
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height-20
             
     
         elseif Enemy.type == CORAL then
@@ -80,8 +80,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.speedx = 0
             Enemy.width = 130
             Enemy.height = Enemy.width/1.20
-            Enemy.collisionWidth = Enemy.width - 10
-            Enemy.collisionHeight = Enemy.height - 10
+            Enemy.hitboxWidth = Enemy.width - 27
+            Enemy.hitboxHeight = Enemy.height - 20
         
         elseif Enemy.type == HOLE then
             Enemy.image = enemyImage.hole
@@ -95,8 +95,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = false
             Enemy.width = 510
             Enemy.height = 510/1.81
-            Enemy.collisionWidth = Enemy.width
-            Enemy.collisionHeight = Enemy.height
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height
             Enemy.nbFrame = 1
             Enemy.speedx = 0
     
@@ -140,28 +140,27 @@ enemy.new = function(x, y, speed, type)
                 love.graphics.setColor(1, 1, 1)
                 Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
                 love.graphics.setColor(1, 0, 0)
-                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.collisionWidth, Enemy.collisionHeight)
+                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
             end
             
         end
 
         function Enemy.collision(persoX, persoY, persoHeight, persoWidth)
+            rectPerso = {
+                {x = persoX - persoWidth/2, y = persoY - persoHeight/2},
+                {x = persoX + persoWidth/2, y = persoY - persoHeight/2},
+                {x = persoX - persoWidth/2, y = persoY + persoHeight/2},
+                {x = persoX + persoWidth/2, y = persoY + persoHeight/2},
+            }
+
+            Enemy.rectEnemy = {
+                {x = Enemy.x - Enemy.hitboxWidth/2, y = Enemy.y - Enemy.hitboxHeight/2},
+                {x = Enemy.x + Enemy.hitboxWidth/2, y = Enemy.y - Enemy.hitboxHeight/2},
+                {x = Enemy.x - Enemy.hitboxWidth/2, y = Enemy.y + Enemy.hitboxHeight/2},
+                {x = Enemy.x + Enemy.hitboxWidth/2, y = Enemy.y + Enemy.hitboxHeight/2},
+            }
+
             if Enemy.canCollide then
-                rectPerso = {
-                    {x = persoX - persoWidth/2, y = persoY - persoHeight/2},
-                    {x = persoX + persoWidth/2, y = persoY - persoHeight/2},
-                    {x = persoX - persoWidth/2, y = persoY + persoHeight/2},
-                    {x = persoX + persoWidth/2, y = persoY + persoHeight/2},
-                }
-
-                Enemy.rectEnemy = {
-                    {x = Enemy.x - Enemy.collisionWidth/2, y = Enemy.y - Enemy.collisionHeight/2},
-                    {x = Enemy.x + Enemy.collisionWidth/2, y = Enemy.y - Enemy.collisionHeight/2},
-                    {x = Enemy.x - Enemy.collisionWidth/2, y = Enemy.y + Enemy.collisionHeight/2},
-                    {x = Enemy.x + Enemy.collisionWidth/2, y = Enemy.y + Enemy.collisionHeight/2},
-                }
-
-
                 if 
                 collide(rectPerso, Enemy.rectEnemy[1]) or 
                 collide(rectPerso, Enemy.rectEnemy[2]) or 
