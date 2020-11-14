@@ -1,10 +1,10 @@
 scene_menu = {}
 
+scene_menu.hardMode = false 
+
 local pannel
-   
-   
+
 scene_menu.load = function()
-   scene_menu.hardMode = false 
 
    pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
 

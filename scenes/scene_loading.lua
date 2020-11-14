@@ -23,6 +23,7 @@ scene_loading.update = function(dt)
     else
         love.mouse.setVisible(true)
         require("utils/assets")  -- CHARGE TOUTES LES ASSETS IMAGES SONS MUSIQUES (dans le music_manager) FONTS
+        pannelEscape = newPannelEscape()
         scene_man.next_scene = scene_man.list["menu"]
         --scene_manager.next_scene.load() 
     end

@@ -8,6 +8,7 @@ function love.load()
   require("utils/animation")
   require("utils/geometry")
   require("pannelescape")
+  require("shader")
   
   mGui   = require("utils/gui")
   camera = require("utils/camera")
@@ -24,7 +25,6 @@ function love.load()
   myCursor.addCursor("open","assets/images/curseur/cursor_up.png" )
   myCursor.addCursor("close","assets/images/curseur/cursor_down.png" )
  --*******************************************************************************************************
- pannelEscape = newPannelEscape()
  -- ON CHARGE LE SCENES_MANAGER
   scene_man = require("scenes/scene_manager")
   -- LA VARIABLE CURRENT SCENE  CONTIENT LA SCENE ACTIVE
