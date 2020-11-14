@@ -17,7 +17,10 @@ J'oubliais, tu possèdes un super pouvoir : sauter ! grâce à la touche "ESPACE
    * Tu peux sauter par dessus les crabes ( c'est quand même pas mal déjà ) 
    * Mais il est impossible de sauter par dessus les coraux et les oiseaux... ( faut pas déconner quand même ! )]]
 
-local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
+local pannel
+  
+scene_rule.load = function()
+   pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
   pannel.addTexte("titre",0,50,"RèGLeS",titleFont,"center",pannel.L,bleu_kelo4)
   pannel.addTexte("text",50,200,lesRegles,textFont,"left",pannel.L-50,noir)
   
@@ -26,8 +29,6 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
   
   pannel.addSkin(endScreen)
   pannel.elt["back"].addSkin(bouton)
-  
-scene_rule.load = function()
   
 end
 

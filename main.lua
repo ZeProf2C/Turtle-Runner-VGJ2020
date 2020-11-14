@@ -8,14 +8,14 @@ function love.load()
   require("utils/animation")
   require("utils/geometry")
   require("pannelescape")
-  require("shader")
   
-  camera = require("utils/camera")
   mGui   = require("utils/gui")
+  camera = require("utils/camera")
  --******************************************************************************************************
  -- SONS - MUSIQUES - IMAGES
   require("utils/sfx")
   music_man = require("utils/music_manager")
+  --require("utils/assets")  -- CHARGE TOUTES LES ASSETS IMAGES SONS MUSIQUES (dans le music_manager) FONTS
   
  --*******************************************************************************************************
  --ON CHARGE LE CURSEUR DU JEU ET SES IMAGES
@@ -45,6 +45,7 @@ function love.update(dt)
     --                      CHANGEMENT DE SCENE : FADE OUT
     if scene_man.next_scene ~= nil then
       scene_man.fade_out_in(scene_man.next_scene,dt)
+      scene_manager.current_scene.load()
     end
     --******************************************************************************************
     if camera.shake then

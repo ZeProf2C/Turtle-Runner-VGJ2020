@@ -1,6 +1,9 @@
 scene_game_over = {}
 
-local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
+local pannel
+
+scene_game_over.load = function()
+  pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
 
   pannel.addTexte("titre",0,50,"GAME OVER",overFont,"center",pannel.L,orange)
   --pannel.addTexte("text",0,140,"Distance parcourue :",statFont,"center",pannel.L,bleu_kelo2)
@@ -11,9 +14,6 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
   pannel.addSkin(gameOver)
   pannel.elt["newGame"].addSkin(bouton)
   pannel.elt["menu"].addSkin(bouton)
-
-scene_game_over.load = function()
-  
 end
 
 

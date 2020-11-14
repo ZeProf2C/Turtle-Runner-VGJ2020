@@ -1,8 +1,12 @@
 scene_menu = {}
 
-scene_menu.hardMode = false 
+local pannel
+   
+   
+scene_menu.load = function()
+   scene_menu.hardMode = false 
 
-local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
+   pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
 
    pannel.addTexte("titre",0,pannel.H*0.1,"T u r T l e",titleFont,"center",pannel.L,bleu_kelo4)
    pannel.addTexte("titre2",0,pannel.H*0.25,"R u n N e R",titleFont,"center",pannel.L,bleu_kelo4)  
@@ -25,9 +29,6 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
    pannel.addSkin(endScreen)
    
    --music_man.play("menu",0)
-   
-   
-scene_menu.load = function()
   
 end
 

@@ -4,7 +4,7 @@ require("utils/pixel_animation")
 
 play = true
 timer = 0
-duration = 2.9
+duration = 2.5
 animation = newPixelAnimation(0, 0, 2, "assets/images/turtle/loading.png")
 
 scene_loading.load = function()
@@ -24,6 +24,7 @@ scene_loading.update = function(dt)
         love.mouse.setVisible(true)
         require("utils/assets")  -- CHARGE TOUTES LES ASSETS IMAGES SONS MUSIQUES (dans le music_manager) FONTS
         scene_man.next_scene = scene_man.list["menu"]
+        --scene_manager.next_scene.load() 
     end
 end
 
