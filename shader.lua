@@ -30,5 +30,5 @@ vec4 effect( vec4 color , Image tex , vec2 tex_coords , vec2 screen_coords)
 shader = love.graphics.newShader(pixel_lampeTorche)
 
 lampe ={}
-lampe.r = 400
+lampe.r = 425
 lampe.eclairage = 1
