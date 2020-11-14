@@ -62,7 +62,7 @@ Turtle.init = function()
 
     Turtle.AnimationRun   = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,Turtle.Assets.Run.nbFrame, Turtle.animSpeed)
     Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,Turtle.Assets.Intro.nbFrame)
-    Turtle.AnimationDeath = newAnimation(Turtle.Assets.Death.img,Turtle.Assets.Death.Width,Turtle.Assets.Death.Height,0.5,Turtle.Assets.Death.nbFrame)
+    Turtle.AnimationDeath = newAnimation(Turtle.Assets.Death.img,Turtle.Assets.Death.Width,Turtle.Assets.Death.Height,0.3,Turtle.Assets.Death.nbFrame)
     Turtle.jet_de_sable   = create_emitter(Turtle.x,Turtle.y,15)
 end
 
