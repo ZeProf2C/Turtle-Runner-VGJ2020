@@ -50,7 +50,6 @@ Game.init = function()
     table.insert(enemy.array, enemy.new(130, -4200, Turtle.scrollingSpeed, CORAL))
     table.insert(enemy.array, enemy.new(325, -4200, Turtle.scrollingSpeed, CORAL))
     
-    table.insert(enemy.array, enemy.new(225, -4500, Turtle.scrollingSpeed, BIRD))
     table.insert(enemy.array, enemy.new(520, -4600, Turtle.scrollingSpeed, CORAL))   
 
     table.insert(enemy.array, enemy.new(130, -4710, Turtle.scrollingSpeed, CRAB)) 
@@ -153,7 +152,7 @@ Game.draw = function()
     Turtle.draw()
 
     --love.graphics.setColor(1,0,0)
-    --love.graphics.print(Map.oy, 10, 10)
+    --love.graphics.print(#enemy.array, 10, 10)
 
     if pannelEscape.on then
         pannelEscape.draw()
