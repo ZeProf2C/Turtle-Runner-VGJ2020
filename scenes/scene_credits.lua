@@ -19,7 +19,7 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
   pannel.addTexte("autre" ,pannel.L*0.05               ,pannel.H*0.62 ,"Remerciments",nameFont,"left",pannel.L,bleu_kelo5)
   pannel.addTexte("remerciments_taf" ,pannel.L*0.05    ,pannel.H*0.62 + 30 ," * Merci aux parents de Pierre-Angelo pour l'hébergement \n * Merci à Clémence de nous bénir de son existence \n * Merci à tous ceux qui nous ont nourrit ( Lasagne taboulet ) \n * Merci à notre proviseur M. LE GUILLOUZER",textFont,"left",pannel.L,noir)
   
-  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,bleu_kelo1,noir)
+  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,blanc,noir)
   
   pannel.addSkin(endScreen)
   pannel.elt["back"].addSkin(bouton)

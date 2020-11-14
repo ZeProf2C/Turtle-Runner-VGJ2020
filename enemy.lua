@@ -140,10 +140,10 @@ enemy.new = function(x, y, speed, type)
             collide(rectPerso, Enemy.rectEnemy[2]) or 
             collide(rectPerso, Enemy.rectEnemy[3]) or 
             collide(rectPerso, Enemy.rectEnemy[4]) or 
-            collide(rectEnemy, Enemy.rectPerso[1]) or
-            collide(rectEnemy, Enemy.rectPerso[2]) or
-            collide(rectEnemy, Enemy.rectPerso[3]) or 
-            collide(rectEnemy, Enemy.rectPerso[4]) then
+            collide(Enemy.rectEnemy, rectPerso[1]) or
+            collide(Enemy.rectEnemy, rectPerso[2]) or
+            collide(Enemy.rectEnemy, rectPerso[3]) or 
+            collide(Enemy.rectEnemy, rectPerso[4]) then
                 return true
             end
             return false
