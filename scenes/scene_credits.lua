@@ -35,8 +35,6 @@ scene_credits.update = function(dt)
 end
 
 scene_credits.draw = function()
-  -- love.graphics.setColor(blanc)
-   --love.graphics.draw(endScreen,0,0,0,1,0.5)
    pannel.draw()
 end
 
