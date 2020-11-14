@@ -1,12 +1,10 @@
 Game = {}
 
-
-
 require("turtle")
 require("map")
 require("enemy")
 
-
+Game.percent = 0
 
 Game.init = function()
     love.mouse.setVisible(false)
@@ -111,6 +109,8 @@ Game.init = function()
     else
         enemy.array.setEasy()
     end
+
+    Game.maxY = enemy.array[#enemy.array].y
 end
 
 
@@ -127,6 +127,13 @@ Game.stopAnimation = function()
 
 end
 
+Game.setPercent = function(persoY)
+    Game.percent = (Map.totalY/Game.maxY) * 100
+    Game.percent = math.floor(Game.percent)
+    if Game.percent >= 100 then
+        Game.percent = 99
+    end
+end
 
 Game.load = function()
     Map.load()
@@ -138,8 +145,7 @@ Game.update = function(dt)
     if not(pannelEscape.on) then
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
-        
-enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.scrollingSpeed)
+        enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.scrollingSpeed)
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end

@@ -75,6 +75,10 @@ Turtle.init = function()
 end
 
 
+function Turtle.getDistancePercent(collisionY, lastEnemyY)
+    return (collisionY/lastEnemyY) * 100
+end
+
 
 
 function Turtle.jump(dt)
