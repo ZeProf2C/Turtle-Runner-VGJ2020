@@ -6,7 +6,7 @@
  switch          = love.graphics.newImage("assets/images/switch.png")
  cadre           = love.graphics.newImage("assets/images/cadre.png")
  backgroungPlage = love.graphics.newImage("assets/images/background.jpg")
- endScreen = love.graphics.newImage("assets/images/endScreen.png")
+ endScreen = love.graphics.newImage("assets/images/end_screen.png")
 
  enemyImage = {}
     enemyImage.crab  = love.graphics.newImage("assets/images/enemy/crabe_5.png")
@@ -18,12 +18,11 @@
  turtleRun        = love.graphics.newImage("assets/images/turtle/turtle_4.png")
  turtleJump       = love.graphics.newImage("assets/images/turtle/jumpturtle.png")
  turtleIntro      = love.graphics.newImage("assets/images/turtle/hatch.PNG")
- turtledead       = love.graphics.newImage("assets/images/turtle/animDead.PNG")
+ turtledead       = love.graphics.newImage("assets/images/turtle/anim_dead.PNG")
 
- endScreen       = love.graphics.newImage("assets/images/endScreen.png")
- gameOver        = love.graphics.newImage("assets/images/gameOver.png")
+ gameOver        = love.graphics.newImage("assets/images/game_over.png")
  victory         = love.graphics.newImage("assets/images/victory.png")
- fondNoir        = love.graphics.newImage("assets/images/fondNoir.jpg")
+ fondNoir        = love.graphics.newImage("assets/images/fond_noir.jpg")
 
 
  --*************************************************************************************************
