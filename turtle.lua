@@ -43,10 +43,10 @@ Turtle.init = function()
 
 
     Turtle.Vx = 300
-    Turtle.scrollingAcceleration = 500
-    Turtle.scrollingSpeed = 350
-    Turtle.animSpeed = Turtle.scrollingSpeed/350
-    Turtle.scrollingSpeedMax = 1500
+    Turtle.scrollingAcceleration = 15
+    Turtle.scrollingSpeed = 280
+    Turtle.animSpeed = 1
+    Turtle.scrollingSpeedMax = 1225
     Turtle.scrollingSpeedMin = 100
 
     Turtle.state = "intro"
@@ -114,7 +114,8 @@ end
   
 
 
-function Turtle.update(dt)
+function Turtle.update(dt, isAccelerate)
+    isAccelerate = isAccelerate or true
 
    if Turtle.state == "run" then
       if  Turtle.AnimationRun:getCurrentFrame()~= Turtle.currentFrame and Turtle.AnimationRun:getCurrentFrame()%2==1 then
@@ -130,7 +131,7 @@ function Turtle.update(dt)
             particle.x = particle.x + Turtle.Vx*dt
         end
       end
-        
+    
     elseif love.keyboard.isDown("left")  then
         Turtle.x = math.max(Turtle.x - Turtle.Vx*dt , Turtle.Width*1.5)
         if Turtle.x - Turtle.Vx*dt >  Turtle.Width*1.5  then
@@ -147,13 +148,9 @@ function Turtle.update(dt)
 
     
 
-    if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
+    if isAccelerate then
         Turtle.scrollingSpeed = Turtle.scrollingSpeed + Turtle.scrollingAcceleration * dt
         Turtle.animSpeed = Turtle.animSpeed + Turtle.scrollingAcceleration/1000*dt
-        
-    elseif love.keyboard.isDown("down") and  Turtle.scrollingSpeed >= Turtle.scrollingSpeedMin then
-        Turtle.scrollingSpeed = Turtle.scrollingSpeed - Turtle.scrollingAcceleration * dt
-        Turtle.animSpeed = Turtle.animSpeed - Turtle.scrollingAcceleration/1000*dt
     end
 
     Turtle.jump(dt)

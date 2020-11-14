@@ -2,6 +2,7 @@ CRAB = "crabe"
 BIRD = "oiseau"
 CORAL = "corail"
 HOLE = "trou"
+JUMP = "JUMP"
 
 
 enemy = {}
@@ -43,6 +44,7 @@ enemy.new = function(x, y, speed, type)
         Enemy.sx = nil
         Enemy.sy = nil
         Enemy.isAlive = true
+        Enemy.canCollide = true
         Enemy.jumpCollision = nil
         Enemy.centerX = nil
         Enemy.centerY = nil
@@ -61,6 +63,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.image = enemyImage.bird
             Enemy.jumpCollision = true
             Enemy.nbFrame = 2
+            Enemy.width = 150
+            Enemy.height = 84
             
     
         elseif Enemy.type == CORAL then
@@ -68,9 +72,18 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = true
             Enemy.nbFrame = 1
             Enemy.speedx = 0
+            Enemy.width = 130
+            Enemy.height = Enemy.width
         
         elseif Enemy.type == HOLE then
             Enemy.image = enemyImage.hole
+            Enemy.jumpCollision = false
+            Enemy.nbFrame = 1
+            Enemy.speedx = 0
+        
+        elseif Enemy.type == JUMP then
+            Enemy.image = nil
+            Enemy.canCollide = false
             Enemy.jumpCollision = false
             Enemy.nbFrame = 1
             Enemy.speedx = 0

@@ -10,8 +10,34 @@ Game.init = function()
     Map.init()
     Turtle.init()
     enemy.init()
-    table.insert(enemy.array, enemy.new(478, -3787, Turtle.scrollingSpeed, CORAL))
-    table.insert(enemy.array, enemy.new(310, -3787, Turtle.scrollingSpeed, CORAL))
+--[[ 
+    table.insert(enemy.array, enemy.new(260, -200, Turtle.scrollingSpeed, CORAL))
+
+    table.insert(enemy.array, enemy.new(390, -500, Turtle.scrollingSpeed, CORAL))
+    table.insert(enemy.array, enemy.new(130, -500, Turtle.scrollingSpeed, CORAL))
+
+    table.insert(enemy.array, enemy.new(130, -800, Turtle.scrollingSpeed, CORAL))
+    table.insert(enemy.array, enemy.new(260, -800, Turtle.scrollingSpeed, CORAL))
+    table.insert(enemy.array, enemy.new(520, -800, Turtle.scrollingSpeed, CORAL))
+    table.insert(enemy.array, enemy.new(325, -930, Turtle.scrollingSpeed, CORAL))
+    table.insert(enemy.array, enemy.new(390, -1060, Turtle.scrollingSpeed, CORAL))
+
+    table.insert(enemy.array, enemy.new(520, -1300, Turtle.scrollingSpeed, CORAL)) ]]
+
+    table.insert(enemy.array, enemy.new(160, -1800, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(490, -2100, Turtle.scrollingSpeed, CRAB))
+
+    table.insert(enemy.array, enemy.new(160, -2400, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(490, -2400, Turtle.scrollingSpeed, CRAB))
+
+    table.insert(enemy.array, enemy.new(160, -2800, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(260, -2800, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(380, -2800, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(490, -2800, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(210, -2800, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(410, -2800, Turtle.scrollingSpeed, CRAB))
+
+    --[[ table.insert(enemy.array, enemy.new(310, -3787, Turtle.scrollingSpeed, CORAL))
     table.insert(enemy.array, enemy.new(310, -3506, Turtle.scrollingSpeed, CORAL))
     table.insert(enemy.array, enemy.new(192, -3506, Turtle.scrollingSpeed, CORAL))
     table.insert(enemy.array, enemy.new(196, -1840, Turtle.scrollingSpeed, CORAL))
@@ -46,7 +72,7 @@ Game.init = function()
     table.insert(enemy.array, enemy.new(263, -4500, Turtle.scrollingSpeed, CRAB))
     table.insert(enemy.array, enemy.new(378, -4500, Turtle.scrollingSpeed, CRAB))
     table.insert(enemy.array, enemy.new(498, -4500, Turtle.scrollingSpeed, CRAB))
-    table.insert(enemy.array, enemy.new(254, -4676, Turtle.scrollingSpeed, CRAB))
+    table.insert(enemy.array, enemy.new(254, -4676, Turtle.scrollingSpeed, CRAB)) ]]
 end
 
 
