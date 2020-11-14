@@ -7,7 +7,13 @@ Turtle.init = function()
     Turtle.y = screen.H*0.8
     Turtle.Width = 50
     Turtle.Height = 50
-    Turtle.lose = false
+    Turtle.alpha  = 1
+    Turtle.valpha = 0.6   
+    Turtle.color  = {1,1,1,alpha}
+    Turtle.win = false
+
+     
+
 
     Turtle.isBegin = false
 
@@ -59,6 +65,7 @@ Turtle.init = function()
         Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
         Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
         Turtle.Ombre.Slide = 250
+        Turtle.Ombre.color = {0,0,0,0.5}
 
     Turtle.AnimationRun   = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,Turtle.Assets.Run.nbFrame, Turtle.animSpeed)
     Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,Turtle.Assets.Intro.nbFrame)
@@ -111,7 +118,29 @@ function Turtle.Hatch()
       Turtle.jet_de_sable.init()
    end
 end
-  
+
+function Turtle.EndLevelAnim (dt)
+    if Turtle.y > screen.H*0.3  then
+        Turtle.y = Turtle.y - 100 * dt
+        Turtle.Ombre.y = Turtle.y + 3
+        Turtle.AnimationRun:update(dt, 0.5)
+        if Turtle.y > screen.H*0.5  then
+            Turtle.jet_de_sable.y=Turtle.y
+        else
+            Turtle.state = "swim"
+            Turtle.alpha = Turtle.alpha - Turtle.valpha*dt
+            Turtle.color = {Turtle.alpha,Turtle.alpha,1,Turtle.alpha}
+            Turtle.Ombre.color = {0,0,0,Turtle.alpha*0.5}
+        end
+        
+    elseif not(Turtle.win) then
+        love.mouse.setVisible(true)
+        Turtle.win = true
+        scene_man.next_scene = scene_man.list["victory"]
+        
+    end
+    
+end 
 
 
 function Turtle.update(dt, isAccelerate)
@@ -164,6 +193,7 @@ function Turtle.update(dt, isAccelerate)
     else
         Turtle.AnimationRun:stop()
         Turtle.AnimationDeath:stop()
+        
         Turtle.Hatch()
         
     end
@@ -185,39 +215,43 @@ function Turtle.update(dt, isAccelerate)
         end
     Turtle.AnimationDeath:update(dt,Turtle.animSpeed)
 
+    if Map.oy <= -Map.image.height*2 then
+        Turtle.EndLevelAnim(dt)
+    end
 end
 
 function Turtle.draw()
-
+    
     if Turtle.state == "run" then
-
         Turtle.jet_de_sable.draw()
 
-        love.graphics.setColor(0,0,0,0.5)
+        love.graphics.setColor(Turtle.Ombre.color)
         Turtle.AnimationRun:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Run.Width*0.5,Turtle.Assets.Run.Height*0.5)
         
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(Turtle.color)
         Turtle.AnimationRun:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Run.scaleX,Turtle.Assets.Run.scaleY,Turtle.Assets.Run.Width*0.5,Turtle.Assets.Run.Height*0.5)
 
 
-    elseif Turtle.state == "jump" then
-        love.graphics.setColor(0,0,0,0.5)
+    elseif Turtle.state == "jump" or Turtle.state == "swim" then
+        love.graphics.setColor(Turtle.Ombre.color)
         love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Jump.Width*0.5,Turtle.Assets.Jump.Height*0.5)
         
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(Turtle.color)
         love.graphics.draw(Turtle.Assets.Jump.img,Turtle.x,Turtle.y,0,Turtle.Assets.Jump.scaleX,Turtle.Assets.Jump.scaleY,Turtle.Assets.Jump.Width*0.5,Turtle.Assets.Jump.Height*0.5)
 
     elseif Turtle.state == "intro" then
-        love.graphics.setColor(1,1,1)
+        
+        love.graphics.setColor(Turtle.color)
         Turtle.AnimationIntro:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Intro.scaleX,Turtle.Assets.Intro.scaleY,Turtle.Assets.Intro.Width*0.5,Turtle.Assets.Intro.Height*0.5)
         
     elseif Turtle.state == "dead" then
-         love.graphics.setColor(0,0,0,0.5)
+         love.graphics.setColor(Turtle.Ombre.color)
         Turtle.AnimationDeath:draw(Turtle.x,Turtle.Ombre.y,0,Turtle.Ombre.scaleX,Turtle.Ombre.scaleY,Turtle.Assets.Death.Width*0.5,Turtle.Assets.Death.Height*0.5)
         
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(Turtle.color)
         Turtle.AnimationDeath:draw(Turtle.x,Turtle.y,0,Turtle.Assets.Death.scaleX,Turtle.Assets.Death.scaleY,Turtle.Assets.Death.Width*0.5,Turtle.Assets.Death.Height*0.5)
-      end
+    end
+      
    end
 
 

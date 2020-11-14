@@ -8,6 +8,8 @@ scene_manager.list = {}
   scene_manager.list["game"]      = require("scenes/game")
   scene_manager.list["rules"]     = require("scenes/scene_rule")
   scene_manager.list["game_over"] = require("scenes/scene_game_over")
+  scene_manager.list["victory"] = require("scenes/scene_victory")
+  
   
 scene_manager.current_scene = nil 
 scene_manager.next_scene = nil
