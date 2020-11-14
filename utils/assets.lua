@@ -13,6 +13,7 @@
     enemyImage.bird  = love.graphics.newImage("assets/images/enemy/bird.png")
     enemyImage.coral = love.graphics.newImage("assets/images/enemy/coral.png")
     enemyImage.hole  = love.graphics.newImage("assets/images/enemy/hole.png")
+    enemyImage.jump  = love.graphics.newImage("assets/images/enemy/jump.png")
 
  turtleRun        = love.graphics.newImage("assets/images/turtle/turtle_4.png")
  turtleJump       = love.graphics.newImage("assets/images/turtle/jumpturtle.png")

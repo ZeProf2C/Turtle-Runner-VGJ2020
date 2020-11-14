@@ -2,6 +2,7 @@ CRAB = "crabe"
 BIRD = "oiseau"
 CORAL = "corail"
 HOLE = "trou"
+JUMP = "JUMP"
 
 
 enemy = {}
@@ -40,9 +41,12 @@ enemy.new = function(x, y, speed, type)
         Enemy.image = nil
         Enemy.width = 180
         Enemy.height = 80
+        Enemy.hitboxWidth = Enemy.width
+        Enemy.hitboxHeight = Enemy.height
         Enemy.sx = nil
         Enemy.sy = nil
         Enemy.isAlive = true
+        Enemy.canCollide = true
         Enemy.jumpCollision = nil
         Enemy.centerX = nil
         Enemy.centerY = nil
@@ -55,12 +59,18 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 5
             Enemy.width = 180
             Enemy.height = 83
+            Enemy.hitboxWidth = Enemy.width-20
+            Enemy.hitboxHeight = Enemy.height-20
             
     
         elseif Enemy.type == BIRD then
             Enemy.image = enemyImage.bird
             Enemy.jumpCollision = true
             Enemy.nbFrame = 2
+            Enemy.width = 100
+            Enemy.height = Enemy.width/1.5
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height-20
             
     
         elseif Enemy.type == CORAL then
@@ -68,10 +78,25 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = true
             Enemy.nbFrame = 1
             Enemy.speedx = 0
+            Enemy.width = 130
+            Enemy.height = Enemy.width/1.20
+            Enemy.hitboxWidth = Enemy.width - 27
+            Enemy.hitboxHeight = Enemy.height - 20
         
         elseif Enemy.type == HOLE then
             Enemy.image = enemyImage.hole
             Enemy.jumpCollision = false
+            Enemy.nbFrame = 1
+            Enemy.speedx = 0
+        
+        elseif Enemy.type == JUMP then
+            Enemy.image = enemyImage.jump
+            Enemy.canCollide = false
+            Enemy.jumpCollision = false
+            Enemy.width = 510
+            Enemy.height = 510/1.81
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height
             Enemy.nbFrame = 1
             Enemy.speedx = 0
     
@@ -115,7 +140,7 @@ enemy.new = function(x, y, speed, type)
                 love.graphics.setColor(1, 1, 1)
                 Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
                 love.graphics.setColor(1, 0, 0)
-                --love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.width, Enemy.height)
+                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
             end
             
         end
@@ -129,24 +154,32 @@ enemy.new = function(x, y, speed, type)
             }
 
             Enemy.rectEnemy = {
-                {x = Enemy.x - Enemy.width/2, y = Enemy.y - Enemy.height/2},
-                {x = Enemy.x + Enemy.width/2, y = Enemy.y - Enemy.height/2},
-                {x = Enemy.x - Enemy.width/2, y = Enemy.y + Enemy.height/2},
-                {x = Enemy.x + Enemy.width/2, y = Enemy.y + Enemy.height/2},
+                {x = Enemy.x - Enemy.hitboxWidth/2, y = Enemy.y - Enemy.hitboxHeight/2},
+                {x = Enemy.x + Enemy.hitboxWidth/2, y = Enemy.y - Enemy.hitboxHeight/2},
+                {x = Enemy.x - Enemy.hitboxWidth/2, y = Enemy.y + Enemy.hitboxHeight/2},
+                {x = Enemy.x + Enemy.hitboxWidth/2, y = Enemy.y + Enemy.hitboxHeight/2},
             }
 
-            if 
-            collide(rectPerso, Enemy.rectEnemy[1]) or 
-            collide(rectPerso, Enemy.rectEnemy[2]) or 
-            collide(rectPerso, Enemy.rectEnemy[3]) or 
-            collide(rectPerso, Enemy.rectEnemy[4]) or 
-            collide(Enemy.rectEnemy, rectPerso[1]) or
-            collide(Enemy.rectEnemy, rectPerso[2]) or
-            collide(Enemy.rectEnemy, rectPerso[3]) or 
-            collide(Enemy.rectEnemy, rectPerso[4]) then
-                return true
+            if Enemy.canCollide then
+                if 
+                collide(rectPerso, Enemy.rectEnemy[1]) or 
+                collide(rectPerso, Enemy.rectEnemy[2]) or 
+                collide(rectPerso, Enemy.rectEnemy[3]) or 
+                collide(rectPerso, Enemy.rectEnemy[4]) or 
+                collide(Enemy.rectEnemy, rectPerso[1]) or
+                collide(Enemy.rectEnemy, rectPerso[2]) or
+                collide(Enemy.rectEnemy, rectPerso[3]) or 
+                collide(Enemy.rectEnemy, rectPerso[4]) then
+                    if not Enemy.jumpCollision and Turtle.state=='jump' then
+                        return false
+                    else
+                        return true
+                    end
+                end
+                return false
+            else
+                return false
             end
-            return false
         end
     return Enemy
 end
