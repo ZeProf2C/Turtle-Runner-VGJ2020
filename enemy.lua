@@ -34,7 +34,7 @@ enemy.init = function()
 
             if v.collision(persoX, persoY, persoHeight, persoWidth) == true and not(Turtle.lose) then
                 Turtle.lose = true
-                Game.percent = Turtle.getDistancePercent(v.y, enemy.array[#enemy.array].y)
+                Game.setPercent(v.y)
                 snd_lose:play()
                 music_man.stop()
             end

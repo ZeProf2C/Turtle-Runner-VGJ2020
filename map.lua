@@ -11,6 +11,7 @@ Map.init = function()
     Map.isEnd = false
     Map.isBegin = false
     Map.oy = 0
+    Map.totalY = 0
 end
 
 function Map.load()
@@ -23,6 +24,7 @@ function Map.update(dt, scrollSpeed)
     
     if Map.isBegin then
         Map.oy = Map.oy-scrollSpeed
+        Map.totalY = Map.totalY-scrollSpeed
     end
     
 end
