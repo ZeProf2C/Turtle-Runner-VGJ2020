@@ -59,7 +59,6 @@ Game.init = function()
     table.insert(enemy.array, enemy.new(510, -5100, Turtle.scrollingSpeed, CORAL))
 
     table.insert(enemy.array, enemy.new(130, -5670, Turtle.scrollingSpeed, CORAL))
-    table.insert(enemy.array, enemy.new(260, -5670, Turtle.scrollingSpeed, CORAL))
     table.insert(enemy.array, enemy.new(390, -5670, Turtle.scrollingSpeed, CORAL))
 
     table.insert(enemy.array, enemy.new(260, - 6340, Turtle.scrollingSpeed, CORAL))
@@ -94,8 +93,16 @@ Game.init = function()
     table.insert(enemy.array, enemy.new(490, -8875, Turtle.scrollingSpeed, CRAB))
     table.insert(enemy.array, enemy.new(210, -8870, Turtle.scrollingSpeed, CRAB))
     table.insert(enemy.array, enemy.new(410, -8868, Turtle.scrollingSpeed, CRAB))
-    table.insert(enemy.array, enemy.new(390, -8950, Turtle.scrollingSpeed, CORAL))
+    table.insert(enemy.array, enemy.new(260, -8950, Turtle.scrollingSpeed, CORAL))
     table.insert(enemy.array, enemy.new(520, -8950, Turtle.scrollingSpeed, CORAL))
+
+    table.insert(enemy.array, enemy.new(520, -10000, Turtle.scrollingSpeed, BIRD))
+
+    table.insert(enemy.array, enemy.new(258, -10800, Turtle.scrollingSpeed, BIRD))
+
+    table.insert(enemy.array, enemy.new(258, -11600, Turtle.scrollingSpeed, BIRD))
+    table.insert(enemy.array, enemy.new(369, -11600, Turtle.scrollingSpeed, BIRD))
+    table.insert(enemy.array, enemy.new(147, -11600, Turtle.scrollingSpeed, BIRD))
 end
 
 
@@ -142,8 +149,8 @@ Game.draw = function()
     enemy.array.draw()
     Turtle.draw()
 
-    love.graphics.setColor(1,0,0)
-    love.graphics.print(Map.oy, 10, 10)
+    --love.graphics.setColor(1,0,0)
+    --love.graphics.print(Map.oy, 10, 10)
 
     if pannelEscape.on then
         pannelEscape.draw()

@@ -79,10 +79,10 @@ enemy.new = function(x, y, speed, type)
             Enemy.image = enemyImage.bird
             Enemy.jumpCollision = true
             Enemy.nbFrame = 2
-            Enemy.width = 100
+            Enemy.width = 83
             Enemy.height = Enemy.width/1.5
             Enemy.hitboxWidth = Enemy.width
-            Enemy.hitboxHeight = Enemy.height-20
+            Enemy.hitboxHeight = Enemy.height-15
             Enemy.vector = {x = 0, y = 0}
             
     
@@ -126,19 +126,19 @@ enemy.new = function(x, y, speed, type)
     
      end
      
-     Enemy.canCollide = false
+     --Enemy.canCollide = false
 
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
 
     function Enemy.birdMove(dt)
-        if distance(0,Turtle.y,0,Enemy.y) <= 500 and Enemy.vector.x == 0 then
+        if distance(0,Turtle.y,0,Enemy.y) <= 500 and Enemy.vector.x == 0 and distance(Turtle.x, 0, Enemy.x, 0) <= 300 then
             Enemy.vector = {x = Turtle.x-Enemy.x ,  y = Turtle.y-Enemy.y}
             normalize(Enemy.vector)
         end
 
-        Enemy.x = Enemy.x + (Enemy.vector.x * 200)*dt
-        Enemy.y = Enemy.y + (Enemy.vector.y * 200)*dt
+        Enemy.x = Enemy.x + (Enemy.vector.x * 100)*dt
+        Enemy.y = Enemy.y + (Enemy.vector.y * 100)*dt
     end
             
 
