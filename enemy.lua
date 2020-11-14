@@ -82,6 +82,7 @@ enemy.new = function(x, y, speed, type)
             Enemy.height = Enemy.width/1.5
             Enemy.hitboxWidth = Enemy.width
             Enemy.hitboxHeight = Enemy.height-20
+            Enemy.vector = {x = 0, y = 0}
             
     
         elseif Enemy.type == CORAL then
@@ -108,13 +109,23 @@ enemy.new = function(x, y, speed, type)
             Enemy.height = 510/1.81
             Enemy.hitboxWidth = Enemy.width
             Enemy.hitboxHeight = Enemy.height
-            Enemy.nbFrame = 1
+            Enemy.nbFrame = 1 
             Enemy.speedx = 0
     
      end
      
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
+
+    function Enemy.birdMove(dt)
+        if distance(0,Turtle.y,0,Enemy.y) <= 300 and Enemy.vector.x == 0 then
+            Enemy.vector = {x = Turtle.x-Enemy.x ,  y = Turtle.y-Enemy.y}
+            normalize(Enemy.vector)
+        end
+
+        Enemy.x = Enemy.x + (Enemy.vector.x * 200)*dt
+        Enemy.y = Enemy.y + (Enemy.vector.y * 200)*dt
+    end
             
 
         Enemy.animation = newAnimation(Enemy.image, Enemy.image:getWidth()/Enemy.nbFrame, Enemy.image:getHeight(), 0.2, Enemy.nbFrame)
@@ -141,6 +152,12 @@ enemy.new = function(x, y, speed, type)
                         Enemy.sx = -Enemy.sx 
                     end
                     Enemy.y = Enemy.y + Enemy.speed*dt
+                    
+                    if Enemy.type == BIRD then
+                        Enemy.birdMove(dt)
+                    end
+                    
+
                     Enemy.animation:play()
                 else
                     Enemy.animation:stop()
