@@ -46,6 +46,7 @@
   snd_jump        = newSfx("assets/sounds/jump2.wav",false,global_sound_vol)
   snd_walk        = newSfx("assets/sounds/walk_gravier.mp3",false,global_sound_vol)
   snd_drag        = newSfx("assets/sounds/drag2.mp3",false,global_sound_vol)
+  snd_lose        = newSfx("assets/sounds/snd_lose.wav",false,global_sound_vol)
  --*************************************************************************************************
  --                                     MUSIQUES
  --**************************************************************************************************
@@ -54,10 +55,11 @@
  music_menu     = love.audio.newSource("assets/musics/menu_naissance_looping.mp3","stream") 
  music_ambiance = love.audio.newSource("assets/musics/ambiance_flippante.mp3","stream")
  music_win      = love.audio.newSource("assets/musics/music_win.ogg","stream")
+ music_gameover = love.audio.newSource("assets/musics/game_over.ogg","stream")
 -- on charge les musiques dans le music_manager
  music_man.add("menu",music_menu)
  music_man.add("ambiance_game",music_ambiance)
  music_man.add("win",music_win)
-  
+  music_man.add("game_over",music_gameover)
 
   

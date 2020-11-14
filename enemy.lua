@@ -8,15 +8,16 @@ enemy = {}
 
 enemy.init = function()
     enemy.isBegin = false
-    enemy.lose = false
     enemy.array={}
 
     enemy.array.update = function(dt, persoX, persoY, persoHeight, speed)
         for i, v in ipairs(enemy.array) do
             v.update(dt, speed)
 
-            if v.collision(persoX, persoY, persoHeight) == true then
-                enemy.lose = true
+            if v.collision(persoX, persoY, persoHeight) == true and not(Turtle.lose) then
+                Turtle.lose = true
+                snd_lose:play()
+                music_man.stop()
             end
         end
     end

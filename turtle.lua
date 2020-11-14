@@ -7,6 +7,7 @@ Turtle.init = function()
     Turtle.y = screen.H*0.8
     Turtle.Width = 50
     Turtle.Height = 50
+    Turtle.lose = false
 
     Turtle.isBegin = false
 
@@ -97,13 +98,14 @@ function Turtle.jump(dt)
 end
 
 function Turtle.Hatch()
-if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
+   if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
       Turtle.AnimationIntro:stop()
+      Turtle.AnimationIntro:reset()
       Game.startAnimation()
       Turtle.state = "run"
       music_man.play("ambiance_game",0)
       Turtle.jet_de_sable.init()
-    end
+   end
 end
   
 
@@ -166,11 +168,12 @@ function Turtle.update(dt)
 
     Turtle.jet_de_sable.update(dt)
     
-    if enemy.lose then
+    if Turtle.lose then
         if Turtle.AnimationDeath:getCurrentFrame() ==  3 then            
             Turtle.AnimationDeath:stop()
             love.mouse.setVisible(true)
             scene_man.next_scene = scene_man.list["game_over"]
+            music_man.play("game_over",0)
          end
          Game.stopAnimation()
          Turtle.AnimationDeath:play()

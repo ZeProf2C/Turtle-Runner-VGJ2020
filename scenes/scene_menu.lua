@@ -44,7 +44,6 @@ scene_menu.mousereleased = function(px,py,pbutton)
      Game.init()
      love.mouse.setVisible(false)
      snd_clic_menu_2:play()
-     --music_man.play("ambiance_game",0)
      music_man.stop()
      snd_drag:play()
   end

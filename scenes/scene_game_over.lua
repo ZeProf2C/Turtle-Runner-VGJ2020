@@ -31,11 +31,14 @@ scene_game_over.mousereleased = function(px,py,pbutton)
   if pannel.elt["newGame"].isIn(px,py) and pbutton==1 then
     scene_man.next_scene = scene_man.list["game"]
     Game.init()
+    music_man.stop()
     snd_clic_menu_2:play()
+    snd_drag:play()
   end
   if pannel.elt["menu"].isIn(px,py) and pbutton==1 then
     scene_man.next_scene = scene_man.list["menu"]
     snd_clic_menu_2:play()
+    music_man.play("menu",0)
   end
 end
 
