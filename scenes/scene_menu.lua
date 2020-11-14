@@ -24,7 +24,7 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
    pannel.elt["exit"].addSkin(bouton)
    pannel.addSkin(endScreen)
    
-   music_man.play("menu",0)
+   --music_man.play("menu",0)
    
    
 scene_menu.load = function()

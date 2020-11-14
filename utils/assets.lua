@@ -14,6 +14,7 @@
     enemyImage.jump  = love.graphics.newImage("assets/images/enemy/jump.png")
     enemyImage.dodge  = love.graphics.newImage("assets/images/enemy/dodge.png")
 
+
  turtleRun        = love.graphics.newImage("assets/images/turtle/turtle_4.png")
  turtleJump       = love.graphics.newImage("assets/images/turtle/jumpturtle.png")
  turtleIntro      = love.graphics.newImage("assets/images/turtle/hatch.png")

@@ -15,7 +15,6 @@ function love.load()
  -- SONS - MUSIQUES - IMAGES
   require("utils/sfx")
   music_man = require("utils/music_manager")
-  require("utils/assets")  -- CHARGE TOUTES LES ASSETS IMAGES SONS MUSIQUES (dans le music_manager) FONTS
   
  --*******************************************************************************************************
  --ON CHARGE LE CURSEUR DU JEU ET SES IMAGES
@@ -28,8 +27,9 @@ function love.load()
  -- ON CHARGE LE SCENES_MANAGER
   scene_man = require("scenes/scene_manager")
   -- LA VARIABLE CURRENT SCENE  CONTIENT LA SCENE ACTIVE
-
-  scene_man.current_scene = scene_man.list["menu"]  
+  love.mouse.setVisible(false)
+  scene_man.current_scene = scene_man.list["loading"] 
+  scene_manager.current_scene.load() 
 
 end
 
