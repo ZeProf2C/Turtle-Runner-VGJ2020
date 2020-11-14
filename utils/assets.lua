@@ -10,8 +10,8 @@
     enemyImage.crab  = love.graphics.newImage("assets/images/enemy/crabe_5.png")
     enemyImage.bird  = love.graphics.newImage("assets/images/enemy/bird.png")
     enemyImage.coral = love.graphics.newImage("assets/images/enemy/coral.png")
-    enemyImage.hole  = love.graphics.newImage("assets/images/enemy/hole.png")
     enemyImage.jump  = love.graphics.newImage("assets/images/enemy/jump.png")
+    enemyImage.dodge  = love.graphics.newImage("assets/images/enemy/dodge.png")
 
  turtleRun        = love.graphics.newImage("assets/images/turtle/turtle_4.png")
  turtleJump       = love.graphics.newImage("assets/images/turtle/jumpturtle.png")

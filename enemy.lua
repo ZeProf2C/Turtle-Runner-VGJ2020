@@ -3,6 +3,7 @@ BIRD = "oiseau"
 CORAL = "corail"
 HOLE = "trou"
 JUMP = "JUMP"
+DODGE = "DODGE"
 
 
 enemy = {}
@@ -111,14 +112,27 @@ enemy.new = function(x, y, speed, type)
             Enemy.hitboxHeight = Enemy.height
             Enemy.nbFrame = 1 
             Enemy.speedx = 0
+        
+        elseif Enemy.type == DODGE then
+            Enemy.image = enemyImage.dodge
+            Enemy.canCollide = false
+            Enemy.jumpCollision = false
+            Enemy.width = 510
+            Enemy.height = 510/1.81
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height
+            Enemy.nbFrame = 1 
+            Enemy.speedx = 0
     
      end
      
+     Enemy.canCollide = false
+
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
 
     function Enemy.birdMove(dt)
-        if distance(0,Turtle.y,0,Enemy.y) <= 300 and Enemy.vector.x == 0 then
+        if distance(0,Turtle.y,0,Enemy.y) <= 500 and Enemy.vector.x == 0 then
             Enemy.vector = {x = Turtle.x-Enemy.x ,  y = Turtle.y-Enemy.y}
             normalize(Enemy.vector)
         end
