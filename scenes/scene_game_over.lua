@@ -21,6 +21,8 @@ end
 
 scene_game_over.draw = function()
 pannel.draw()
+love.graphics.setColor(1,0,0)
+love.graphics.print(Game.percent, 10,10)
 end
 
 scene_game_over.mousepressed = function(px,py,pbutton)

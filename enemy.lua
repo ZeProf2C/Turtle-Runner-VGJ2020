@@ -17,6 +17,7 @@ enemy.init = function()
 
             if v.collision(persoX, persoY, persoHeight, persoWidth) == true and not(Turtle.lose) then
                 Turtle.lose = true
+                Game.percent = Turtle.getDistancePercent(v.y, enemy.array[#enemy.array].y)
                 snd_lose:play()
                 music_man.stop()
             end
@@ -113,6 +114,7 @@ enemy.new = function(x, y, speed, type)
             Enemy.speedx = 0
     
      end
+
      
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()

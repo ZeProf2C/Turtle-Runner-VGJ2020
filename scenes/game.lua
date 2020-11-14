@@ -1,5 +1,6 @@
 Game = {}
 
+Game.percent = 0
 
 require("turtle")
 require("map")
@@ -65,7 +66,6 @@ Game.stopAnimation = function()
 
 end
 
-
 Game.load = function()
     Map.load()
  
@@ -76,8 +76,7 @@ Game.update = function(dt)
     if not(pannelEscape.on) then
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
-        
-enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.scrollingSpeed)
+        enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.scrollingSpeed)
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end
