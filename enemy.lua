@@ -10,6 +10,13 @@ enemy = {}
 
 enemy.init = function()
     enemy.isBegin = false
+
+    enemy.setEasy = function()
+        for i, v in ipairs(enemy.array) do
+            v.hitboxMultiplier = 0.8
+        end
+    end
+
     enemy.array={}
 
     enemy.array.update = function(dt, persoX, persoY, persoHeight, persoWidth, speed)
@@ -53,8 +60,9 @@ enemy.new = function(x, y, speed, type)
         Enemy.image = nil
         Enemy.width = 180
         Enemy.height = 80
-        Enemy.hitboxWidth = Enemy.width
-        Enemy.hitboxHeight = Enemy.height
+        Enemy.hitboxMultiplier = 1
+        Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
+        Enemy.hitboxHeight = Enemy.height * Enemy.hitboxMultiplier
         Enemy.sx = nil
         Enemy.sy = nil
         Enemy.isAlive = true
@@ -71,8 +79,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 5
             Enemy.width = 180
             Enemy.height = 83
-            Enemy.hitboxWidth = Enemy.width-20
-            Enemy.hitboxHeight = Enemy.height-20
+            Enemy.hitboxWidth = Enemy.width-20 * Enemy.hitboxMultiplier
+            Enemy.hitboxHeight = Enemy.height-20 * Enemy.hitboxMultiplier
             
     
         elseif Enemy.type == BIRD then
@@ -81,8 +89,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 2
             Enemy.width = 83
             Enemy.height = Enemy.width/1.5
-            Enemy.hitboxWidth = Enemy.width
-            Enemy.hitboxHeight = Enemy.height-15
+            Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
+            Enemy.hitboxHeight = Enemy.height-15 * Enemy.hitboxMultiplier
             Enemy.vector = {x = 0, y = 0}
             
     
@@ -93,14 +101,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.speedx = 0
             Enemy.width = 130
             Enemy.height = Enemy.width/1.20
-            Enemy.hitboxWidth = Enemy.width - 27
-            Enemy.hitboxHeight = Enemy.height - 20
-        
-        elseif Enemy.type == HOLE then
-            Enemy.image = enemyImage.hole
-            Enemy.jumpCollision = false
-            Enemy.nbFrame = 1
-            Enemy.speedx = 0
+            Enemy.hitboxWidth = Enemy.width - 27 * Enemy.hitboxMultiplier
+            Enemy.hitboxHeight = Enemy.height - 20 * Enemy.hitboxMultiplier
         
         elseif Enemy.type == JUMP then
             Enemy.image = enemyImage.jump
@@ -108,8 +110,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = false
             Enemy.width = 510
             Enemy.height = 510/1.81
-            Enemy.hitboxWidth = Enemy.width
-            Enemy.hitboxHeight = Enemy.height
+            Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
+            Enemy.hitboxHeight = Enemy.height * Enemy.hitboxMultiplier
             Enemy.nbFrame = 1 
             Enemy.speedx = 0
         
@@ -119,8 +121,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = false
             Enemy.width = 510
             Enemy.height = 510/1.81
-            Enemy.hitboxWidth = Enemy.width
-            Enemy.hitboxHeight = Enemy.height
+            Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
+            Enemy.hitboxHeight = Enemy.height * Enemy.hitboxMultiplier
             Enemy.nbFrame = 1 
             Enemy.speedx = 0
     

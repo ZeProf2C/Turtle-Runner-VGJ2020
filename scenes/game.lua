@@ -149,7 +149,7 @@ Game.draw = function()
     Turtle.draw()
 
     --love.graphics.setColor(1,0,0)
-    --love.graphics.print(Map.oy, 10, 10)
+    --love.graphics.print(#enemy.array, 10, 10)
 
     if pannelEscape.on then
         pannelEscape.draw()
