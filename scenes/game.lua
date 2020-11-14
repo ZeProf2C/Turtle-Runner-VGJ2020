@@ -42,6 +42,8 @@ Game.init = function()
 
     table.insert(enemy.array, enemy.new(145, -3400, Turtle.scrollingSpeed, BIRD))
     table.insert(enemy.array, enemy.new(505, -3400, Turtle.scrollingSpeed, BIRD))
+
+    
 end
 
 
