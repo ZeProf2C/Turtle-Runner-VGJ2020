@@ -10,14 +10,23 @@ enemy = {}
 
 enemy.init = function()
     enemy.isBegin = false
+    enemy.array={}
 
-    enemy.setEasy = function()
+    enemy.array.setEasy = function()
         for i, v in ipairs(enemy.array) do
             v.hitboxMultiplier = 0.8
+            v.hitboxWidth = v.hitboxWidth * v.hitboxMultiplier
+            v.hitboxHeight = v.hitboxHeight * v.hitboxMultiplier
         end
     end
 
-    enemy.array={}
+    enemy.array.setHard = function()
+        for i, v in ipairs(enemy.array) do
+            v.hitboxMultiplier = 1
+            v.hitboxWidth = v.hitboxWidth * v.hitboxMultiplier
+            v.hitboxHeight = v.hitboxHeight * v.hitboxMultiplier
+        end
+    end
 
     enemy.array.update = function(dt, persoX, persoY, persoHeight, persoWidth, speed)
         for i, v in ipairs(enemy.array) do
@@ -42,7 +51,7 @@ enemy.init = function()
 
     enemy.array.draw = function()
         --love.graphics.setColor(1, 0, 0)
-        --love.graphics.print(#enemy.array, 10, 10)
+        --love.graphics.print(enemy.array[1].hitboxWidth, 10, 10)
         for i, v in ipairs(enemy.array) do
             v.draw()
         end
@@ -79,8 +88,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 5
             Enemy.width = 180
             Enemy.height = 83
-            Enemy.hitboxWidth = Enemy.width-20 * Enemy.hitboxMultiplier
-            Enemy.hitboxHeight = Enemy.height-20 * Enemy.hitboxMultiplier
+            Enemy.hitboxWidth = Enemy.width-20
+            Enemy.hitboxHeight = Enemy.height-20
             
     
         elseif Enemy.type == BIRD then
@@ -89,8 +98,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.nbFrame = 2
             Enemy.width = 83
             Enemy.height = Enemy.width/1.5
-            Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
-            Enemy.hitboxHeight = Enemy.height-15 * Enemy.hitboxMultiplier
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height-15
             Enemy.vector = {x = 0, y = 0}
             
     
@@ -101,8 +110,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.speedx = 0
             Enemy.width = 130
             Enemy.height = Enemy.width/1.20
-            Enemy.hitboxWidth = Enemy.width - 27 * Enemy.hitboxMultiplier
-            Enemy.hitboxHeight = Enemy.height - 20 * Enemy.hitboxMultiplier
+            Enemy.hitboxWidth = Enemy.width - 20
+            Enemy.hitboxHeight = Enemy.height - 20
         
         elseif Enemy.type == JUMP then
             Enemy.image = enemyImage.jump
@@ -110,8 +119,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = false
             Enemy.width = 510
             Enemy.height = 510/1.81
-            Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
-            Enemy.hitboxHeight = Enemy.height * Enemy.hitboxMultiplier
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height
             Enemy.nbFrame = 1 
             Enemy.speedx = 0
         
@@ -121,14 +130,14 @@ enemy.new = function(x, y, speed, type)
             Enemy.jumpCollision = false
             Enemy.width = 510
             Enemy.height = 510/1.81
-            Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
-            Enemy.hitboxHeight = Enemy.height * Enemy.hitboxMultiplier
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height
             Enemy.nbFrame = 1 
             Enemy.speedx = 0
     
      end
      
-     --Enemy.canCollide = false
+     Enemy.canCollide = false
 
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
@@ -190,8 +199,8 @@ enemy.new = function(x, y, speed, type)
             if Enemy.isAlive and Enemy.y+Enemy.height > 0 then
                 love.graphics.setColor(1, 1, 1)
                 Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
-                --love.graphics.setColor(1, 0, 0)
-                --love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
+                love.graphics.setColor(1, 0, 0)
+                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
             end
             
         end
