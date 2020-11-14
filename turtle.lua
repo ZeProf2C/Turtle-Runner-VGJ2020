@@ -14,25 +14,29 @@ Turtle.init = function()
     Turtle.Assets = {}
         Turtle.Assets.Run = {}
         Turtle.Assets.Run.img = turtleRun
-        Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/4
+        Turtle.Assets.Run.nbFrame = 4
+        Turtle.Assets.Run.Width = Turtle.Assets.Run.img:getWidth()/Turtle.Assets.Run.nbFrame
         Turtle.Assets.Run.Height = Turtle.Assets.Run.img:getHeight()
         Turtle.Assets.Run.scaleX =  Turtle.Width/Turtle.Assets.Run.Width
         Turtle.Assets.Run.scaleY = Turtle.Height/Turtle.Assets.Run.Height
         Turtle.Assets.Jump = {}
         Turtle.Assets.Jump.img = turtleJump
+        Turtle.Assets.Jump.nbFrame = 1
         Turtle.Assets.Jump.Width = Turtle.Assets.Jump.img:getWidth()
         Turtle.Assets.Jump.Height = Turtle.Assets.Jump.img:getHeight()
         Turtle.Assets.Jump.scaleX =  Turtle.Width/Turtle.Assets.Jump.Width
         Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
       Turtle.Assets.Intro = {}
         Turtle.Assets.Intro.img = turtleIntro
-        Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/5-12 --  -12 permet de bien croper l'image
+        Turtle.Assets.Intro.nbFrame = 5
+        Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/Turtle.Assets.Intro.nbFrame-12 --  -12 permet de bien croper l'image
         Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
         Turtle.Assets.Intro.scaleX =  Turtle.Width/Turtle.Assets.Intro.Width
         Turtle.Assets.Intro.scaleY = Turtle.Height/Turtle.Assets.Intro.Height
       Turtle.Assets.Death = {}
         Turtle.Assets.Death.img = turtledead
-        Turtle.Assets.Death.Width = Turtle.Assets.Death.img:getWidth()/3
+        Turtle.Assets.Death.nbFrame = 4
+        Turtle.Assets.Death.Width = Turtle.Assets.Death.img:getWidth()/Turtle.Assets.Death.nbFrame
         Turtle.Assets.Death.Height = Turtle.Assets.Death.img:getHeight()
         Turtle.Assets.Death.scaleX =  Turtle.Width/Turtle.Assets.Death.Width
         Turtle.Assets.Death.scaleY = Turtle.Height/Turtle.Assets.Death.Height
@@ -56,9 +60,9 @@ Turtle.init = function()
         Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
         Turtle.Ombre.Slide = 250
 
-    Turtle.AnimationRun   = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,4, Turtle.animSpeed)
-    Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,5)
-    Turtle.AnimationDeath = newAnimation(Turtle.Assets.Death.img,Turtle.Assets.Death.Width,Turtle.Assets.Death.Height,0.5,4)
+    Turtle.AnimationRun   = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,Turtle.Assets.Run.nbFrame, Turtle.animSpeed)
+    Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,Turtle.Assets.Intro.nbFrame)
+    Turtle.AnimationDeath = newAnimation(Turtle.Assets.Death.img,Turtle.Assets.Death.Width,Turtle.Assets.Death.Height,0.5,Turtle.Assets.Death.nbFrame)
     Turtle.jet_de_sable   = create_emitter(Turtle.x,Turtle.y,15)
 end
 
@@ -117,11 +121,8 @@ function Turtle.update(dt)
          snd_walk:play()
          Turtle.currentFrame = Turtle.AnimationRun:getCurrentFrame()
       end
-      
-   end
-   
 
-    if love.keyboard.isDown("right")  then
+      if love.keyboard.isDown("right")  then
         Turtle.x = math.min(Turtle.x + Turtle.Vx*dt , 650 - Turtle.Width*1.5)
       if Turtle.x + Turtle.Vx*dt < 650 - Turtle.Width*1.5  then
           Turtle.jet_de_sable.x=Turtle.x
@@ -140,6 +141,11 @@ function Turtle.update(dt)
         end
 
     end
+      
+   end
+   
+
+    
 
     if love.keyboard.isDown("up") and  Turtle.scrollingSpeed <= Turtle.scrollingSpeedMax then
         Turtle.scrollingSpeed = Turtle.scrollingSpeed + Turtle.scrollingAcceleration * dt
@@ -169,7 +175,7 @@ function Turtle.update(dt)
     Turtle.jet_de_sable.update(dt)
     
     if Turtle.lose then
-        if Turtle.AnimationDeath:getCurrentFrame() ==  3 then            
+        if Turtle.AnimationDeath:getCurrentFrame() ==  Turtle.Assets.Death.nbFrame then            
             Turtle.AnimationDeath:stop()
             love.mouse.setVisible(true)
             scene_man.next_scene = scene_man.list["game_over"]
