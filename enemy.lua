@@ -25,6 +25,8 @@ enemy.init = function()
         for i, v in ipairs(enemy.array) do
             v.draw()
         end
+        love.graphics.setColor(0,0,0)
+        love.graphics.print(enemy.array[1].sx..","..enemy.array[1].width)
     end
 end
 
@@ -34,6 +36,7 @@ enemy.new = function(x, y, speed, type)
         Enemy.x = x
         Enemy.y = y 
         Enemy.speed = speed
+        Enemy.speedx = love.math.random(80,160) * love.math.random(-1,1)
         Enemy.type = type
         Enemy.image = nil
         Enemy.width = 180
@@ -50,33 +53,45 @@ enemy.new = function(x, y, speed, type)
         if Enemy.type == CRAB then
             Enemy.image = enemyImage.crab
             Enemy.jumpCollision = false
-            Enemy.nbFrame = 3
+            Enemy.nbFrame = 5
+            Enemy.width = 180
+            Enemy.height = 83
             
     
         elseif Enemy.type == BIRD then
             Enemy.image = enemyImage.bird
             Enemy.jumpCollision = true
             Enemy.nbFrame = 2
+            
     
         elseif Enemy.type == CORAL then
             Enemy.image = enemyImage.coral
             Enemy.jumpCollision = true
             Enemy.nbFrame = 1
+            Enemy.speedx = 0
         
         elseif Enemy.type == HOLE then
             Enemy.image = enemyImage.hole
             Enemy.jumpCollision = false
             Enemy.nbFrame = 1
+            Enemy.speedx = 0
     
-        end
+     end
+     
+      Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
+      Enemy.sy =  Enemy.height/Enemy.image:getHeight()
+            
 
         Enemy.animation = newAnimation(Enemy.image, Enemy.image:getWidth()/Enemy.nbFrame, Enemy.image:getHeight(), 0.2, Enemy.nbFrame)
-        Enemy.sx = Enemy.width/Enemy.image:getWidth()
-        Enemy.sy = Enemy.height/Enemy.image:getHeight()
-
+      
+        if Enemy.speedx > 0 then Enemy.sx = - Enemy.sx end
+        
+        Enemy.animation:seek( love.math.random(1,Enemy.nbFrame))
+      
 
         function Enemy.setCenter()
-            Enemy.centerX = Enemy.x+Enemy.width/(Enemy.nbFrame*2)
+            --Enemy.centerX = Enemy.x+Enemy.width/(Enemy.nbFrame*2)
+            Enemy.centerX = Enemy.x+Enemy.width/2
             Enemy.centerY = Enemy.y+Enemy.height/2
 
         end
@@ -85,9 +100,13 @@ enemy.new = function(x, y, speed, type)
             Enemy.speed = speed or Enemy.speed
             if Enemy.isAlive then
                 if enemy.isBegin then
-                    Enemy.x = Enemy.x
+                    Enemy.x = Enemy.x + Enemy.speedx *dt
+                    if (Enemy.x <100 or Enemy.x >700 - Enemy.width) and Enemy.speedx ~= 0 then
+                       Enemy.speedx = - Enemy.speedx 
+                       Enemy.sx = -Enemy.sx 
+                     end
                     Enemy.y = Enemy.y + Enemy.speed*dt
-                    Enemy.setCenter()
+                    --Enemy.setCenter()
                     Enemy.animation:play()
                 else
                     Enemy.animation:stop()
@@ -103,13 +122,16 @@ enemy.new = function(x, y, speed, type)
         function Enemy.draw()
             if Enemy.isAlive and Enemy.y+Enemy.height > 0 then
                 love.graphics.setColor(1, 1, 1)
-                Enemy.animation:draw(Enemy.x, Enemy.y, 0, Enemy.sx,Enemy.sy,Enemy.sx*0.5, Enemy.sy*0.5)
+                Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
+
+                --love.graphics.circle("line",Enemy.x,Enemy.y , Enemy.height/2)
             end
+            
         end
 
         function Enemy.collision(persoX, persoY, persoHeight)
             Enemy.setCenter()
-            if distance(persoX, persoY, Enemy.centerX, Enemy.centerY) < Enemy.height/2+persoHeight/3 then --Si la distance est positive
+            if distance(persoX, persoY, Enemy.x, Enemy.y) < Enemy.height/2+persoHeight/3 then --Si la distance est positive
                 if Enemy.jumpCollision == false and Turtle.state == "jump" then
                     return false
                 else

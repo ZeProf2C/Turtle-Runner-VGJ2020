@@ -9,7 +9,7 @@
  endScreen = love.graphics.newImage("assets/images/endScreen.png")
 
  enemyImage = {}
-    enemyImage.crab  = love.graphics.newImage("assets/images/enemy/crab.png")
+    enemyImage.crab  = love.graphics.newImage("assets/images/enemy/crabe_5.png")
     enemyImage.bird  = love.graphics.newImage("assets/images/enemy/bird.png")
     enemyImage.coral = love.graphics.newImage("assets/images/enemy/coral.png")
     enemyImage.hole  = love.graphics.newImage("assets/images/enemy/hole.png")
