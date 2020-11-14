@@ -1,11 +1,16 @@
 scene_menu = {}
 
+scene_menu.hardMode = false 
+
 local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
 
    pannel.addTexte("titre",0,pannel.H*0.1,"T u r T l e",titleFont,"center",pannel.L,bleu_kelo4)
    pannel.addTexte("titre2",0,pannel.H*0.25,"R u n N e R",titleFont,"center",pannel.L,bleu_kelo4)  
   
-   pannel.addButton("play",pannel.L/3,pannel.H*0.4 ,pannel.L/3,pannel.H/10,"PlaY",buttonFont,noir,blanc,noir)
+   pannel.addButton("play",pannel.L/3,pannel.H*0.33 ,pannel.L/3,pannel.H/10,"PlaY",buttonFont,noir,blanc,noir)
+   pannel.addTexte("textmode",pannel.L/3,pannel.H*0.48,"HarD mOde",buttonFont,"left",pannel.L,bleu_kelo4) 
+   pannel.addSwitch ("mode",pannel.L*2/3-58,pannel.H*0.45,58,60)
+      
    pannel.addButton("rules",pannel.L/3,pannel.H*0.55 ,pannel.L/3,pannel.H/10,"RègLeS"   ,buttonFont,noir,blanc,noir)
    pannel.addButton("credits",pannel.L/3,pannel.H*0.7 ,pannel.L/3,pannel.H/10,"CréDitS"   ,buttonFont,noir,blanc,noir)
   
@@ -13,6 +18,7 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc,10)
 
 
    pannel.elt["play"].addSkin(bouton)
+   pannel.elt["mode"].addSkin(switch)
    pannel.elt["rules"].addSkin(bouton)
    pannel.elt["credits"].addSkin(bouton)
    pannel.elt["exit"].addSkin(bouton)
@@ -46,6 +52,11 @@ scene_menu.mousereleased = function(px,py,pbutton)
      snd_clic_menu_2:play()
      music_man.stop()
      snd_drag:play()
+  end
+    if pannel.elt["mode"].isIn(px,py) and pbutton==1 then
+     pannel.elt["mode"].switch()
+     scene_menu.hardMode = not scene_menu.hardMode
+     snd_clic_menu_2:play()
   end
   if pannel.elt["credits"].isIn(px,py) and pbutton==1 then
      scene_man.next_scene = scene_man.list["credits"]
