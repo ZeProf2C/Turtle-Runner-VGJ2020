@@ -3,6 +3,7 @@
  --**************************************************************************************************
 --GUI
  bouton          = love.graphics.newImage("assets/images/button_blue.png")
+ switch          = love.graphics.newImage("assets/images/switch.png")
  backgroungPlage = love.graphics.newImage("assets/images/background.jpg")
  endScreen = love.graphics.newImage("assets/images/end_screen.png")
 

@@ -1,9 +1,12 @@
 Game = {}
 
 
+
 require("turtle")
 require("map")
 require("enemy")
+
+
 
 Game.init = function()
     love.mouse.setVisible(false)
