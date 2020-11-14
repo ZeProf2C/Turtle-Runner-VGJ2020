@@ -147,7 +147,7 @@ end
 function Turtle.update(dt, isAccelerate)
     isAccelerate = isAccelerate or true
 
-   if Turtle.state == "run" then
+   if Turtle.state == "run" or  Turtle.state == "jump" then
       if  Turtle.AnimationRun:getCurrentFrame()~= Turtle.currentFrame and Turtle.AnimationRun:getCurrentFrame()%2==1 then
          snd_walk:play()
          Turtle.currentFrame = Turtle.AnimationRun:getCurrentFrame()
@@ -223,7 +223,7 @@ function Turtle.update(dt, isAccelerate)
 end
 
 function Turtle.draw()
-    --love.graphics.print(Turtle.state)
+    love.graphics.print(Turtle.state)
     
     if Turtle.state == "run" then
         Turtle.jet_de_sable.draw()
