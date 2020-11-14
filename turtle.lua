@@ -14,6 +14,7 @@ Turtle.init = function()
 
      
 
+
     Turtle.isBegin = false
 
     Turtle.Assets = {}
@@ -68,7 +69,7 @@ Turtle.init = function()
 
     Turtle.AnimationRun   = newAnimation(Turtle.Assets.Run.img,Turtle.Assets.Run.Width,Turtle.Assets.Run.Height,0.2,Turtle.Assets.Run.nbFrame, Turtle.animSpeed)
     Turtle.AnimationIntro = newAnimation(Turtle.Assets.Intro.img,Turtle.Assets.Intro.Width,Turtle.Assets.Intro.Height,0.3,Turtle.Assets.Intro.nbFrame)
-    Turtle.AnimationDeath = newAnimation(Turtle.Assets.Death.img,Turtle.Assets.Death.Width,Turtle.Assets.Death.Height,0.5,Turtle.Assets.Death.nbFrame)
+    Turtle.AnimationDeath = newAnimation(Turtle.Assets.Death.img,Turtle.Assets.Death.Width,Turtle.Assets.Death.Height,0.3,Turtle.Assets.Death.nbFrame)
     Turtle.jet_de_sable   = create_emitter(Turtle.x,Turtle.y,15)
 end
 
@@ -108,13 +109,14 @@ function Turtle.jump(dt)
 end
 
 function Turtle.Hatch()
-if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
+   if Turtle.AnimationIntro:getCurrentFrame() ==  5 then
       Turtle.AnimationIntro:stop()
+      Turtle.AnimationIntro:reset()
       Game.startAnimation()
       Turtle.state = "run"
       music_man.play("ambiance_game",0)
       Turtle.jet_de_sable.init()
-    end
+   end
 end
 
 function Turtle.EndLevelAnim (dt)
@@ -202,11 +204,12 @@ function Turtle.update(dt)
 
     Turtle.jet_de_sable.update(dt)
     
-    if enemy.lose then
+    if Turtle.lose then
         if Turtle.AnimationDeath:getCurrentFrame() ==  Turtle.Assets.Death.nbFrame then            
             Turtle.AnimationDeath:stop()
             love.mouse.setVisible(true)
             scene_man.next_scene = scene_man.list["game_over"]
+            music_man.play("game_over",0)
          end
          Game.stopAnimation()
          Turtle.AnimationDeath:play()

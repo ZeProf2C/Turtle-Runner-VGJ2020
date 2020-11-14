@@ -4,22 +4,22 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
 
   pannel.addTexte("titre",0,50,"CrEdiTs",titleFont,"center",pannel.L,bleu_kelo4)
   
-  pannel.addTexte("Olivier"     ,pannel.L*0.05           ,pannel.H*0.2,"Olivier alias Monsieur 6/4",nameFont,"left",pannel.L,bleu_kelo4)
-  pannel.addTexte("olivier_taf" ,pannel.L*0.05           ,pannel.H*0.2 + 30 ," * chef des opérations-mentor \n * développeur de secours \n * sound design",textFont,"left",pannel.L,noir)
+  pannel.addTexte("Olivier"     ,pannel.L*0.05           ,pannel.H*0.2,"Olivier alias Monsieur 6/4",nameFont,"left",pannel.L,bleu_kelo5)
+  pannel.addTexte("olivier_taf" ,pannel.L*0.05           ,pannel.H*0.2 + 30 ," * chef des opérations-mentor \n * développeur menu-crédits-règles-game over-win-changement de scène \n * sound design",textFont,"left",pannel.L,noir)
   
-  pannel.addTexte("pa"     ,pannel.L*0.05                ,pannel.H*0.32 ,"Pierre-Angello",nameFont,"left",pannel.L,bleu_kelo5)
+  pannel.addTexte("pa"     ,pannel.L*0.05                ,pannel.H*0.32 ,"Pierre-Angello en term 6 au Lycée de Bellepierre",nameFont,"left",pannel.L,bleu_kelo5)
   pannel.addTexte("pa_taf" ,pannel.L*0.05                ,pannel.H*0.32 + 30," * développeur_tortue",textFont,"left",pannel.L,noir)
 
-  pannel.addTexte("norman" ,pannel.L*0.05                ,pannel.H*0.42 ,"Norman",nameFont,"left",pannel.L,bleu_kelo5)
+  pannel.addTexte("norman" ,pannel.L*0.05                ,pannel.H*0.42 ,"Norman en term 5 au Lycée de Bellepierre",nameFont,"left",pannel.L,bleu_kelo5)
   pannel.addTexte("norman_taf" ,pannel.L*0.05            ,pannel.H*0.42 + 30 ," * développeur_background_énemis",textFont,"left",pannel.L,noir)
     
-  pannel.addTexte("vallisy" ,pannel.L*0.05               ,pannel.H*0.52 ,"Vassily",nameFont,"left",pannel.L,bleu_kelo5)
+  pannel.addTexte("vallisy" ,pannel.L*0.05               ,pannel.H*0.52 ,"Vassily en term 6 au Lycée de Bellepierre",nameFont,"left",pannel.L,bleu_kelo5)
   pannel.addTexte("vassily_taf" ,pannel.L*0.05           ,pannel.H*0.52 + 30 ," * graphiste 2d \n * game design",textFont,"left",pannel.L,noir)
   
   pannel.addTexte("autre" ,pannel.L*0.05               ,pannel.H*0.62 ,"Remerciments",nameFont,"left",pannel.L,bleu_kelo5)
   pannel.addTexte("remerciments_taf" ,pannel.L*0.05    ,pannel.H*0.62 + 30 ," * Merci aux parents de Pierre-Angelo pour l'hébergement \n * Merci à Clémence de nous bénir de son existence \n * Merci à tous ceux qui nous ont nourrit ( Lasagne taboulet ) \n * Merci à notre proviseur M. LE GUILLOUZER",textFont,"left",pannel.L,noir)
   
-  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,bleu_kelo1,noir)
+  pannel.addButton("back" ,pannel.L/3  ,pannel.H*0.8,pannel.L/3,pannel.H/10,"ReTouR",buttonFont,noir,blanc,noir)
   
   pannel.addSkin(endScreen)
   pannel.elt["back"].addSkin(bouton)
