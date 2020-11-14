@@ -106,7 +106,11 @@ Game.init = function()
     table.insert(enemy.array, enemy.new(369, -11600, Turtle.scrollingSpeed, BIRD))
     table.insert(enemy.array, enemy.new(147, -11600, Turtle.scrollingSpeed, BIRD))
 
-    enemy.array.setEasy()
+    if scene_menu.hardMode then
+        enemy.array.setHard()
+    else
+        enemy.array.setEasy()
+    end
 end
 
 

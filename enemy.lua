@@ -137,19 +137,19 @@ enemy.new = function(x, y, speed, type)
     
      end
      
-     Enemy.canCollide = false
+     --Enemy.canCollide = false
 
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
 
     function Enemy.birdMove(dt)
-        if distance(0,Turtle.y,0,Enemy.y) <= 500 and Enemy.vector.x == 0 and distance(Turtle.x, 0, Enemy.x, 0) <= 300 then
+        if distance(0,Turtle.y,0,Enemy.y) <= 400 and Enemy.vector.x == 0 and distance(Turtle.x, 0, Enemy.x, 0) <= 150 then
             Enemy.vector = {x = Turtle.x-Enemy.x ,  y = Turtle.y-Enemy.y}
             normalize(Enemy.vector)
         end
 
-        Enemy.x = Enemy.x + (Enemy.vector.x * 100)*dt
-        Enemy.y = Enemy.y + (Enemy.vector.y * 100)*dt
+        Enemy.x = Enemy.x + (Enemy.vector.x * 75)*dt
+        Enemy.y = Enemy.y + (Enemy.vector.y * 75)*dt
     end
             
 
@@ -199,8 +199,8 @@ enemy.new = function(x, y, speed, type)
             if Enemy.isAlive and Enemy.y+Enemy.height > 0 then
                 love.graphics.setColor(1, 1, 1)
                 Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
-                love.graphics.setColor(1, 0, 0)
-                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
+                --love.graphics.setColor(1, 0, 0)
+                --love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
             end
             
         end
