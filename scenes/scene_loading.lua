@@ -25,14 +25,13 @@ scene_loading.update = function(dt)
         require("utils/assets")  -- CHARGE TOUTES LES ASSETS IMAGES SONS MUSIQUES (dans le music_manager) FONTS
         pannelEscape = newPannelEscape()
         scene_man.next_scene = scene_man.list["menu"]
-        --scene_manager.next_scene.load() 
     end
 end
 
 scene_loading.draw = function()
     animation.draw()
-    love.graphics.setColor(1, 0, 0)
-    love.graphics.print(timer, 10, 10)
+    --love.graphics.setColor(1, 0, 0)
+    --love.graphics.print(timer, 10, 10)
 
 end
 
