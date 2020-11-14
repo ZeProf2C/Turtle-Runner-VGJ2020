@@ -6,6 +6,7 @@ require("map")
 require("enemy")
 
 Game.init = function()
+    love.mouse.setVisible(false)
     Map.init()
     Turtle.init()
     enemy.init()
@@ -60,6 +61,12 @@ Game.startAnimation = function()
     Map.isBegin = true
     Turtle.isBegin = true
     enemy.isBegin = true
+end
+
+Game.stopAnimation = function()
+    Map.isBegin = false
+    Turtle.isBegin = false
+    enemy.isBegin = false
 
 end
 

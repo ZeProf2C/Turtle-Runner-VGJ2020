@@ -172,7 +172,7 @@ function Turtle.update(dt)
             love.mouse.setVisible(true)
             scene_man.next_scene = scene_man.list["game_over"]
          end
-         Map.isBegin = false
+         Game.stopAnimation()
          Turtle.AnimationDeath:play()
          Turtle.state = "dead"
          
