@@ -33,6 +33,8 @@ enemy.init = function()
     end
 
     enemy.array.draw = function()
+        love.graphics.setColor(1, 0, 0)
+        love.graphics.print(#enemy.array, 10, 10)
         for i, v in ipairs(enemy.array) do
             v.draw()
         end
@@ -139,7 +141,7 @@ enemy.new = function(x, y, speed, type)
                 Enemy.animation:update(dt)
             end
 
-            if Enemy.y > screen.H then
+            if Enemy.y > screen.H+100 then
                 Enemy.isAlive = false
             end
         end
@@ -148,8 +150,8 @@ enemy.new = function(x, y, speed, type)
             if Enemy.isAlive and Enemy.y+Enemy.height > 0 then
                 love.graphics.setColor(1, 1, 1)
                 Enemy.animation:draw(Enemy.x,Enemy.y,0,Enemy.sx,Enemy.sy,(Enemy.image:getWidth()/Enemy.nbFrame)*0.5,Enemy.image:getHeight()*0.5)
-                love.graphics.setColor(1, 0, 0)
-                love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
+                --love.graphics.setColor(1, 0, 0)
+                --love.graphics.rectangle("line", Enemy.rectEnemy[1].x, Enemy.rectEnemy[1].y, Enemy.hitboxWidth, Enemy.hitboxHeight)
             end
             
         end
