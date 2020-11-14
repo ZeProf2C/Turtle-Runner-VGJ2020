@@ -8,6 +8,7 @@ function love.load()
   require("utils/animation")
   require("utils/geometry")
   require("pannelescape")
+  require("shader")
   
   camera = require("utils/camera")
   mGui   = require("utils/gui")

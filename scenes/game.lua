@@ -104,11 +104,9 @@ Game.init = function()
     table.insert(enemy.array, enemy.new(369, -11600, Turtle.scrollingSpeed, BIRD))
     table.insert(enemy.array, enemy.new(147, -11600, Turtle.scrollingSpeed, BIRD))
 
-    if scene_menu.hardMode then
-        enemy.array.setHard()
-    else
-        enemy.array.setEasy()
-    end
+   
+   enemy.array.setEasy()
+    
 
     Game.maxY = enemy.array[#enemy.array].y
 end
@@ -142,13 +140,18 @@ end
 
 
 Game.update = function(dt)
-    if not(pannelEscape.on) then
-        Map.update(dt,Turtle.scrollingSpeed)
-        Turtle.update(dt)
-        enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.scrollingSpeed)
-    else
-        pannelEscape.update(dt, mouse.x, mouse.y)
-    end
+   if not(pannelEscape.on) then
+      if scene_menu.hardMode then
+        shader:send("rayon",lampe.r)
+        shader:send("mouse",{Turtle.x,Turtle.y})
+        shader:send("light",lampe.eclairage)
+      end
+      Map.update(dt,Turtle.scrollingSpeed)
+      Turtle.update(dt)
+      enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.scrollingSpeed)
+   else
+      pannelEscape.update(dt, mouse.x, mouse.y)
+   end
 
     if #enemy.array == 0  then
         Map.isEnd = true
@@ -158,11 +161,18 @@ Game.update = function(dt)
 end
 
 Game.draw = function()
-
-    Map.draw()
-    enemy.array.draw()
-    Turtle.draw()
-
+   if scene_menu.hardMode then
+      love.graphics.setShader(shader)
+      Map.draw()
+      enemy.array.draw()
+      Turtle.draw()
+      love.graphics.setShader()
+   else
+      Map.draw()
+      enemy.array.draw()
+      Turtle.draw()
+   end
+   
     --love.graphics.setColor(1,0,0)
     --love.graphics.print(#enemy.array, 10, 10)
 
