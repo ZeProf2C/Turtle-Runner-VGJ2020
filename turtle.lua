@@ -53,7 +53,7 @@ Turtle.init = function()
     Turtle.scrollingAcceleration = 15
     Turtle.scrollingSpeed = 280
     Turtle.animSpeed = 1
-    Turtle.scrollingSpeedMax = 1225
+    Turtle.scrollingSpeedMax = 650
     Turtle.scrollingSpeedMin = 100
 
     Turtle.state = "intro"
