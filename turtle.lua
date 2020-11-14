@@ -11,6 +11,7 @@ Turtle.init = function()
     Turtle.valpha = 0.6   
     Turtle.color  = {1,1,1,alpha}
     Turtle.win = false
+    Turtle.lose = false
 
      
 
@@ -207,7 +208,8 @@ function Turtle.update(dt, isAccelerate)
             love.mouse.setVisible(true)
             scene_man.next_scene = scene_man.list["game_over"]
             music_man.play("game_over",0)
-         end
+            Turtle.state = "intro"
+        end
          Game.stopAnimation()
          Turtle.AnimationDeath:play()
          Turtle.state = "dead"
@@ -221,6 +223,7 @@ function Turtle.update(dt, isAccelerate)
 end
 
 function Turtle.draw()
+    love.graphics.print(Turtle.state)
     
     if Turtle.state == "run" then
         Turtle.jet_de_sable.draw()
