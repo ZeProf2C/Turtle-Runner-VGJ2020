@@ -3,8 +3,10 @@ scene_game_over = {}
 local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
 
   pannel.addTexte("titre",0,50,"GAME OVER",overFont,"center",pannel.L,orange)
-  pannel.addButton("newGame" ,pannel.L/3  ,pannel.H*0.30,pannel.L/3,pannel.H/10,"NouVeLLe ParTie",buttonFont,noir,blanc,noir)
-  pannel.addButton("menu" ,pannel.L/3  ,pannel.H*0.45,pannel.L/3,pannel.H/10,"Menu",buttonFont,noir,blanc,noir)
+  pannel.addTexte("text",0,140,"Distance parcourue :",statFont,"center",pannel.L,bleu_kelo2)
+  pannel.addTexte("distance",0,200,Game.percent.." %",statFont,"center",pannel.L,bleu_kelo2)
+  pannel.addButton("newGame" ,pannel.L/3  ,pannel.H*0.35,pannel.L/3,pannel.H/10,"NouVeLLe ParTie",buttonFont,noir,blanc,noir)
+  pannel.addButton("menu" ,pannel.L/3  ,pannel.H*0.5,pannel.L/3,pannel.H/10,"Menu",buttonFont,noir,blanc,noir)
   
   pannel.addSkin(gameOver)
   pannel.elt["newGame"].addSkin(bouton)
@@ -17,6 +19,7 @@ end
 
 scene_game_over.update = function(dt)
 pannel.update(dt,mouse.x , mouse.y)
+pannel.elt["distance"].info = tostring(Game.percent).." %"
 end
 
 scene_game_over.draw = function()

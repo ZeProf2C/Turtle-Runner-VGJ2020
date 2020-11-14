@@ -3,7 +3,7 @@ scene_victory = {}
 local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
 local printError = false
 
-  pannel.addTexte("titre",0,50,"VICTORY",overFont,"center",pannel.L,orange)
+  pannel.addTexte("titre",0,50,"VICTORY",overFont,"center",pannel.L,vert_pale)
   pannel.addButton("nextLevel" ,pannel.L/3  ,pannel.H*0.5,pannel.L/3,pannel.H/10,"NivEau SuIvAnT",buttonFont,noir,blanc,noir)
   pannel.addButton("menu"      ,pannel.L/3  ,pannel.H*0.7,pannel.L/3,pannel.H/10,"Menu",buttonFont,noir,blanc,noir)
   
