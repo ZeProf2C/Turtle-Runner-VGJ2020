@@ -3,6 +3,7 @@ BIRD = "oiseau"
 CORAL = "corail"
 HOLE = "trou"
 JUMP = "JUMP"
+DODGE = "DODGE"
 
 
 enemy = {}
@@ -10,6 +11,22 @@ enemy = {}
 enemy.init = function()
     enemy.isBegin = false
     enemy.array={}
+
+    enemy.array.setEasy = function()
+        for i, v in ipairs(enemy.array) do
+            v.hitboxMultiplier = 0.8
+            v.hitboxWidth = v.hitboxWidth * v.hitboxMultiplier
+            v.hitboxHeight = v.hitboxHeight * v.hitboxMultiplier
+        end
+    end
+
+    enemy.array.setHard = function()
+        for i, v in ipairs(enemy.array) do
+            v.hitboxMultiplier = 1
+            v.hitboxWidth = v.hitboxWidth * v.hitboxMultiplier
+            v.hitboxHeight = v.hitboxHeight * v.hitboxMultiplier
+        end
+    end
 
     enemy.array.update = function(dt, persoX, persoY, persoHeight, persoWidth, speed)
         for i, v in ipairs(enemy.array) do
@@ -34,7 +51,7 @@ enemy.init = function()
 
     enemy.array.draw = function()
         --love.graphics.setColor(1, 0, 0)
-        --love.graphics.print(#enemy.array, 10, 10)
+        --love.graphics.print(enemy.array[1].hitboxWidth, 10, 10)
         for i, v in ipairs(enemy.array) do
             v.draw()
         end
@@ -52,8 +69,9 @@ enemy.new = function(x, y, speed, type)
         Enemy.image = nil
         Enemy.width = 180
         Enemy.height = 80
-        Enemy.hitboxWidth = Enemy.width
-        Enemy.hitboxHeight = Enemy.height
+        Enemy.hitboxMultiplier = 1
+        Enemy.hitboxWidth = Enemy.width * Enemy.hitboxMultiplier
+        Enemy.hitboxHeight = Enemy.height * Enemy.hitboxMultiplier
         Enemy.sx = nil
         Enemy.sy = nil
         Enemy.isAlive = true
@@ -78,10 +96,10 @@ enemy.new = function(x, y, speed, type)
             Enemy.image = enemyImage.bird
             Enemy.jumpCollision = true
             Enemy.nbFrame = 2
-            Enemy.width = 100
+            Enemy.width = 83
             Enemy.height = Enemy.width/1.5
             Enemy.hitboxWidth = Enemy.width
-            Enemy.hitboxHeight = Enemy.height-20
+            Enemy.hitboxHeight = Enemy.height-15
             Enemy.vector = {x = 0, y = 0}
             
     
@@ -92,14 +110,8 @@ enemy.new = function(x, y, speed, type)
             Enemy.speedx = 0
             Enemy.width = 130
             Enemy.height = Enemy.width/1.20
-            Enemy.hitboxWidth = Enemy.width - 27
+            Enemy.hitboxWidth = Enemy.width - 20
             Enemy.hitboxHeight = Enemy.height - 20
-        
-        elseif Enemy.type == HOLE then
-            Enemy.image = enemyImage.hole
-            Enemy.jumpCollision = false
-            Enemy.nbFrame = 1
-            Enemy.speedx = 0
         
         elseif Enemy.type == JUMP then
             Enemy.image = enemyImage.jump
@@ -111,20 +123,33 @@ enemy.new = function(x, y, speed, type)
             Enemy.hitboxHeight = Enemy.height
             Enemy.nbFrame = 1 
             Enemy.speedx = 0
+        
+        elseif Enemy.type == DODGE then
+            Enemy.image = enemyImage.dodge
+            Enemy.canCollide = false
+            Enemy.jumpCollision = false
+            Enemy.width = 510
+            Enemy.height = 510/1.81
+            Enemy.hitboxWidth = Enemy.width
+            Enemy.hitboxHeight = Enemy.height
+            Enemy.nbFrame = 1 
+            Enemy.speedx = 0
     
      end
      
+     --Enemy.canCollide = false
+
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
 
     function Enemy.birdMove(dt)
-        if distance(0,Turtle.y,0,Enemy.y) <= 300 and Enemy.vector.x == 0 then
+        if distance(0,Turtle.y,0,Enemy.y) <= 400 and Enemy.vector.x == 0 and distance(Turtle.x, 0, Enemy.x, 0) <= 150 then
             Enemy.vector = {x = Turtle.x-Enemy.x ,  y = Turtle.y-Enemy.y}
             normalize(Enemy.vector)
         end
 
-        Enemy.x = Enemy.x + (Enemy.vector.x * 200)*dt
-        Enemy.y = Enemy.y + (Enemy.vector.y * 200)*dt
+        Enemy.x = Enemy.x + (Enemy.vector.x * 75)*dt
+        Enemy.y = Enemy.y + (Enemy.vector.y * 75)*dt
     end
             
 
