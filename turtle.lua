@@ -5,8 +5,8 @@ Turtle.init = function()
     Turtle.currentFrame = 1
     Turtle.x = screen.L*0.5
     Turtle.y = screen.H*0.8
-    Turtle.Width = 75
-    Turtle.Height = 75
+    Turtle.Width = 50
+    Turtle.Height = 50
 
     Turtle.isBegin = false
 
