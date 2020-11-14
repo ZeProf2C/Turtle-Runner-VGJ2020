@@ -139,7 +139,7 @@ enemy.new = function(x, y, speed, type)
      end
 
      
-     Enemy.canCollide = false
+     --Enemy.canCollide = false
 
       Enemy.sx = Enemy.width/(Enemy.image:getWidth()/Enemy.nbFrame)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
