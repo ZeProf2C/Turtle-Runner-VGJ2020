@@ -145,13 +145,13 @@ enemy.new = function(x, y, speed, type)
       Enemy.sy =  Enemy.height/Enemy.image:getHeight()
 
     function Enemy.birdMove(dt)
-        if distance(0,Turtle.y,0,Enemy.y) <= 400 and Enemy.vector.x == 0 and distance(Turtle.x, 0, Enemy.x, 0) <= 150 then
+        if distance(0,Turtle.y,0,Enemy.y) <= 400 and Enemy.vector.x == 0 and distance(Turtle.x, 0, Enemy.x, 0) <= 250 then
             Enemy.vector = {x = Turtle.x-Enemy.x ,  y = Turtle.y-Enemy.y}
             normalize(Enemy.vector)
         end
 
-        Enemy.x = Enemy.x + (Enemy.vector.x * 75)*dt
-        Enemy.y = Enemy.y + (Enemy.vector.y * 75)*dt
+        Enemy.x = Enemy.x + (Enemy.vector.x * 100)*dt
+        Enemy.y = Enemy.y + (Enemy.vector.y * 100)*dt
     end
             
 
