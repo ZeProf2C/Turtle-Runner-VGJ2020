@@ -34,6 +34,7 @@ enemy.init = function()
 
             if v.collision(persoX, persoY, persoHeight, persoWidth) == true and not(Turtle.lose) then
                 Turtle.lose = true
+                Game.setPercent(v.y)
                 snd_lose:play()
                 music_man.stop()
             end
@@ -136,6 +137,7 @@ enemy.new = function(x, y, speed, type)
             Enemy.speedx = 0
     
      end
+
      
      --Enemy.canCollide = false
 
