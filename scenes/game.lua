@@ -75,7 +75,7 @@ Game.update = function(dt)
         Map.update(dt,Turtle.scrollingSpeed)
         Turtle.update(dt)
         
-enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.scrollingSpeed)
+enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.scrollingSpeed)
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end
