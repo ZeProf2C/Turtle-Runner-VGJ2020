@@ -74,6 +74,10 @@ enemy.array.update(dt, Turtle.x, Turtle.y, Turtle.Height, Turtle.Width, Turtle.s
     else
         pannelEscape.update(dt, mouse.x, mouse.y)
     end
+
+    if #enemy.array == 0  then
+        Map.isEnd = true
+    end
 end
 
 Game.draw = function()
