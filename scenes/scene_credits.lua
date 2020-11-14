@@ -1,6 +1,10 @@
 scene_credits = {}
 
-local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
+local pannel
+  
+scene_credits.load = function()
+
+   pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
 
   pannel.addTexte("titre",0,50,"CrEdiTs",titleFont,"center",pannel.L,bleu_kelo4)
   
@@ -23,8 +27,6 @@ local pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
   
   pannel.addSkin(endScreen)
   pannel.elt["back"].addSkin(bouton)
-  
-scene_credits.load = function()
   
 end
 

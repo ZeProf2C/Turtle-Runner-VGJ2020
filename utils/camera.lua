@@ -1,4 +1,4 @@
-local camera = {}
+ local camera = {}
  camera.shake     = false
  camera.time      = 0
  camera.intensite = 10

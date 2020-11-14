@@ -3,12 +3,13 @@ scene_manager = {}
 --                             LISTE DES SCENES
 --******************************************************************************************************
 scene_manager.list = {}
+  scene_manager.list["loading"]   = require("scenes/scene_loading")
   scene_manager.list["menu"]      = require("scenes/scene_menu")
   scene_manager.list["credits"]   = require("scenes/scene_credits")
   scene_manager.list["game"]      = require("scenes/game")
   scene_manager.list["rules"]     = require("scenes/scene_rule")
   scene_manager.list["game_over"] = require("scenes/scene_game_over")
-  scene_manager.list["victory"] = require("scenes/scene_victory")
+  scene_manager.list["victory"]   = require("scenes/scene_victory")
   
   
 scene_manager.current_scene = nil 
