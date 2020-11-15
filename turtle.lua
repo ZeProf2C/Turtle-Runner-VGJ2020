@@ -142,7 +142,7 @@ function Turtle.EndLevelAnim (dt)
         love.mouse.setVisible(true)
         Turtle.win = true
         scene_man.next_scene = scene_man.list["victory"]
-        
+        music_man.play("menu",0)
     end
     
 end 
