@@ -196,7 +196,8 @@ Game.mousereleased = function(px,py,pbutton)
       end
       if pannelEscape.elt["restart"].isIn(px,py) and pbutton==1 then
          snd_clic_menu_2:play()
-         --game.init(game.level)
+         Game.init()
+         snd_drag:play()
          pannelEscape.on = false
       end
       if pannelEscape.elt["menu"].isIn(px,py) and pbutton==1 then

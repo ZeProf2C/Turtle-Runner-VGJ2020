@@ -44,8 +44,9 @@ function love.update(dt)
     --*****************************************************************************************
     --                      CHANGEMENT DE SCENE : FADE OUT
     if scene_man.next_scene ~= nil then
+      
       scene_man.fade_out_in(scene_man.next_scene,dt)
-      scene_manager.current_scene.load()
+      
     end
     --******************************************************************************************
     if camera.shake then

@@ -20,7 +20,7 @@ J'oubliais, tu possèdes un super pouvoir : sauter ! grâce à la touche "ESPACE
 local pannel
   
 scene_rule.load = function()
-   pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
+   pannel = mGui.CreatePannel(0,0 ,650,800,transparent, blanc)
   pannel.addTexte("titre",0,50,"RèGLeS",titleFont,"center",pannel.L,bleu_kelo4)
   pannel.addTexte("text",50,200,lesRegles,textFont,"left",pannel.L-50,noir)
   

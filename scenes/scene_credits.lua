@@ -4,7 +4,7 @@ local pannel
   
 scene_credits.load = function()
 
-   pannel = mGui.CreatePannel(0,0 ,650,800,blanc, blanc)
+   pannel = mGui.CreatePannel(0,0 ,650,800,transparent, blanc)
 
   pannel.addTexte("titre",0,50,"CrEdiTs",titleFont,"center",pannel.L,bleu_kelo4)
   

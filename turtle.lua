@@ -36,7 +36,7 @@ Turtle.init = function()
       Turtle.Assets.Intro = {}
         Turtle.Assets.Intro.img = turtleIntro
         Turtle.Assets.Intro.nbFrame = 5
-        Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/Turtle.Assets.Intro.nbFrame-12 --  -12 permet de bien croper l'image
+        Turtle.Assets.Intro.Width = Turtle.Assets.Intro.img:getWidth()/Turtle.Assets.Intro.nbFrame --  -12 permet de bien croper l'image
         Turtle.Assets.Intro.Height = Turtle.Assets.Intro.img:getHeight()
         Turtle.Assets.Intro.scaleX =  (Turtle.Width +5)/Turtle.Assets.Intro.Width
         Turtle.Assets.Intro.scaleY = (Turtle.Height+5)/Turtle.Assets.Intro.Height
@@ -63,8 +63,8 @@ Turtle.init = function()
 
     Turtle.Ombre = {}
         Turtle.Ombre.y = Turtle.y + 3
-        Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
-        Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
+        Turtle.Ombre.scaleX = Turtle.Assets.Jump.scaleX
+        Turtle.Ombre.scaleY = Turtle.Assets.Jump.scaleY
         Turtle.Ombre.Slide = 250
         Turtle.Ombre.color = {0,0,0,0.5}
 
@@ -104,8 +104,8 @@ function Turtle.jump(dt)
            Turtle.Assets.Jump.scaleX = Turtle.Width/Turtle.Assets.Jump.Width
            Turtle.Assets.Jump.scaleY = Turtle.Height/Turtle.Assets.Jump.Height
             Turtle.Ombre.y = Turtle.y + 3
-            Turtle.Ombre.scaleX = Turtle.Assets.Run.scaleX
-            Turtle.Ombre.scaleY = Turtle.Assets.Run.scaleY
+            Turtle.Ombre.scaleX = Turtle.Assets.Jump.scaleX
+            Turtle.Ombre.scaleY = Turtle.Assets.Jump.scaleY
             snd_atterissage:play()
         end
         

@@ -19,11 +19,11 @@ scene_manager.fade_speed = 1 --0.3
 
 scene_manager.fade_out_in = function(p_next, dt)
    scene_manager.alpha = scene_manager.alpha + scene_manager.fade_speed*math.sqrt(dt)
-   if scene_manager.alpha >= 1 then
+   if scene_manager.alpha > 1 then
      scene_manager.alpha         = 1
      scene_manager.fade_speed    =  -scene_manager.fade_speed
      scene_manager.current_scene = p_next
-   
+     scene_manager.current_scene.load()
    end
    if scene_manager.alpha < 0 then
      scene_manager.alpha        = 0
